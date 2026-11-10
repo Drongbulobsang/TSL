@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3️⃣ གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན། - འབྲོང་བུ་ཚང་།</title>
+  <title>3️⃣ དབྱངས་གསལ་སྦྱོར་ཚུལ། - འབྲོང་བུ་ཚང་།</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -72,7 +72,7 @@
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
       
       <div class="flex items-center gap-3">
-        <div class="bg-yellow-400 p-1.5 sm:p-2 rounded-2xl shadow-inner border-2 border-amber-200 mascot-float cursor-pointer hover:scale-110 transition flex items-center justify-center overflow-hidden" onclick="mascotSpeak(currentLang === 'en' ? 'Tashi Delek! Let us practice multi-consonant vowels!' : 'བཀྲ་ཤིས་བདེ་ལེགས། ང་ཚོས་མཉམ་དུ་ གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན་ སྦྱོང་།')">
+        <div class="bg-yellow-400 p-1.5 sm:p-2 rounded-2xl shadow-inner border-2 border-amber-200 mascot-float cursor-pointer hover:scale-110 transition flex items-center justify-center overflow-hidden" onclick="mascotSpeak(currentLang === 'en' ? 'Tashi Delek! Let us practice multi-consonant vowels!' : 'བཀྲ་ཤིས་བདེ་ལེགས། ང་ཚོས་མཉམ་དུ་དབྱངས་གསལ་སྦྱོར་ཚུལ་སྦྱོང་།')">
           <img src="https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-uHE2qFgGOBjfxqkBOE1fZZinsngoYs.png&w=1000&q=75" alt="Yak Icon" class="h-9 w-9 sm:h-11 sm:w-11 object-contain drop-shadow-sm">
         </div>
         <div>
@@ -80,7 +80,7 @@
             <a href="index.html" id="txt-app-brand" class="tibetan-font text-yellow-300 text-2xl sm:text-4xl hover:underline">འབྲོང་བུ་ཚང་།</a>
             <span id="txt-app-title" class="tibetan-font tibetan-ui-scale hidden sm:inline">བོད་ཀྱི་སྐད་དང་ཡི་གེ་སྦྱོང་དེབ།</span>
           </h1>
-          <p id="txt-app-subtitle" class="text-amber-200 tibetan-font tibetan-ui-scale">3️⃣ གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན།</p>
+          <p id="txt-app-subtitle" class="text-amber-200 tibetan-font tibetan-ui-scale">3️⃣ དབྱངས་གསལ་སྦྱོར་ཚུལ།</p>
         </div>
       </div>
 
@@ -107,7 +107,7 @@
         <h2 id="txt-nav-header" class="font-bold text-yellow-300 uppercase tracking-wider px-2 py-1 tibetan-font tibetan-ui-scale" style="font-size: 0.85rem;">དཀར་ཆག</h2>
         <nav class="flex flex-col gap-1.5">
           <button id="nav-grid" onclick="switchTab('grid')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 bg-yellow-400 text-red-950 shadow tibetan-font tibetan-ui-scale">
-            <span class="text-lg">📚</span> <span id="txt-nav-grid">མིང་ཚིག་མང་པོ།</span>
+            <span class="text-lg">📚</span> <span id="txt-nav-grid">མིང་ཚིག</span>
           </button>
           <button id="nav-flashcards" onclick="switchTab('flashcards')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
             <span class="text-lg">🎴</span> <span id="txt-nav-flashcards">བྱང་བུ།</span>
@@ -116,7 +116,7 @@
             <span class="text-lg">🎯</span> <span id="txt-nav-quiz">དྲི་རྩད་ཁག་དང་པོ།</span>
           </button>
           <button id="nav-builder" onclick="switchTab('builder')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
-            <span class="text-lg">🧱</span> <span id="txt-nav-builder">མིང་ཚིག་ གྲུབ་བྱེད།</span>
+            <span class="text-lg">🧱</span> <span id="txt-nav-builder">མིང་ཚིག་གྲུབ་བྱེད།</span>
           </button>
           <button id="nav-match" onclick="switchTab('match')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
             <span class="text-lg">🧩</span> <span id="txt-nav-match">མཐུན་སྦྱོར།</span>
@@ -136,7 +136,7 @@
         </div>
         <div class="flex-1 space-y-1">
           <p id="mascot-speech" class="text-slate-700 font-medium leading-snug tibetan-font tibetan-ui-scale">
-            3️⃣ གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན་ མིང་ཚིག་ ༣༠ ལ་ སྦྱོང་བརྡར་ བྱེད།
+            3️⃣ དབྱངས་གསལ་སྦྱོར་ཚུལ།
           </p>
         </div>
       </div>
@@ -150,14 +150,14 @@
         <div class="bg-white p-4 sm:p-5 rounded-3xl border-2 border-amber-200 shadow-md space-y-2">
           <div class="flex flex-wrap items-center justify-between gap-3">
             <h2 id="txt-page-title" class="text-2xl sm:text-3xl font-extrabold text-amber-900 tibetan-font tibetan-ui-scale flex items-center gap-2">
-              <span>3️⃣</span> གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན།
+              <span>3️⃣</span> གསལ་བྱེད་གཉིས་འདུས་དབྱངས་སྦྱར་བའི་མིང་ཚིག
             </h2>
             <span class="bg-indigo-100 text-indigo-900 font-bold px-3.5 py-1 rounded-full border border-indigo-200 tibetan-font tibetan-ui-scale">
               མིང་ཚིག་ ༣༠
             </span>
           </div>
           <p id="txt-page-subtitle" class="text-slate-600 tibetan-font tibetan-ui-scale">
-            གསལ་བྱེད་ མང་པོར་ དབྱངས་ སྦྱར་བའི་ མིང་ཚིག་ སྒྲ་ དང་ རི་མོ་ མཉམ་སྦྱར།
+            དབྱངས་གསལ་གཉིས་འདུས་ཀྱི་མིང་ཚིག
           </p>
         </div>
 
@@ -168,7 +168,7 @@
       <section id="view-flashcards" class="hidden flex flex-col items-center justify-center py-2 space-y-6">
         <div class="text-center space-y-1">
           <h2 id="txt-flash-title" class="text-3xl font-bold text-amber-900 tibetan-font tibetan-ui-scale">བྱང་བུ།</h2>
-          <p id="txt-flash-desc" class="text-slate-600 tibetan-font tibetan-ui-scale">ཡི་གེའི་ སྟེང་ བསྣུན་ནས་ སྒྲ་ ལ་ ཉོན།</p>
+          <p id="txt-flash-desc" class="text-slate-600 tibetan-font tibetan-ui-scale">ཡི་གེའི་སྟེང་བསྣུན་ནས་སྒྲ་ལ་ཉོན།</p>
         </div>
 
         <div class="w-full max-w-xs sm:max-w-sm aspect-[4/5] bg-white border-4 border-amber-300 rounded-3xl shadow-xl flex flex-col items-center justify-between p-6 relative card-bounce">
@@ -256,7 +256,7 @@
               <span id="txt-score-lbl">Score:</span> <span id="builder-score">0</span>
             </span>
           </div>
-          <p id="txt-builder-desc" class="text-slate-600 tibetan-font tibetan-ui-scale">སྒྲ་ལ་ཉན་ནས་ ཡི་གེ་ འདེམས་ནས་ མིང་ཚིག་ གྲུབ།</p>
+          <p id="txt-builder-desc" class="text-slate-600 tibetan-font tibetan-ui-scale">སྒྲ་ལ་ཉན་ནས་ཡི་གེ་འདེམས།</p>
 
           <button onclick="playBuilderTargetAudio()" class="w-20 h-20 bg-gradient-to-tr from-amber-500 to-yellow-400 text-white rounded-full shadow-lg mx-auto flex items-center justify-center text-3xl card-bounce ring-4 ring-amber-100">
             🔊
@@ -272,13 +272,13 @@
         <div class="bg-white border-2 border-amber-200 rounded-3xl p-6 shadow-md text-center space-y-5">
           <div class="flex justify-between items-center border-b pb-3">
             <h2 id="txt-match-title" class="font-bold text-slate-800 text-xl tibetan-font tibetan-ui-scale flex items-center gap-2">
-              🧩 མཐུན་སྦྱོར་ སྦྱོང་བརྡར།
+              🧩 མཐུན་སྦྱོར་སྦྱོང་བརྡར།
             </h2>
             <span class="bg-amber-100 text-amber-900 font-bold px-3 py-1 rounded-full tibetan-font">
               Score: <span id="match-score">0</span>
             </span>
           </div>
-          <p id="txt-match-desc" class="text-slate-600 tibetan-font tibetan-ui-scale">ཡི་གེ་ དང་ སྒྲ་ མཐུན་སྦྱོར་ བྱོས།</p>
+          <p id="txt-match-desc" class="text-slate-600 tibetan-font tibetan-ui-scale">ཡི་གེ་དང་སྒྲ་མཐུན་སྦྱོར་བྱོས།</p>
           <div id="match-cards-container" class="grid grid-cols-3 sm:grid-cols-4 gap-3 pt-2"></div>
         </div>
       </section>
@@ -286,7 +286,7 @@
       <!-- VIEW 6: SPEED READER -->
       <section id="view-speed" class="hidden space-y-4 max-w-xl mx-auto">
         <div class="bg-white border-2 border-amber-200 rounded-3xl p-6 shadow-md text-center space-y-6">
-          <h2 id="txt-speed-title" class="font-bold text-slate-800 text-xl tibetan-font tibetan-ui-scale flex items-center justify-center gap-2">⚡ མགྱོགས་ཀློག་ སྦྱོང་བརྡར།</h2>
+          <h2 id="txt-speed-title" class="font-bold text-slate-800 text-xl tibetan-font tibetan-ui-scale flex items-center justify-center gap-2">⚡ མགྱོགས་ཀློག་སྦྱོང་བརྡར།</h2>
           <div class="bg-amber-50 p-8 rounded-3xl border-2 border-amber-300 min-h-[160px] flex items-center justify-center">
             <span id="speed-word-display" class="tibetan-font text-6xl sm:text-7xl font-extrabold text-red-900">ཙི་ཙི།</span>
           </div>
@@ -380,15 +380,15 @@
             <div class="pl-6 flex flex-col gap-1 text-yellow-200/90 text-sm">
               <a href="vowels-reading.html" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
                 <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
-                <span id="txt-submod-vowel-1">༡. དབྱངས་བཞིའི་ ཀློག་ལག་ སྦྱོང་བརྡར།</span>
+                <span id="txt-submod-vowel-1">༡. དབྱངས་བཞིའི་ཀློག་སྟངས་སྦྱོང་བརྡར།</span>
               </a>
               <a href="vowels-single.html" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
                 <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
-                <span id="txt-submod-vowel-2">༢. གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན།</span>
+                <span id="txt-submod-vowel-2">༢. གསལ་བྱེད་རྐྱང་པ་དབྱངས་ལྡན་གྱི་མིང་།</span>
               </a>
               <a href="vowels-multi.html" class="flex items-center gap-2 text-yellow-300 font-bold hover:text-white transition tibetan-font tibetan-ui-scale">
                 <span class="w-1.5 h-1.5 bg-yellow-300 rounded-sm"></span>
-                <span id="txt-submod-vowel-3">༣. གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན།</span>
+                <span id="txt-submod-vowel-3">༣. གསལ་བྱེད་གཉིས་འདུས་དབྱངས་སྦྱར་བའི་མིང་ཚིག</span>
               </a>
             </div>
           </div>
@@ -463,7 +463,7 @@
   </div>
 
   <footer id="txt-footer" class="bg-amber-100 border-t border-amber-200 text-center p-4 text-amber-900 font-medium tibetan-font tibetan-ui-scale">
-    འབྲོང་བུ་ཚང་། 3️⃣ གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན།
+    འབྲོང་བུ་ཚང་། 3️⃣ དབྱངས་གསལ་སྦྱོར་ཚུལ།
   </footer>
 
   <script>
@@ -553,10 +553,10 @@
         navMatch: "མཐུན་སྦྱོར།",
         navSpeed: "མགྱོགས་ཀློག",
         navDrawing: "ཡིག་གཟུགས་སྦྱོང་།",
-        pageTitle: "3️⃣ གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན།",
+        pageTitle: "3️⃣ དབྱངས་གསལ་སྦྱོར་ཚུལ།",
         pageSubtitle: "གསལ་བྱེད་ མང་པོར་ དབྱངས་ སྦྱར་བའི་ མིང་ཚིག་ སྒྲ་ དང་ རི་མོ་ མཉམ་སྦྱར།",
         flashTitle: "བྱང་བུ།",
-        flashDesc: "ཡི་གེའི་ སྟེང་ བསྣུན་ནས་ སྒྲ་ ལ་ ཉོན།",
+        flashDesc: "ཡི་གེའི་སྟེང་བསྣུན་ནས་སྒྲ་ལ་ཉོན།",
         flashPractice: "ཡིག་གཟུགས་སྦྱོང་།",
         btnPrev: "སྔོན་མ།",
         btnNext: "རྗེས་མ།",
@@ -569,10 +569,10 @@
         quizFinalLbl: "མཐའ་མའི་ཐོབ་སྐར།",
         quizPlayAgain: "ཡང་བསྐྱར་དྲི་རྩད་སྦྱོངས།",
         builderTitle: "མིང་ཚིག་ གྲུབ་བྱེད།",
-        builderDesc: "སྒྲ་ལ་ཉན་ནས་ ཡི་གེ་ འདེམས་ནས་ མིང་ཚིག་ གྲུབ།",
+        builderDesc: "སྒྲ་ལ་ཉན་ནས་ཡི་གེ་འདེམས།",
         speedTitle: "མགྱོགས་ཀློག་ སྦྱོང་བརྡར།",
         matchTitle: "མཐུན་སྦྱོར་ སྦྱོང་བརྡར།",
-        matchDesc: "ཡི་གེ་ དང་ སྒྲ་ མཐུན་སྦྱོར་ བྱོས།",
+        matchDesc: "ཡི་གེ་དང་སྒྲ་མཐུན་སྦྱོར་བྱོས།",
         scoreLbl: "ཐོབ་སྐར།",
         btnNextSpeed: "རྗེས་མ།",
         btnSound: "སྒྲ་ལ་ཉོན།",
@@ -594,9 +594,9 @@
         modulesHeader: "ནང་དོན་གཞན་ཁག་ལ་གཟིགས།",
         modMulti: "གསལ་བྱེད་གཉིས་ལྡན་གྱི་མིང་ཚིག",
         modVowelsRoot: "དབྱངས་བཞི།",
-        submodVowel1: "༡. དབྱངས་བཞིའི་ ཀློག་ལག་ སྦྱོང་བརྡར།",
-        submodVowel2: "༢. གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན།",
-        submodVowel3: "༣. གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན།",
+        submodVowel1: "༡. དབྱངས་བཞིའི་ཀློག་སྟངས་སྦྱོང་བརྡར།",
+        submodVowel2: "༢. གསལ་བྱེད་རྐྱང་པ་དབྱངས་ལྡན་གྱི་མིང་།",
+        submodVowel3: "༣. གསལ་བྱེད་གཉིས་འདུས་དབྱངས་སྦྱར་བའི་མིང་།",
         modSuffix: "རྗེས་འཇུག",
         modSubsuffix: "ཡང་འཇུག",
         modPrefix: "སྔོན་འཇུག",
@@ -614,36 +614,36 @@
 
     /* Material 3 Items */
     const MULTI_ITEMS = [
-      { id: 1, char: "ཙི་ཙི།", img: "assets/images/vowels/multi/tsi_tsi.png", audio: "assets/audio/vowels/multi/tsi_tsi.mp3" },
-      { id: 2, char: "ཞི་མི།", img: "assets/images/vowels/multi/zhi_mi.png", audio: "assets/audio/vowels/multi/zhi_mi.mp3" },
-      { id: 3, char: "པི་པི།", img: "assets/images/vowels/multi/pi_pi.png", audio: "assets/audio/vowels/multi/pi_pi.mp3" },
-      { id: 4, char: "སི་ར།", img: "assets/images/vowels/multi/si_ra.png", audio: "assets/audio/vowels/multi/si_ra.mp3" },
-      { id: 5, char: "ལུ་གུ།", img: "assets/images/vowels/multi/lu_gu.png", audio: "assets/audio/vowels/multi/lu_gu.mp3" },
-      { id: 6, char: "ཀུ་ཤུ།", img: "assets/images/vowels/multi/ku_shu.png", audio: "assets/audio/vowels/multi/ku_shu.mp3" },
-      { id: 7, char: "ཡུ་བ།", img: "assets/images/vowels/multi/yu_ba.png", audio: "assets/audio/vowels/multi/yu_ba.mp3" },
-      { id: 8, char: "ནུ་མ།", img: "assets/images/vowels/multi/nu_ma.png", audio: "assets/audio/vowels/multi/nu_ma.mp3" },
-      { id: 9, char: "ཟེ་བ།", img: "assets/images/vowels/multi/ze_ba.png", audio: "assets/audio/vowels/multi/ze_ba.mp3" },
-      { id: 10, char: "སེ་ར།", img: "assets/images/vowels/multi/se_ra.png", audio: "assets/audio/vowels/multi/se_ra.mp3" },
-      { id: 11, char: "མ་ཧེ།", img: "assets/images/vowels/multi/ma_he.png", audio: "assets/audio/vowels/multi/ma_he.mp3" },
-      { id: 12, char: "ཆེ་བ།", img: "assets/images/vowels/multi/che_ba.png", audio: "assets/audio/vowels/multi/che_ba.mp3" },
-      { id: 13, char: "དོ་པོ།", img: "assets/images/vowels/multi/do_po.png", audio: "assets/audio/vowels/multi/do_po.mp3" },
-      { id: 14, char: "ཇོ་ཇོ།", img: "assets/images/vowels/multi/jo_jo.png", audio: "assets/audio/vowels/multi/jo_jo.mp3" },
-      { id: 15, char: "འོ་མ།", img: "assets/images/vowels/multi/o_ma.png", audio: "assets/audio/vowels/multi/o_ma.mp3" },
-      { id: 16, char: "གི་གུ།", img: "assets/images/vowels/multi/gi_gu.png", audio: "assets/audio/vowels/multi/gi_gu.mp3" },
-      { id: 17, char: "ཚི་གུ།", img: "assets/images/vowels/multi/tshi_gu.png", audio: "assets/audio/vowels/multi/tshi_gu.mp3" },
-      { id: 18, char: "རི་བོ།", img: "assets/images/vowels/multi/ri_bo.png", audio: "assets/audio/vowels/multi/ri_bo.mp3" },
-      { id: 19, char: "རི་མོ།", img: "assets/images/vowels/multi/ri_mo.png", audio: "assets/audio/vowels/multi/ri_mo.mp3" },
-      { id: 20, char: "ཏི་སེ།", img: "assets/images/vowels/multi/ti_se.png", audio: "assets/audio/vowels/multi/ti_se.mp3" },
-      { id: 21, char: "ཡི་གེ།", img: "assets/images/vowels/multi/yi_ge.png", audio: "assets/audio/vowels/multi/yi_ge.mp3" },
-      { id: 22, char: "ཀུ་ཅོ།", img: "assets/images/vowels/multi/ku_tsho.png", audio: "assets/audio/vowels/multi/ku_tsho.mp3" },
-      { id: 23, char: "ཆུ་བོ།", img: "assets/images/vowels/multi/chu_bo.png", audio: "assets/audio/vowels/multi/chu_bo.mp3" },
-      { id: 24, char: "ནུ་བོ།", img: "assets/images/vowels/multi/nu_bo.png", audio: "assets/audio/vowels/multi/nu_bo.mp3" },
-      { id: 25, char: "བུ་མོ།", img: "assets/images/vowels/multi/bu_mo.png", audio: "assets/audio/vowels/multi/bu_mo.mp3" },
-      { id: 26, char: "ཡུ་མོ།", img: "assets/images/vowels/multi/yu_mo.png", audio: "assets/audio/vowels/multi/yu_mo.mp3" },
-      { id: 27, char: "དེ་ཕོ།", img: "assets/images/vowels/multi/de_pho.png", audio: "assets/audio/vowels/multi/de_pho.mp3" },
-      { id: 28, char: "ནེ་ཙོ།", img: "assets/images/vowels/multi/ne_tso.png", audio: "assets/audio/vowels/multi/ne_tso.mp3" },
-      { id: 29, char: "ཧ་ལོ།", img: "assets/images/vowels/multi/ha_lo.png", audio: "assets/audio/vowels/multi/ha_lo.mp3" },
-      { id: 30, char: "ལོ་མ།", img: "assets/images/vowels/multi/lo_ma.png", audio: "assets/audio/vowels/multi/lo_ma.mp3" }
+      { id: 1, char: "ཙི་ཙི།", img: "images/04_multiconsonant_vowel_vacabulary/tsi_tsi.jpg", audio: "assets/audio/vowels/multi/tsi_tsi.mp3" },
+      { id: 2, char: "ཞི་མི།", img: "images/04_multiconsonant_vowel_vacabulary/zhi_mi.jpg", audio: "assets/audio/vowels/multi/zhi_mi.mp3" },
+      { id: 3, char: "པི་པི།", img: "images/04_multiconsonant_vowel_vacabulary/pi_pi.jpg", audio: "assets/audio/vowels/multi/pi_pi.mp3" },
+      { id: 4, char: "སི་ར།", img: "images/04_multiconsonant_vowel_vacabulary/si_ra.jpg", audio: "assets/audio/vowels/multi/si_ra.mp3" },
+      { id: 5, char: "ལུ་གུ།", img: "images/04_multiconsonant_vowel_vacabulary/lu_gu.jpg", audio: "assets/audio/vowels/multi/lu_gu.mp3" },
+      { id: 6, char: "ཀུ་ཤུ།", img: "images/04_multiconsonant_vowel_vacabulary/ku_shu.jpg", audio: "assets/audio/vowels/multi/ku_shu.mp3" },
+      { id: 7, char: "ཡུ་བ།", img: "images/04_multiconsonant_vowel_vacabulary/yu_ba.jpg", audio: "assets/audio/vowels/multi/yu_ba.mp3" },
+      { id: 8, char: "ནུ་མ།", img: "images/04_multiconsonant_vowel_vacabulary/nu_ma.jpg", audio: "assets/audio/vowels/multi/nu_ma.mp3" },
+      { id: 9, char: "ཟེ་བ།", img: "images/04_multiconsonant_vowel_vacabulary/ze_ba.jpg", audio: "assets/audio/vowels/multi/ze_ba.mp3" },
+      { id: 10, char: "སེ་ར།", img: "images/04_multiconsonant_vowel_vacabulary/se_ra.jpg", audio: "assets/audio/vowels/multi/se_ra.mp3" },
+      { id: 11, char: "མ་ཧེ།", img: "images/04_multiconsonant_vowel_vacabulary/ma_he.jpg", audio: "assets/audio/vowels/multi/ma_he.mp3" },
+      { id: 12, char: "ཆེ་བ།", img: "images/04_multiconsonant_vowel_vacabulary/che_ba.jpg", audio: "assets/audio/vowels/multi/che_ba.mp3" },
+      { id: 13, char: "དོ་པོ།", img: "images/04_multiconsonant_vowel_vacabulary/do_po.jpg", audio: "assets/audio/vowels/multi/do_po.mp3" },
+      { id: 14, char: "ཇོ་ཇོ།", img: "images/04_multiconsonant_vowel_vacabulary/jo_jo.jpg", audio: "assets/audio/vowels/multi/jo_jo.mp3" },
+      { id: 15, char: "འོ་མ།", img: "images/04_multiconsonant_vowel_vacabulary/o_ma.jpg", audio: "assets/audio/vowels/multi/o_ma.mp3" },
+      { id: 16, char: "གི་གུ།", img: "images/04_multiconsonant_vowel_vacabulary/gi_gu.png", audio: "assets/audio/vowels/multi/gi_gu.mp3" },
+      { id: 17, char: "ཚི་གུ།", img: "images/04_multiconsonant_vowel_vacabulary/tshi_gu.jpg", audio: "assets/audio/vowels/multi/tshi_gu.mp3" },
+      { id: 18, char: "རི་བོ།", img: "images/04_multiconsonant_vowel_vacabulary/ri_bo.jpg", audio: "assets/audio/vowels/multi/ri_bo.mp3" },
+      { id: 19, char: "རི་མོ།", img: "images/04_multiconsonant_vowel_vacabulary/ri_mo.png", audio: "assets/audio/vowels/multi/ri_mo.mp3" },
+      { id: 20, char: "ཏི་སེ།", img: "images/04_multiconsonant_vowel_vacabulary/ti_se.jpg", audio: "assets/audio/vowels/multi/ti_se.mp3" },
+      { id: 21, char: "ཡི་གེ།", img: "images/04_multiconsonant_vowel_vacabulary/yi_ge.png", audio: "assets/audio/vowels/multi/yi_ge.mp3" },
+      { id: 22, char: "ཀུ་ཅོ།", img: "images/04_multiconsonant_vowel_vacabulary/ku_tsho.png", audio: "assets/audio/vowels/multi/ku_tsho.mp3" },
+      { id: 23, char: "ཆུ་བོ།", img: "images/04_multiconsonant_vowel_vacabulary/chu_bo.jpg", audio: "assets/audio/vowels/multi/chu_bo.mp3" },
+      { id: 24, char: "ནུ་བོ།", img: "images/04_multiconsonant_vowel_vacabulary/nu_bo.jpg", audio: "assets/audio/vowels/multi/nu_bo.mp3" },
+      { id: 25, char: "བུ་མོ།", img: "images/04_multiconsonant_vowel_vacabulary/bu_mo.jpg", audio: "assets/audio/vowels/multi/bu_mo.mp3" },
+      { id: 26, char: "ཡུ་མོ།", img: "images/04_multiconsonant_vowel_vacabulary/yu_mo.jpg", audio: "assets/audio/vowels/multi/yu_mo.mp3" },
+      { id: 27, char: "དེ་ཕོ།", img: "images/04_multiconsonant_vowel_vacabulary/de_pho.jpg", audio: "assets/audio/vowels/multi/de_pho.mp3" },
+      { id: 28, char: "ནེ་ཙོ།", img: "images/04_multiconsonant_vowel_vacabulary/ne_tso.jpg", audio: "assets/audio/vowels/multi/ne_tso.mp3" },
+      { id: 29, char: "ཧ་ལོ།", img: "images/04_multiconsonant_vowel_vacabulary/ha_lo.jpg", audio: "assets/audio/vowels/multi/ha_lo.mp3" },
+      { id: 30, char: "ལོ་མ།", img: "images/04_multiconsonant_vowel_vacabulary/lo_ma.jpg", audio: "assets/audio/vowels/multi/lo_ma.mp3" }
     ];
 
     let starCount = 0;
