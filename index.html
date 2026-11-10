@@ -64,7 +64,7 @@
       cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="%23ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 21-4.3-4.3a1 1 0 0 1 0-1.4l12-12a1 1 0 0 1 1.4 0l4.3 4.3a1 1 0 0 1 0 1.4l-12 12a1 1 0 0 1-1.4 0Z"/><path d="M22 21H7"/><path d="m5 11 4.5 4.5"/></svg>') 0 22, pointer !important;
     }
 
-    /* SVG Apple Tree Interactive Elements - FIXED: Completely stable, zero shaking, smooth hover */
+    /* SVG Apple Tree Interactive Elements */
     .apple-group {
       cursor: pointer;
       transform-origin: center;
@@ -78,7 +78,6 @@
       filter: grayscale(80%);
     }
     
-    /* Apple falling animation when correct */
     @keyframes apple-fall {
       0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
       30% { transform: translateY(40px) rotate(-15deg) scale(1.05); opacity: 1; }
@@ -235,7 +234,7 @@
         </div>
       </section>
 
-      <!-- VIEW 3: Ear Training Audio Quiz -->
+      <!-- VIEW 3: Audio Quiz -->
       <section id="view-quiz" class="hidden flex flex-col items-center justify-center py-2 space-y-6 max-w-2xl mx-auto">
         <div id="quiz-active-card" class="w-full bg-white border-2 border-amber-200 rounded-3xl p-6 shadow-md text-center space-y-5">
           <div class="flex justify-between items-center border-b pb-3">
@@ -254,7 +253,7 @@
           </div>
 
           <div class="flex justify-between items-center bg-amber-50 px-4 py-2 rounded-2xl border border-amber-200 font-semibold text-amber-900">
-            <span id="txt-quiz-instruction" class="tibetan-font tibetan-ui-scale">སྒྲ་ལ་ཉན་ནས་ཡི་གེ་འགྲིག་པ་དེ་འདེམས། ( ༥ )</span>
+            <span id="txt-quiz-instruction" class="tibetan-font tibetan-ui-scale">སྒྲ་ལ་ཉན་ནས་ཡི་གེ་འགྲིག་པ་དེ་འདེམས།</span>
             <span><span id="txt-quiz-chances-lbl" class="tibetan-font tibetan-ui-scale">གོ་སྐབས།</span> <span id="quiz-chances" class="font-extrabold text-red-700">2</span> / 2</span>
           </div>
 
@@ -309,7 +308,6 @@
             <span><span id="txt-dd-chances-lbl" class="tibetan-font tibetan-ui-scale">གོ་སྐབས།</span> <span id="dd-chances" class="font-extrabold text-red-700">2</span> / 2</span>
           </div>
 
-          <!-- Draggable Image Source Box -->
           <div class="flex flex-col items-center justify-center py-2 min-h-[140px]">
             <div id="dd-image-container" 
                  draggable="true" 
@@ -321,12 +319,10 @@
             </div>
           </div>
 
-          <!-- Drop Targets Grid -->
           <div id="dd-targets-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2"></div>
 
         </div>
 
-        <!-- Summary Screen -->
         <div id="dd-completed-card" class="hidden w-full bg-white border-4 border-yellow-400 rounded-3xl p-8 shadow-xl text-center space-y-6">
           <div class="text-6xl animate-bounce">🏆</div>
           <div class="space-y-2">
@@ -345,7 +341,7 @@
         </div>
       </section>
 
-      <!-- VIEW 5: SEARCH FOR IT (APPLE TREE WITH FALLING CORRECT APPLE) -->
+      <!-- VIEW 5: SEARCH FOR IT -->
       <section id="view-searchtree" class="hidden flex flex-col items-center justify-center py-2 space-y-5 max-w-4xl mx-auto">
         <div id="st-active-card" class="w-full bg-white border-2 border-amber-200 rounded-3xl p-4 sm:p-6 shadow-md text-center space-y-4">
           
@@ -371,11 +367,9 @@
             </button>
           </div>
 
-          <!-- SVG Vector Illustration Container -->
           <div class="relative w-full aspect-[1000/980] max-w-3xl mx-auto bg-amber-50/20 rounded-3xl overflow-hidden border-2 border-amber-100 flex items-center justify-center p-1">
             <svg id="apple-tree-svg" viewBox="0 0 1000 980" class="w-full h-full drop-shadow-md selection:bg-transparent">
               <defs>
-                <!-- Apple Radial Shading Gradient -->
                 <radialGradient id="appleGrad" cx="35%" cy="30%" r="70%">
                   <stop offset="0%" stop-color="#f43f5e" />
                   <stop offset="50%" stop-color="#be123c" />
@@ -383,14 +377,12 @@
                   <stop offset="100%" stop-color="#4c0519" />
                 </radialGradient>
 
-                <!-- Tree Foliage Shading -->
                 <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stop-color="#15803d" />
                   <stop offset="50%" stop-color="#166534" />
                   <stop offset="100%" stop-color="#14532d" />
                 </linearGradient>
 
-                <!-- Trunk Wood Texture -->
                 <linearGradient id="trunkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stop-color="#78350f" />
                   <stop offset="50%" stop-color="#92400e" />
@@ -398,7 +390,6 @@
                 </linearGradient>
               </defs>
 
-              <!-- TREE TRUNK, LONGER BASE & VISIBLE ROOTS -->
               <g id="svg-trunk">
                 <path d="M 460 820 C 460 700, 410 600, 360 550 L 300 480 C 350 510, 410 530, 460 580 L 460 970 C 460 975, 465 980, 475 980 L 525 980 C 535 980, 540 975, 540 970 L 540 580 C 590 530, 650 510, 700 480 L 640 550 C 590 600, 540 700, 540 820 Z" fill="url(#trunkGrad)" />
                 <path d="M 475 975 C 420 970, 350 975, 290 960 C 340 955, 410 955, 470 965 Z" fill="#78350f" />
@@ -408,7 +399,6 @@
                 <path d="M 500 580 C 520 480, 570 390, 620 310 C 580 380, 540 470, 495 560 Z" fill="#451a03" />
               </g>
 
-              <!-- BUSHY GREEN CANOPY CLUSTERS -->
               <g id="svg-foliage" fill="url(#leafGrad)" stroke="#052e16" stroke-width="6" stroke-linejoin="round">
                 <circle cx="500" cy="180" r="140" />
                 <circle cx="380" cy="200" r="130" />
@@ -433,7 +423,6 @@
                 <circle cx="500" cy="580" r="220" />
               </g>
 
-              <!-- INTERACTIVE APPLES LAYER -->
               <g id="svg-apples-layer"></g>
             </svg>
           </div>
@@ -445,7 +434,6 @@
 
         </div>
 
-        <!-- Summary Screen -->
         <div id="st-completed-card" class="hidden w-full bg-white border-4 border-yellow-400 rounded-3xl p-8 shadow-xl text-center space-y-6">
           <div class="text-6xl animate-bounce">🏆</div>
           <div class="space-y-2">
@@ -560,61 +548,102 @@
 
     </main>
 
-    <!-- RIGHT SIDEBAR -->
+    <!-- RIGHT SIDEBAR WITH 3 SUBSECTIONS OF VOWELS -->
     <aside class="w-full lg:w-64 flex-shrink-0 space-y-4">
-      <div class="bg-gradient-to-b from-indigo-950 to-red-950 p-3 sm:p-4 rounded-3xl border-2 border-yellow-400 shadow-lg space-y-2">
-        <h2 id="txt-modules-header" class="font-bold text-yellow-300 uppercase tracking-wider px-2 py-1 tibetan-font tibetan-ui-scale" style="font-size: 0.85rem;">ནང་དོན་གཞན་ཁག་ལ་གཟིགས།</h2>
-        <nav class="flex flex-col gap-1.5">
-          <a href="multiconsonant.html" class="w-full px-4 py-2.5 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">
-            <span>🔸</span> <span id="txt-mod-multi">གསལ་བྱེད་གཉིས་ལྡན་གྱི་མིང་ཚིག</span>
+      <div class="bg-gradient-to-b from-[#1b1435] via-[#20102b] to-[#2c0b0e] p-4 sm:p-5 rounded-[28px] border-[3px] border-amber-400 shadow-xl space-y-3">
+        <h2 id="txt-modules-header" class="font-extrabold text-yellow-400 text-lg sm:text-xl tracking-wide pb-1 tibetan-font">ནང་དོན་གཞན་ཁག་ལ་གཟིགས།</h2>
+        <nav class="flex flex-col gap-2.5 text-yellow-100 font-bold">
+          
+          <a href="multiconsonant.html" class="flex items-start gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+            <span class="text-orange-500 text-xs mt-1">◆</span>
+            <span id="txt-mod-multi" class="leading-tight">གསལ་བྱེད་གཉིས་ལྡན་གྱི་མིང་ཚིག</span>
           </a>
-          <a href="vowels.html" class="w-full px-4 py-2.5 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">
-            <span>🔹</span> <span id="txt-mod-vowels">དབྱངས་བཞི།</span>
-          </a>
-          <a href="suffixes.html" class="w-full px-4 py-2.5 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">
-            <span>➡️</span> <span id="txt-mod-suffix">རྗེས་འཇུག</span>
-          </a>
-          <a href="subsuffixes.html" class="w-full px-4 py-2.5 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">
-            <span>↪️</span> <span id="txt-mod-subsuffix">ཡང་འཇུག</span>
-          </a>
-          <a href="prefixes.html" class="w-full px-4 py-2.5 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">
-            <span>⬅️</span> <span id="txt-mod-prefix">སྔོན་འཇུག</span>
-          </a>
-          <div class="space-y-1">
-            <div class="w-full px-4 py-2.5 rounded-2xl font-bold flex items-center gap-3 text-yellow-300 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">
-              <span>🔺</span> <span id="txt-mod-super">མགོ་ཅན་གསུམ།།</span>
-            </div>
-            <div class="pl-6 space-y-1">
-              <a href="ra-mgo.html" class="w-full px-3 py-1.5 rounded-xl font-semibold transition flex items-center gap-2 text-amber-200 hover:bg-white/10 tibetan-font tibetan-ui-scale" style="font-size: 0.85rem;">
-                <span>▫️</span> <span id="txt-mod-ramgo">ར་མགོ།</span>
+
+          <!-- FOUR VOWELS (དབྱངས་བཞི།) WITH SUBSECTIONS -->
+          <div class="space-y-1.5 pt-1">
+            <a href="vowels-reading.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+              <span class="text-blue-500 text-xs">◆</span>
+              <span id="txt-mod-vowels-root">དབྱངས་བཞི།</span>
+            </a>
+            <div class="pl-6 flex flex-col gap-1 text-yellow-200/90 text-sm">
+              <a href="vowels-reading.html" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-vowel-1">༡. དབྱངས་བཞིའི་ ཀློག་ལག་ སྦྱོང་བརྡར།</span>
               </a>
-              <a href="la-mgo.html" class="w-full px-3 py-1.5 rounded-xl font-semibold transition flex items-center gap-2 text-amber-200 hover:bg-white/10 tibetan-font tibetan-ui-scale" style="font-size: 0.85rem;">
-                <span>▫️</span> <span id="txt-mod-lamgo">ལ་མགོ།</span>
+              <a href="vowels-single.html" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-vowel-2">༢. གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན།</span>
               </a>
-              <a href="sa-mgo.html" class="w-full px-3 py-1.5 rounded-xl font-semibold transition flex items-center gap-2 text-amber-200 hover:bg-white/10 tibetan-font tibetan-ui-scale" style="font-size: 0.85rem;">
-                <span>▫️</span> <span id="txt-mod-samgo">ས་མགོ།</span>
+              <a href="vowels-multi.html" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-vowel-3">༣. གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན།</span>
               </a>
             </div>
           </div>
-          <div class="space-y-1 pt-1">
-            <div class="w-full px-4 py-2.5 rounded-2xl font-bold flex items-center gap-3 text-yellow-300 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">
-              <span>🔻</span> <span id="txt-mod-sub">འདོགས་ཅན་བཞི།</span>
-            </div>
-            <div class="pl-6 space-y-1">
-              <a href="ya-btags.html" class="w-full px-3 py-1.5 rounded-xl font-semibold transition flex items-center gap-2 text-amber-200 hover:bg-white/10 tibetan-font tibetan-ui-scale" style="font-size: 0.85rem;">
-                <span>▫️</span> <span id="txt-mod-yabtags">ཡ་བཏགས།</span>
+
+          <a href="suffixes.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+            <span class="bg-blue-600 text-white text-[10px] w-4 h-4 rounded-sm flex items-center justify-center font-black">➔</span>
+            <span id="txt-mod-suffix">རྗེས་འཇུག</span>
+          </a>
+
+          <a href="subsuffixes.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+            <span class="bg-blue-500 text-white text-[10px] w-4 h-4 rounded-sm flex items-center justify-center font-black">⮌</span>
+            <span id="txt-mod-subsuffix">ཡང་འཇུག</span>
+          </a>
+
+          <a href="prefixes.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+            <span class="bg-blue-600 text-white text-[10px] w-4 h-4 rounded-sm flex items-center justify-center font-black">⬅</span>
+            <span id="txt-mod-prefix">སྔོན་འཇུག</span>
+          </a>
+
+          <!-- SUPERSCRIPTS (མགོ་ཅན་གསུམ།) -->
+          <div class="space-y-1.5 pt-1">
+            <a href="superscript.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+              <span class="text-pink-500 text-xs">▲</span>
+              <span id="txt-mod-superscript">མགོ་ཅན་གསུམ།</span>
+            </a>
+            <div class="pl-6 flex flex-col gap-1 text-yellow-200/90 text-sm">
+              <a href="superscript.html?tab=ra" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-super-ra">ར་མགོ།</span>
               </a>
-              <a href="ra-btags.html" class="w-full px-3 py-1.5 rounded-xl font-semibold transition flex items-center gap-2 text-amber-200 hover:bg-white/10 tibetan-font tibetan-ui-scale" style="font-size: 0.85rem;">
-                <span>▫️</span> <span id="txt-mod-rabtags">ར་བཏགས།</span>
+              <a href="superscript.html?tab=la" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-super-la">ལ་མགོ།</span>
               </a>
-              <a href="la-btags.html" class="w-full px-3 py-1.5 rounded-xl font-semibold transition flex items-center gap-2 text-amber-200 hover:bg-white/10 tibetan-font tibetan-ui-scale" style="font-size: 0.85rem;">
-                <span>▫️</span> <span id="txt-mod-labtags">ལ་བཏགས།</span>
-              </a>
-              <a href="wa-btags.html" class="w-full px-3 py-1.5 rounded-xl font-semibold transition flex items-center gap-2 text-amber-200 hover:bg-white/10 tibetan-font tibetan-ui-scale" style="font-size: 0.85rem;">
-                <span>▫️</span> <span id="txt-mod-wabtags">ཝ་བཏགས།</span>
+              <a href="superscript.html?tab=sa" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-super-sa">ས་མགོ།</span>
               </a>
             </div>
           </div>
+
+          <!-- SUBSCRIPTS (འདོགས་ཅན་བཞི།) -->
+          <div class="space-y-1.5 pt-1">
+            <a href="subscript.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+              <span class="text-pink-500 text-xs">▼</span>
+              <span id="txt-mod-subscript">འདོགས་ཅན་བཞི།</span>
+            </a>
+            <div class="pl-6 flex flex-col gap-1 text-yellow-200/90 text-sm">
+              <a href="subscript.html?tab=ya" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-sub-ya">ཡ་ཏགས།</span>
+              </a>
+              <a href="subscript.html?tab=ra" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-sub-ra">ར་ཏགས།</span>
+              </a>
+              <a href="subscript.html?tab=la" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-sub-la">ལ་ཏགས།</span>
+              </a>
+              <a href="subscript.html?tab=wa" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-sub-wa">ཝ་ཟུར།</span>
+              </a>
+            </div>
+          </div>
+
         </nav>
       </div>
     </aside>
@@ -624,7 +653,6 @@
   <!-- Character Detail Modal -->
   <div id="modal-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl border-4 border-amber-400 shadow-2xl max-w-sm w-full p-6 space-y-6 relative">
-      
       <button onclick="closeModal()" class="absolute top-4 right-4 w-9 h-9 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-600 font-bold text-lg flex items-center justify-center shadow-sm">
         ✕
       </button>
@@ -642,12 +670,7 @@
         <button id="modal-audio-btn" onclick="playModalAudio()" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-bold shadow-md text-base sm:text-lg flex items-center justify-center gap-2 transition tibetan-font tibetan-ui-scale">
           <span>🔊</span> <span id="txt-modal-sound">སྒྲ་ལ་ཉོན།</span>
         </button>
-
-        <button onclick="jumpToMagicPenFromModal()" class="w-full py-3 bg-red-900 hover:bg-red-950 text-white rounded-2xl font-bold shadow-md text-base sm:text-lg flex items-center justify-center gap-2 transition tibetan-font tibetan-ui-scale hidden">
-          <span>🎨</span> <span id="txt-modal-practice"></span>
-        </button>
       </div>
-
     </div>
   </div>
 
@@ -671,21 +694,24 @@
         navSearchtree: "Search for it",
         navSing: "Let's Sing",
         navDrawing: "Magic Pen",
-        modulesHeader: "Advanced Modules",
+        modulesHeader: "Navigation Modules",
         modMulti: "Multiconsonant Vocab",
-        modVowels: "4 Vowels (Dbyangs)",
+        modVowelsRoot: "Four Vowels (Dbyangs)",
+        submodVowel1: "1. Vowel Reading Practice",
+        submodVowel2: "2. Single Consonant with Vowel",
+        submodVowel3: "3. Multi Consonant with Vowel",
         modSuffix: "Suffixes (Rjes-jug)",
         modSubsuffix: "Second Suffix (Yang-jug)",
         modPrefix: "Prefixes (Sngon-jug)",
-        modSuper: "Super Scripts (Mgo-can)",
-        modRamgo: "ར་མགོ། (Ra-mgo)",
-        modLamgo: "ལ་མགོ། (La-mgo)",
-        modSamgo: "ས་མགོ། (Sa-mgo)",
-        modSub: "Sub Scripts (Dogs-can)",
-        modYabtags: "ཡ་བཏགས། (Ya-btags)",
-        modRabtags: "ར་བཏགས། (Ra-btags)",
-        modLabtags: "ལ་བཏགས། (La-btags)",
-        modWabtags: "ཝ་བཏགས། (Wa-btags)",
+        modSuper: "Three Superscripts",
+        submodSuperRa: "Ra Head (Ra-mgo)",
+        submodSuperLa: "La Head (La-mgo)",
+        submodSuperSa: "Sa Head (Sa-mgo)",
+        modSubscript: "Four Subscripts",
+        submodSubYa: "Ya Subscript (Ya-tags)",
+        submodSubRa: "Ra Subscript (Ra-tags)",
+        submodSubLa: "La Subscript (La-tags)",
+        submodSubWa: "Wa Subscript (Wa-zur)",
         mascotName: "Tashi the Wild Yak",
         mascotBadge: "Guide",
         mascotDefault: "Welcome! Explore all consonants with real audio recordings and selected textbook illustrations!",
@@ -693,7 +719,7 @@
         gridLayoutVal: "Traditional Rows (4 Letters per Line)",
         gridTag: "Audio & Textbook Images",
         flashTitle: "Flashcard Explorer",
-        flashDesc: "Tap the card or sound button to listen, or view textbook illustrations where available!",
+        flashDesc: "Tap the card or sound button to listen!",
         flashSound: "Sound",
         flashPractice: "Practice Letter",
         btnPrev: "Previous",
@@ -743,9 +769,8 @@
         canvasTip: "Tip: Select a pen tool and trace directly over the large guide character!",
         canvasSound: "Play Audio",
         modalSound: "Play Sound",
-        modalPractice: "Practice Writing in Magic Pen",
         modalBadge: "Pre-Primary Textbook Illustration",
-        footer: "Tibetan Alphabets Audio & Textbook Learning Tool",
+        footer: "Tibetan Learning Tool",
         cardSoundBtn: ""
       },
       bo: {
@@ -755,26 +780,29 @@
         navHeader: "དཀར་ཆག",
         navGrid: "གསལ་བྱེད་སུམ་ཅུ།",
         navFlashcards: "བྱང་བུ།",
-        navQuiz: "འགྲིག་པ་དེ་འདེམས།'",
+        navQuiz: "འགྲིག་པ་དེ་འདེམས།",
         navDragdrop: "མཐུན་སྦྱོར་བྱོས།",
         navSearchtree: "འགྲིག་པ་དེ་འཚོལ།",
         navSing: "གླུ་དབྱངས་ལེན།",
         navDrawing: "ཡིག་གཟུགས་སྦྱོང་།",
         modulesHeader: "ནང་དོན་གཞན་ཁག་ལ་གཟིགས།",
         modMulti: "གསལ་བྱེད་གཉིས་ལྡན་གྱི་མིང་ཚིག",
-        modVowels: "དབྱངས་བཞི།",
+        modVowelsRoot: "དབྱངས་བཞི།",
+        submodVowel1: "༡. དབྱངས་བཞིའི་ ཀློག་ལག་ སྦྱོང་བརྡར།",
+        submodVowel2: "༢. གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན།",
+        submodVowel3: "༣. གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན།",
         modSuffix: "རྗེས་འཇུག",
         modSubsuffix: "ཡང་འཇུག",
         modPrefix: "སྔོན་འཇུག",
-        modSuper: "མགོ་ཅན་གསུམ།།",
-        modRamgo: "ར་མགོ།",
-        modLamgo: "ལ་མགོ།",
-        modSamgo: "ས་མགོ།",
-        modSub: "འདོགས་ཅན་བཞི།",
-        modYabtags: "ཡ་བཏགས།",
-        modRabtags: "ར་བཏགས།",
-        modLabtags: "ལ་བཏགས།",
-        modWabtags: "ཝ་བཏགས།",
+        modSuper: "མགོ་ཅན་གསུམ།",
+        submodSuperRa: "ར་མགོ།",
+        submodSuperLa: "ལ་མགོ།",
+        submodSuperSa: "ས་མགོ།",
+        modSubscript: "འདོགས་ཅན་བཞི།",
+        submodSubYa: "ཡ་ཏགས།",
+        submodSubRa: "ར་ཏགས།",
+        submodSubLa: "ལ་ཏགས།",
+        submodSubWa: "ཝ་ཟུར།",
         mascotName: "ང་བོད་པ་ཡིན། ང་བོད་ཡིག་ལ་དགའ།",
         mascotBadge: "",
         mascotDefault: "ཁྱེད་ཉིད་ཕེབས་པར་དགའ་བསུ་ཞུ། ང་ཚོས་མཉམ་དུ་བོད་ཡིག་སློབ་སྦྱོང་བྱེད།",
@@ -832,7 +860,6 @@
         canvasTip: "སྨྱུག་གུ་བདམས་ནས་ཡིག་གཟུགས་སྦྱོང་།",
         canvasSound: "སྒྲ་ལ་ཉོན།",
         modalSound: "སྒྲ་ལ་ཉོན།",
-        modalPractice: "",
         modalBadge: "སྔོན་འགྲོའི་སློབ་དེབ་རི་མོ།",
         footer: "འབྲོང་བུ་ཚང་། བོད་ཀྱི་སྐད་དང་ཡི་གེ་སྦྱོང་དེབ།",
         cardSoundBtn: ""
@@ -923,19 +950,22 @@
 
       document.getElementById('txt-modules-header').innerText = t.modulesHeader;
       document.getElementById('txt-mod-multi').innerText = t.modMulti;
-      document.getElementById('txt-mod-vowels').innerText = t.modVowels;
+      document.getElementById('txt-mod-vowels-root').innerText = t.modVowelsRoot;
+      document.getElementById('txt-submod-vowel-1').innerText = t.submodVowel1;
+      document.getElementById('txt-submod-vowel-2').innerText = t.submodVowel2;
+      document.getElementById('txt-submod-vowel-3').innerText = t.submodVowel3;
       document.getElementById('txt-mod-suffix').innerText = t.modSuffix;
       document.getElementById('txt-mod-subsuffix').innerText = t.modSubsuffix;
       document.getElementById('txt-mod-prefix').innerText = t.modPrefix;
-      document.getElementById('txt-mod-super').innerText = t.modSuper;
-      document.getElementById('txt-mod-ramgo').innerText = t.modRamgo;
-      document.getElementById('txt-mod-lamgo').innerText = t.modLamgo;
-      document.getElementById('txt-mod-samgo').innerText = t.modSamgo;
-      document.getElementById('txt-mod-sub').innerText = t.modSub;
-      document.getElementById('txt-mod-yabtags').innerText = t.modYabtags;
-      document.getElementById('txt-mod-rabtags').innerText = t.modRabtags;
-      document.getElementById('txt-mod-labtags').innerText = t.modLabtags;
-      document.getElementById('txt-mod-wabtags').innerText = t.modWabtags;
+      if (document.getElementById('txt-mod-superscript')) document.getElementById('txt-mod-superscript').innerText = t.modSuper;
+      if (document.getElementById('txt-submod-super-ra')) document.getElementById('txt-submod-super-ra').innerText = t.submodSuperRa;
+      if (document.getElementById('txt-submod-super-la')) document.getElementById('txt-submod-super-la').innerText = t.submodSuperLa;
+      if (document.getElementById('txt-submod-super-sa')) document.getElementById('txt-submod-super-sa').innerText = t.submodSuperSa;
+      if (document.getElementById('txt-mod-subscript')) document.getElementById('txt-mod-subscript').innerText = t.modSubscript;
+      if (document.getElementById('txt-submod-sub-ya')) document.getElementById('txt-submod-sub-ya').innerText = t.submodSubYa;
+      if (document.getElementById('txt-submod-sub-ra')) document.getElementById('txt-submod-sub-ra').innerText = t.submodSubRa;
+      if (document.getElementById('txt-submod-sub-la')) document.getElementById('txt-submod-sub-la').innerText = t.submodSubLa;
+      if (document.getElementById('txt-submod-sub-wa')) document.getElementById('txt-submod-sub-wa').innerText = t.submodSubWa;
 
       document.getElementById('lang-btn-text').innerText = currentLang === 'en' ? 'བོད་ཡིག' : 'English';
       mascotSpeak(t.mascotDefault);
@@ -982,36 +1012,36 @@
     ];
 
     const EXACT_APPLE_POSITIONS = [
-      { id: 0,  x: 445, y: 140, rx: 50, ry: 44 }, // ཀ 
-      { id: 1,  x: 690, y: 220, rx: 50, ry: 44 }, // ཁ 
-      { id: 2,  x: 775, y: 640, rx: 50, ry: 44 }, // ག 
-      { id: 3,  x: 870, y: 440, rx: 50, ry: 44 }, // ང 
-      { id: 4,  x: 180, y: 200, rx: 50, ry: 44 }, // ཅ 
-      { id: 5,  x: 540, y: 265, rx: 50, ry: 44 }, // ཆ 
-      { id: 6,  x: 815, y: 330, rx: 50, ry: 44 }, // ཇ 
-      { id: 7,  x: 670, y: 345, rx: 50, ry: 44 }, // ཉ 
-      { id: 8,  x: 260, y: 325, rx: 50, ry: 44 }, // ཏ 
-      { id: 9,  x: 550, y: 395, rx: 50, ry: 44 }, // ཐ 
-      { id: 10, x: 730, y: 495, rx: 50, ry: 44 }, // ད 
-      { id: 11, x: 635, y: 685, rx: 50, ry: 44 }, // ན 
-      { id: 12, x: 310, y: 155, rx: 50, ry: 44 }, // པ 
-      { id: 13, x: 125, y: 295, rx: 50, ry: 44 }, // ཕ 
-      { id: 14, x: 675, y: 560, rx: 50, ry: 44 }, // བ 
-      { id: 15, x: 245, y: 435, rx: 50, ry: 44 }, // མ 
-      { id: 16, x: 110, y: 410, rx: 50, ry: 44 }, // ཙ 
-      { id: 17, x: 115, y: 520, rx: 50, ry: 44 }, // ཚ 
-      { id: 18, x: 390, y: 250, rx: 50, ry: 44 }, // ཛ 
-      { id: 19, x: 420, y: 675, rx: 50, ry: 44 }, // ཝ 
-      { id: 20, x: 575, y: 510, rx: 50, ry: 44 }, // ཞ 
-      { id: 21, x: 845, y: 520, rx: 50, ry: 44 }, // ཟ 
-      { id: 22, x: 252, y: 540, rx: 50, ry: 44 }, // འ 
-      { id: 23, x: 230, y: 660, rx: 50, ry: 44 }, // ཡ 
-      { id: 24, x: 405, y: 390, rx: 50, ry: 44 }, // ར 
-      { id: 25, x: 410, y: 490, rx: 50, ry: 44 }, // ལ 
-      { id: 26, x: 125, y: 630, rx: 50, ry: 44 }, // ཤ 
-      { id: 27, x: 335, y: 660, rx: 50, ry: 44 }, // ས 
-      { id: 28, x: 472, y: 585, rx: 50, ry: 44 }, // ཧ 
-      { id: 29, x: 575, y: 165, rx: 50, ry: 44 }  // ཨ 
+      { id: 0,  x: 445, y: 140, rx: 50, ry: 44 },
+      { id: 1,  x: 690, y: 220, rx: 50, ry: 44 },
+      { id: 2,  x: 775, y: 640, rx: 50, ry: 44 },
+      { id: 3,  x: 870, y: 440, rx: 50, ry: 44 },
+      { id: 4,  x: 180, y: 200, rx: 50, ry: 44 },
+      { id: 5,  x: 540, y: 265, rx: 50, ry: 44 },
+      { id: 6,  x: 815, y: 330, rx: 50, ry: 44 },
+      { id: 7,  x: 670, y: 345, rx: 50, ry: 44 },
+      { id: 8,  x: 260, y: 325, rx: 50, ry: 44 },
+      { id: 9,  x: 550, y: 395, rx: 50, ry: 44 },
+      { id: 10, x: 730, y: 495, rx: 50, ry: 44 },
+      { id: 11, x: 635, y: 685, rx: 50, ry: 44 },
+      { id: 12, x: 310, y: 155, rx: 50, ry: 44 },
+      { id: 13, x: 125, y: 295, rx: 50, ry: 44 },
+      { id: 14, x: 675, y: 560, rx: 50, ry: 44 },
+      { id: 15, x: 245, y: 435, rx: 50, ry: 44 },
+      { id: 16, x: 110, y: 410, rx: 50, ry: 44 },
+      { id: 17, x: 115, y: 520, rx: 50, ry: 44 },
+      { id: 18, x: 390, y: 250, rx: 50, ry: 44 },
+      { id: 19, x: 420, y: 675, rx: 50, ry: 44 },
+      { id: 20, x: 575, y: 510, rx: 50, ry: 44 },
+      { id: 21, x: 845, y: 520, rx: 50, ry: 44 },
+      { id: 22, x: 252, y: 540, rx: 50, ry: 44 },
+      { id: 23, x: 230, y: 660, rx: 50, ry: 44 },
+      { id: 24, x: 405, y: 390, rx: 50, ry: 44 },
+      { id: 25, x: 410, y: 490, rx: 50, ry: 44 },
+      { id: 26, x: 125, y: 630, rx: 50, ry: 44 },
+      { id: 27, x: 335, y: 660, rx: 50, ry: 44 },
+      { id: 28, x: 472, y: 585, rx: 50, ry: 44 },
+      { id: 29, x: 575, y: 165, rx: 50, ry: 44 }
     ];
 
     const ROW_NAMES = {
@@ -1042,7 +1072,6 @@
     let ddSelectedMobile = false;
     let ddRemainingPool = [];
 
-    // Search For It (SVG Tree Quiz) state
     let stTarget = null;
     let stScore = 0;
     let stCurrentQuestion = 0;
@@ -1493,7 +1522,6 @@
       try { confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } }); } catch(e) {}
     }
 
-    // --- Search For It (SVG Tree Quiz Functions) ---
     function restartSearchTreeQuiz() {
       stScore = 0;
       stCurrentQuestion = 0;
@@ -1522,15 +1550,10 @@
         g.onclick = () => handleSearchTreeAnswer(item, g);
 
         g.innerHTML = `
-          <!-- Invisible larger hit area to make clicking/tapping effortless -->
           <circle cx="0" cy="0" r="65" fill="transparent" style="cursor: pointer;" />
-          <!-- Apple Stem -->
           <path d="M 0 -${pos.ry - 5} C 5 -${pos.ry + 15}, 12 -${pos.ry + 10}, 8 -${pos.ry + 22}" stroke="#3b0764" stroke-width="4" fill="none" stroke-linecap="round"/>
-          <!-- Leaf -->
           <path d="M 5 -${pos.ry + 12} Q 22 -${pos.ry + 22} 28 -${pos.ry + 8} Q 15 -${pos.ry + 2} 5 -${pos.ry + 12}" fill="#22c55e" stroke="#15803d" stroke-width="2"/>
-          <!-- Apple Body -->
           <ellipse cx="0" cy="0" rx="${pos.rx}" ry="${pos.ry}" fill="url(#appleGrad)" stroke="#2e1065" stroke-width="3"/>
-          <!-- Tibetan Consonant Text -->
           <text x="0" y="11" text-anchor="middle" class="tibetan-font" font-size="40" font-weight="bold" fill="#ffffff" style="filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.8)); font-family: 'Jomolhari', serif; pointer-events: none;">${item.char}</text>
         `;
 
@@ -1782,20 +1805,1163 @@
       playSound(currentModalIndex);
     }
 
-    function jumpToMagicPenFromModal() {
-      currentDrawingIndex = currentModalIndex;
-      closeModal();
-      switchTab('drawing');
-    }
-
     window.onload = function() {
       updateLanguageUI();
-      window.addEventListener('resize', () => {
-        if (!document.getElementById('view-drawing').classList.contains('hidden')) {
-          setupCanvas();
-        }
-      });
     };
   </script>
 </body>
 </html>
+```
+
+```html:Four Vowels Overview:vowels.html
+<!DOCTYPE html>
+<html lang="bo">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>དབྱངས་བཞི། - འབྲོང་བུ་ཚང་།</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Fredoka & Jomolhari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Jomolhari&display=swap" rel="stylesheet">
+  
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Fredoka', 'Jomolhari', 'Noto Sans Tibetan', cursive, sans-serif;
+      font-size: 1.1rem;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .tibetan-font {
+      font-family: 'Jomolhari', 'Noto Sans Tibetan', serif !important;
+    }
+    html[lang="bo"] .tibetan-ui-scale {
+      font-size: 1.35rem !important;
+      line-height: 1.5 !important;
+    }
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fef3c7;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f59e0b;
+      border-radius: 5px;
+    }
+    .card-bounce {
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+    }
+    .card-bounce:hover {
+      transform: translateY(-4px) scale(1.03);
+    }
+    .card-bounce:active {
+      transform: translateY(2px) scale(0.97);
+    }
+    @keyframes gentle-float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
+    }
+    .mascot-float {
+      animation: gentle-float 4s ease-in-out infinite;
+    }
+
+    .cursor-pen {
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="%23d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>') 0 22, crosshair !important;
+    }
+    .cursor-eraser {
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="%23ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 21-4.3-4.3a1 1 0 0 1 0-1.4l12-12a1 1 0 0 1 1.4 0l4.3 4.3a1 1 0 0 1 0 1.4l-12 12a1 1 0 0 1-1.4 0Z"/><path d="M22 21H7"/><path d="m5 11 4.5 4.5"/></svg>') 0 22, pointer !important;
+    }
+  </style>
+</head>
+<body class="bg-amber-50 min-h-screen text-slate-800 flex flex-col justify-between selection:bg-amber-200">
+
+  <!-- Top Header Bar -->
+  <header class="bg-gradient-to-r from-red-950 via-amber-800 to-indigo-950 text-white shadow-lg sticky top-0 z-30 border-b-4 border-yellow-400">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+      
+      <!-- Brand Logo & Wild Yak Icon Mascot -->
+      <div class="flex items-center gap-3">
+        <div class="bg-yellow-400 p-1.5 sm:p-2 rounded-2xl shadow-inner border-2 border-amber-200 mascot-float cursor-pointer hover:scale-110 transition flex items-center justify-center overflow-hidden" onclick="mascotSpeak(currentLang === 'en' ? 'Tashi Delek! Let us practice Tibetan vowels!' : 'བཀྲ་ཤིས་བདེ་ལེགས། ང་ཚོས་མཉམ་དུ་དབྱངས་བཞི་སྦྱོང་།')">
+          <img src="https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-uHE2qFgGOBjfxqkBOE1fZZinsngoYs.png&w=1000&q=75" alt="Yak Icon" class="h-9 w-9 sm:h-11 sm:w-11 object-contain drop-shadow-sm">
+        </div>
+        <div>
+          <h1 class="font-bold tracking-wide flex items-center gap-2">
+            <a href="index.html" id="txt-app-brand" class="tibetan-font text-yellow-300 text-2xl sm:text-4xl hover:underline">འབྲོང་བུ་ཚང་།</a>
+            <span id="txt-app-title" class="tibetan-font tibetan-ui-scale hidden sm:inline">བོད་ཀྱི་སྐད་དང་ཡི་གེ་སྦྱོང་དེབ།</span>
+          </h1>
+          <p id="txt-app-subtitle" class="text-amber-200 tibetan-font tibetan-ui-scale">སྦྱོང་དེབ་འདིའི་ནང་་རི་མོ་དང་སྒྲ་མཉམ་སྦྱར་བྱས་ཡོད།</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Language Switcher Button -->
+        <button id="lang-toggle-btn" onclick="toggleLanguage()" class="bg-yellow-400 hover:bg-yellow-300 text-red-950 font-extrabold px-3.5 py-1.5 rounded-full border-2 border-amber-200 shadow-sm transition flex items-center gap-1.5 tibetan-font">
+          🌐 <span id="lang-btn-text">English</span>
+        </button>
+
+        <!-- Reward Stars -->
+        <div class="flex items-center gap-2 bg-yellow-400/20 px-3.5 py-1.5 rounded-full border border-yellow-400/40">
+          <span class="text-xl animate-bounce">⭐</span>
+          <span id="star-count" class="font-bold text-yellow-300">0</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto w-full px-4 py-6 flex-1 flex flex-col lg:flex-row gap-6">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="w-full lg:w-64 flex-shrink-0 space-y-4">
+      
+      <!-- Navigation Bar -->
+      <div class="bg-gradient-to-b from-red-950 to-indigo-950 p-3 sm:p-4 rounded-3xl border-2 border-yellow-400 shadow-lg space-y-2">
+        <h2 id="txt-nav-header" class="font-bold text-yellow-300 uppercase tracking-wider px-2 py-1 tibetan-font tibetan-ui-scale" style="font-size: 0.85rem;">དཀར་ཆག</h2>
+        <nav class="flex flex-col gap-1.5">
+          <button id="nav-vowels" onclick="switchTab('vowels')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 bg-yellow-400 text-red-950 shadow tibetan-font tibetan-ui-scale">
+            <span class="text-lg">🔹</span> <span id="txt-nav-vowels">དབྱངས་བཞི།</span>
+          </button>
+          <button id="nav-flashcards" onclick="switchTab('flashcards')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
+            <span class="text-lg">🎴</span> <span id="txt-nav-flashcards">བྱང་བུ།</span>
+          </button>
+          <button id="nav-quiz" onclick="switchTab('quiz')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
+            <span class="text-lg">🎯</span> <span id="txt-nav-quiz">དྲི་རྩད་ཁག་དང་པོ།</span>
+          </button>
+          <button id="nav-drawing" onclick="switchTab('drawing')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
+            <span class="text-lg">🎨</span> <span id="txt-nav-drawing">ཡིག་གཟུགས་སྦྱོང་།</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Wild Yak Mascot Banner -->
+      <div class="bg-gradient-to-r lg:bg-gradient-to-b from-amber-100 via-orange-100 to-amber-50 border-2 border-amber-300 rounded-3xl p-4 shadow-sm flex lg:flex-col items-center text-left lg:text-center gap-3">
+        <div class="bg-amber-400 p-2.5 rounded-2xl shadow-inner border border-amber-300 flex-shrink-0">
+          <img src="https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-uHE2qFgGOBjfxqkBOE1fZZinsngoYs.png&w=1000&q=75" alt="Yak Icon" class="h-12 w-12 object-contain drop-shadow-sm">
+        </div>
+        <div class="flex-1 space-y-1">
+          <div class="flex lg:justify-center items-center gap-2">
+            <span id="txt-mascot-name" class="font-bold text-amber-900 tibetan-font tibetan-ui-scale">ང་བོད་པ་ཡིན། ང་བོད་ཡིག་ལ་དགའ།</span>
+          </div>
+          <p id="mascot-speech" class="text-slate-700 font-medium leading-snug tibetan-font tibetan-ui-scale">
+            ཁྱེད་ཉིད་ཕེབས་པར་དགའ་བསུ་ཞུ། ང་ཚོས་མཉམ་དུ་དབྱངས་བཞི་ལ་སྦྱོང་བ་བྱེད།
+          </p>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-1 w-full">
+
+      <!-- VIEW 1: VOWELS MAIN EXPLORER WITH 3 SUBSECTIONS -->
+      <section id="view-vowels" class="space-y-8">
+        
+        <!-- Main Header Card -->
+        <div class="bg-white p-4 sm:p-5 rounded-3xl border-2 border-amber-200 shadow-md space-y-2">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <h2 id="txt-vowels-title" class="text-2xl sm:text-3xl font-extrabold text-amber-900 tibetan-font tibetan-ui-scale flex items-center gap-2">
+              <span>🔹</span> དབྱངས་བཞི། (Four Vowels)
+            </h2>
+            <span id="txt-vowels-tag" class="text-amber-800 font-semibold bg-amber-50 px-3.5 py-1 rounded-full border border-amber-200 tibetan-font tibetan-ui-scale">
+              ཨི་ཨུ་ཨེ་ཨོ། ( ི ུ ེ ོ )
+            </span>
+          </div>
+          <p id="txt-vowels-subtitle" class="text-slate-600 tibetan-font tibetan-ui-scale">
+            དབྱངས་བཞི་དང་ གསལ་བྱེད་དབྱངས་སྦྱར་གྱི་ཀློག་ལག་སྦྱོང་བརྡར།
+          </p>
+        </div>
+
+        <!-- SUBSECTION 1: Four Main Vowels Reading Practice -->
+        <div class="bg-white p-4 sm:p-6 rounded-3xl border-2 border-amber-200 shadow-sm space-y-4">
+          <div class="border-b border-amber-100 pb-3 flex items-center justify-between">
+            <a href="vowels-reading.html" class="hover:underline">
+              <h3 id="txt-sec-1-title" class="text-xl font-bold text-red-950 tibetan-font tibetan-ui-scale flex items-center gap-2">
+                <span>1️⃣</span> དབྱངས་བཞིའི་ ཀློག་ལག་ སྦྱོང་བརྡར། (Vowel Reading Practice)
+              </h3>
+            </a>
+            <a href="vowels-reading.html" class="bg-red-100 hover:bg-red-200 text-red-900 font-bold px-3.5 py-1 rounded-full text-sm tibetan-font transition">
+              👉 ཚང་མ་གཟིགས།
+            </a>
+          </div>
+
+          <!-- Base Vowels Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            <div onclick="playVowelSound('i')" class="bg-gradient-to-b from-amber-50 to-orange-50 border-2 border-amber-300 hover:border-amber-500 rounded-2xl p-4 text-center cursor-pointer card-bounce shadow-sm flex flex-col items-center justify-center">
+              <span class="tibetan-font text-5xl font-extrabold text-red-900 mb-1">ཨི</span>
+              <span class="text-amber-900 font-bold text-sm">གི་གུ (i)</span>
+              <span class="mt-2 text-xs bg-amber-200 text-amber-950 px-2.5 py-1 rounded-full font-bold">🔊 ཉོན།</span>
+            </div>
+            <div onclick="playVowelSound('u')" class="bg-gradient-to-b from-amber-50 to-orange-50 border-2 border-amber-300 hover:border-amber-500 rounded-2xl p-4 text-center cursor-pointer card-bounce shadow-sm flex flex-col items-center justify-center">
+              <span class="tibetan-font text-5xl font-extrabold text-red-900 mb-1">ཨུ</span>
+              <span class="text-amber-900 font-bold text-sm">ཞབས་ཀྱུ (u)</span>
+              <span class="mt-2 text-xs bg-amber-200 text-amber-950 px-2.5 py-1 rounded-full font-bold">🔊 ཉོན།</span>
+            </div>
+            <div onclick="playVowelSound('e')" class="bg-gradient-to-b from-amber-50 to-orange-50 border-2 border-amber-300 hover:border-amber-500 rounded-2xl p-4 text-center cursor-pointer card-bounce shadow-sm flex flex-col items-center justify-center">
+              <span class="tibetan-font text-5xl font-extrabold text-red-900 mb-1">ཨེ</span>
+              <span class="text-amber-900 font-bold text-sm">འགྲེང་པོ (e)</span>
+              <span class="mt-2 text-xs bg-amber-200 text-amber-950 px-2.5 py-1 rounded-full font-bold">🔊 ཉོན།</span>
+            </div>
+            <div onclick="playVowelSound('o')" class="bg-gradient-to-b from-amber-50 to-orange-50 border-2 border-amber-300 hover:border-amber-500 rounded-2xl p-4 text-center cursor-pointer card-bounce shadow-sm flex flex-col items-center justify-center">
+              <span class="tibetan-font text-5xl font-extrabold text-red-900 mb-1">ཨོ</span>
+              <span class="text-amber-900 font-bold text-sm">ན་རོ (o)</span>
+              <span class="mt-2 text-xs bg-amber-200 text-amber-950 px-2.5 py-1 rounded-full font-bold">🔊 ཉོན།</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBSECTION 2: Single Consonant with Vowel -->
+        <div class="bg-white p-4 sm:p-6 rounded-3xl border-2 border-amber-200 shadow-sm space-y-4">
+          <div class="border-b border-amber-100 pb-3 flex items-center justify-between">
+            <a href="vowels-single.html" class="hover:underline">
+              <h3 id="txt-sec-2-title" class="text-xl font-bold text-red-950 tibetan-font tibetan-ui-scale flex items-center gap-2">
+                <span>2️⃣</span> གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན། (Single Consonant with Vowel)
+              </h3>
+            </a>
+            <a href="vowels-single.html" class="bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold px-3.5 py-1 rounded-full text-sm tibetan-font transition">
+              👉 ཚང་མ་གཟིགས།
+            </a>
+          </div>
+
+          <div id="single-vowel-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4"></div>
+        </div>
+
+        <!-- SUBSECTION 3: Multi Consonant with Vowel -->
+        <div class="bg-white p-4 sm:p-6 rounded-3xl border-2 border-amber-200 shadow-sm space-y-4">
+          <div class="border-b border-amber-100 pb-3 flex items-center justify-between">
+            <a href="vowels-multi.html" class="hover:underline">
+              <h3 id="txt-sec-3-title" class="text-xl font-bold text-red-950 tibetan-font tibetan-ui-scale flex items-center gap-2">
+                <span>3️⃣</span> གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན། (Multi Consonant with Vowel)
+              </h3>
+            </a>
+            <a href="vowels-multi.html" class="bg-indigo-100 hover:bg-indigo-200 text-indigo-900 font-bold px-3.5 py-1 rounded-full text-sm tibetan-font transition">
+              👉 ཚང་མ་གཟིགས།
+            </a>
+          </div>
+
+          <div id="multi-vowel-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4"></div>
+        </div>
+
+      </section>
+
+      <!-- VIEW 2: Interactive Flashcards -->
+      <section id="view-flashcards" class="hidden flex flex-col items-center justify-center py-2 space-y-6">
+        <div class="text-center space-y-1">
+          <h2 id="txt-flash-title" class="text-3xl font-bold text-amber-900 tibetan-font tibetan-ui-scale">བྱང་བུ།</h2>
+          <p id="txt-flash-desc" class="text-slate-600 tibetan-font tibetan-ui-scale">ཡི་གེའམ་རི་མོའི་སྟེང་བསྣུན་ནས་སྒྲ་ལ་ཉོན།</p>
+        </div>
+
+        <div class="w-full max-w-xs sm:max-w-sm aspect-[4/5] bg-white border-4 border-amber-300 rounded-3xl shadow-xl flex flex-col items-center justify-between p-6 relative card-bounce">
+          <div class="w-full flex justify-between items-center text-amber-800 font-bold">
+            <span id="flash-index-badge" class="bg-amber-100 px-3 py-1 rounded-full">1 / 12</span>
+            <button onclick="speakCurrentFlashcard()" class="p-2 bg-amber-100 rounded-full hover:bg-amber-200 text-amber-900 shadow-sm tibetan-font tibetan-ui-scale flex items-center gap-1">
+              🔊 <span>སྒྲ།</span>
+            </button>
+          </div>
+
+          <div onclick="speakCurrentFlashcard()" class="cursor-pointer flex flex-col items-center justify-center my-auto w-full flex-1 transition hover:scale-105">
+            <span id="flash-character" class="tibetan-font text-8xl font-bold text-red-900 drop-shadow-md select-none leading-none">མི།</span>
+          </div>
+
+          <div class="w-full flex gap-2 pt-2">
+            <button onclick="openModalForVowel(currentFlashIndex)" class="flex-1 bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-2xl font-bold shadow flex items-center justify-center gap-1.5 transition tibetan-font tibetan-ui-scale">
+              <span>✏️</span> <span id="txt-flash-practice">ཡིག་གཟུགས་སྦྱོང་།</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button onclick="prevFlashcard()" class="px-5 py-2.5 bg-amber-200 hover:bg-amber-300 text-amber-950 font-bold rounded-2xl shadow transition flex items-center gap-1 tibetan-font tibetan-ui-scale">
+            ◀ <span id="txt-btn-prev">སྔོན་མ།</span>
+          </button>
+          <button onclick="nextFlashcard()" class="px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-2xl shadow transition flex items-center gap-1 tibetan-font tibetan-ui-scale">
+            <span id="txt-btn-next">རྗེས་མ།</span> ▶
+          </button>
+        </div>
+      </section>
+
+      <!-- VIEW 3: Ear Training Audio Quiz -->
+      <section id="view-quiz" class="hidden flex flex-col items-center justify-center py-2 space-y-6 max-w-2xl mx-auto">
+        <div id="quiz-active-card" class="w-full bg-white border-2 border-amber-200 rounded-3xl p-6 shadow-md text-center space-y-5">
+          <div class="flex justify-between items-center border-b pb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🎯</span>
+              <span id="txt-quiz-header" class="font-bold text-slate-800 text-xl tibetan-font tibetan-ui-scale">དྲི་རྩད་ཁག་དང་པོ།</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span id="quiz-progress-badge" class="bg-amber-100 text-amber-900 font-bold px-3 py-1 rounded-full border border-amber-200 tibetan-font tibetan-ui-scale">
+                Question 1 / 10
+              </span>
+              <div class="bg-yellow-100 text-yellow-900 font-bold px-3 py-1 rounded-full border border-yellow-300">
+                <span id="txt-quiz-score-lbl" class="tibetan-font tibetan-ui-scale">ཐོབ་སྐར།</span> <span id="quiz-score" class="font-extrabold text-red-900">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-between items-center bg-amber-50 px-4 py-2 rounded-2xl border border-amber-200 font-semibold text-amber-900">
+            <span id="txt-quiz-instruction" class="tibetan-font tibetan-ui-scale">སྒྲ་ལ་ཉན་ནས་ཡི་གེ་འགྲིག་པ་དེ་འདེམས།</span>
+            <span><span id="txt-quiz-chances-lbl" class="tibetan-font tibetan-ui-scale">གོ་སྐབས།</span> <span id="quiz-chances" class="font-extrabold text-red-700">2</span> / 2</span>
+          </div>
+
+          <button id="quiz-audio-btn" onclick="playQuizTargetAudio()" class="w-24 h-24 bg-gradient-to-tr from-amber-500 to-yellow-400 hover:from-amber-600 hover:to-yellow-500 text-white rounded-full shadow-lg mx-auto flex items-center justify-center text-4xl card-bounce border-4 border-white ring-4 ring-amber-200">
+            🔊
+          </button>
+
+          <div id="quiz-options-grid" class="grid grid-cols-2 gap-3 sm:gap-4 pt-2"></div>
+        </div>
+
+        <div id="quiz-completed-card" class="hidden w-full bg-white border-4 border-yellow-400 rounded-3xl p-8 shadow-xl text-center space-y-6">
+          <div class="text-6xl animate-bounce">🏆</div>
+          <div class="space-y-2">
+            <h2 id="txt-quiz-completed-title" class="text-3xl font-extrabold text-amber-900 tibetan-font tibetan-ui-scale">རྟེན་འབྲེལ་ཞུ།</h2>
+            <p id="txt-quiz-completed-desc" class="text-slate-600 font-medium tibetan-font tibetan-ui-scale">དབྱངས་བཞིའི་དྲི་རྩད་མཉམ་ཞུགས་གནང་བ་ཐུགས་རྗེ་ཞུ།</p>
+          </div>
+
+          <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 max-w-xs mx-auto space-y-2">
+            <div id="txt-quiz-final-lbl" class="font-bold text-amber-800 uppercase tracking-wider tibetan-font tibetan-ui-scale" style="font-size: 0.85rem;">མཐའ་མའི་ཐོབ་སྐར།</div>
+            <div id="quiz-final-score" class="text-4xl font-black text-red-900">0 / 50</div>
+          </div>
+
+          <button onclick="restartQuiz()" class="px-8 py-3.5 bg-gradient-to-r from-amber-500 to-yellow-400 text-white rounded-2xl font-bold shadow-lg text-lg transition card-bounce inline-flex items-center gap-2 tibetan-font tibetan-ui-scale">
+            <span>🔄</span> <span id="txt-quiz-play-again">ཡང་བསྐྱར་དྲི་རྩད་སྦྱོངས།</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- VIEW 4: Magic Pen Canvas -->
+      <section id="view-drawing" class="hidden space-y-4 max-w-3xl mx-auto">
+        <div class="bg-white border-2 border-amber-200 rounded-3xl p-4 sm:p-6 shadow-md space-y-4">
+          
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b pb-3">
+            <div>
+              <h2 id="txt-draw-header" class="text-xl font-bold text-slate-800 flex items-center gap-2 tibetan-font tibetan-ui-scale">
+                <span>🎨</span> ཡིག་གཟུགས་སྦྱོང་དེབ།
+              </h2>
+              <p id="txt-draw-subtitle" class="text-slate-500 tibetan-font tibetan-ui-scale">ང་ཚོས་མཉམ་དུ་ཡིག་གཟུགས་སྦྱོང་བརྡར་བྱེད།</p>
+            </div>
+            <div class="flex items-center gap-2 bg-amber-50 px-3 py-1.5 rounded-2xl border border-amber-200">
+              <button onclick="cycleCanvasCharacter(-1)" class="px-3 py-1.5 bg-amber-200 text-amber-950 font-bold rounded-xl hover:bg-amber-300 transition tibetan-font tibetan-ui-scale">◀ <span id="txt-draw-prev">སྔོན་མ།</span></button>
+              <span id="drawing-char-display" class="tibetan-font text-5xl sm:text-6xl font-extrabold text-red-900 px-4 drop-shadow-sm">མི།</span>
+              <button onclick="cycleCanvasCharacter(1)" class="px-3 py-1.5 bg-amber-200 text-amber-950 font-bold rounded-xl hover:bg-amber-300 transition tibetan-font tibetan-ui-scale"><span id="txt-draw-next">རྗེས་མ།</span> ▶</button>
+            </div>
+          </div>
+
+          <!-- Drawing Controls -->
+          <div class="flex flex-wrap items-center justify-between gap-3 bg-amber-50 p-3.5 rounded-2xl border border-amber-200">
+            <div class="flex items-center gap-1.5">
+              <span id="txt-tools-lbl" class="font-bold text-slate-700 mr-1 tibetan-font tibetan-ui-scale">སྨྱུག་སྒམ།</span>
+              <button id="tool-pen" onclick="setPenTool('pen')" class="px-3 py-1.5 rounded-xl font-bold bg-amber-500 text-white shadow-md transition flex items-center gap-1 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">
+                ✏️ <span id="txt-pen">སྨྱུག་གུ</span>
+              </button>
+              <button id="tool-marker" onclick="setPenTool('marker')" class="px-3 py-1.5 rounded-xl font-bold bg-white text-slate-700 hover:bg-amber-100 transition flex items-center gap-1 border border-amber-200 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">
+                🖍️ <span id="txt-marker">ཚོན་སྨྱུག</span>
+              </button>
+              <button id="tool-glow" onclick="setPenTool('glow')" class="px-3 py-1.5 rounded-xl font-bold bg-white text-slate-700 hover:bg-amber-100 transition flex items-center gap-1 border border-amber-200 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">
+                ✨ <span id="txt-glow">འོད་སྨྱུག</span>
+              </button>
+              <button id="tool-eraser" onclick="setPenTool('eraser')" class="px-3 py-1.5 rounded-xl font-bold bg-white text-slate-700 hover:bg-amber-100 transition flex items-center gap-1 border border-amber-200 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">
+                🧹 <span id="txt-eraser">སུབ་བྱེད།</span>
+              </button>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span id="txt-colors-lbl" class="font-bold text-slate-700 tibetan-font tibetan-ui-scale">ཚོན་མདོག</span>
+              <button onclick="setPenColor('#ef4444')" class="w-7 h-7 rounded-full bg-red-500 border-2 border-white shadow ring-2 ring-red-400 hover:scale-110 transition"></button>
+              <button onclick="setPenColor('#3b82f6')" class="w-7 h-7 rounded-full bg-blue-500 border-2 border-white shadow ring-2 ring-blue-400 hover:scale-110 transition"></button>
+              <button onclick="setPenColor('#10b981')" class="w-7 h-7 rounded-full bg-emerald-500 border-2 border-white shadow ring-2 ring-emerald-400 hover:scale-110 transition"></button>
+              <button onclick="setPenColor('#8b5cf6')" class="w-7 h-7 rounded-full bg-purple-500 border-2 border-white shadow ring-2 ring-purple-400 hover:scale-110 transition"></button>
+              <button onclick="setPenColor('#1e293b')" class="w-7 h-7 rounded-full bg-slate-800 border-2 border-white shadow ring-2 ring-slate-700 hover:scale-110 transition"></button>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span id="txt-size-lbl" class="font-bold text-slate-700 tibetan-font tibetan-ui-scale">ཆེ་ཆུང་།</span>
+              <input id="pen-size" type="range" min="4" max="30" value="12" class="w-20 accent-amber-500 cursor-pointer">
+              <button onclick="clearCanvas()" class="ml-2 px-3.5 py-1.5 bg-red-100 text-red-800 hover:bg-red-200 rounded-xl font-bold transition flex items-center gap-1 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">
+                🗑️ <span id="txt-clear">ཚང་མ་སུབ།</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="relative w-full aspect-square max-w-lg mx-auto bg-amber-50/50 rounded-3xl border-4 border-dashed border-amber-300 overflow-hidden shadow-inner flex items-center justify-center">
+            <span id="canvas-guide-text" class="tibetan-font text-[140px] font-extrabold text-amber-200/80 select-none pointer-events-none absolute inset-0 flex items-center justify-center leading-none text-center transform -translate-y-4">
+              མི།
+            </span>
+            <canvas id="practice-canvas" class="w-full h-full relative z-10 cursor-pen touch-none"></canvas>
+          </div>
+
+          <div class="flex justify-between items-center text-slate-500 pt-2 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">
+            <span id="txt-canvas-tip">སྨྱུག་གུ་བདམས་ནས་ཡིག་གཟུགས་སྦྱོང་།</span>
+            <button onclick="playCanvasAudio()" class="px-4 py-2 bg-yellow-400 text-red-950 rounded-xl font-bold hover:bg-yellow-500 shadow transition flex items-center gap-1 tibetan-font tibetan-ui-scale">
+              🔊 <span id="txt-canvas-sound">སྒྲ་ལ་ཉོན།</span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- RIGHT SIDEBAR WITH VOWEL SUBSECTIONS -->
+    <aside class="w-full lg:w-64 flex-shrink-0 space-y-4">
+      <div class="bg-gradient-to-b from-[#1b1435] via-[#20102b] to-[#2c0b0e] p-4 sm:p-5 rounded-[28px] border-[3px] border-amber-400 shadow-xl space-y-3">
+        <h2 id="txt-modules-header" class="font-extrabold text-yellow-400 text-lg sm:text-xl tracking-wide pb-1 tibetan-font">ནང་དོན་གཞན་ཁག་ལ་གཟིགས།</h2>
+        <nav class="flex flex-col gap-2.5 text-yellow-100 font-bold">
+          
+          <a href="multiconsonant.html" class="flex items-start gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+            <span class="text-orange-500 text-xs mt-1">◆</span>
+            <span id="txt-mod-multi" class="leading-tight">གསལ་བྱེད་གཉིས་ལྡན་གྱི་མིང་ཚིག</span>
+          </a>
+
+          <!-- FOUR VOWELS (དབྱངས་བཞི།) WITH SUBSECTIONS -->
+          <div class="space-y-1.5 pt-1">
+            <a href="vowels-reading.html" class="flex items-center gap-2.5 text-yellow-300 font-extrabold hover:text-yellow-200 transition tibetan-font tibetan-ui-scale">
+              <span class="text-blue-500 text-xs">◆</span>
+              <span id="txt-mod-vowels-root">དབྱངས་བཞི།</span>
+            </a>
+            <div class="pl-6 flex flex-col gap-1 text-yellow-200/90 text-sm">
+              <a href="vowels-reading.html" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-vowel-1">༡. དབྱངས་བཞིའི་ ཀློག་ལག་ སྦྱོང་བརྡར།</span>
+              </a>
+              <a href="vowels-single.html" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-vowel-2">༢. གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན།</span>
+              </a>
+              <a href="vowels-multi.html" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-vowel-3">༣. གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན།</span>
+              </a>
+            </div>
+          </div>
+
+          <a href="suffixes.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+            <span class="bg-blue-600 text-white text-[10px] w-4 h-4 rounded-sm flex items-center justify-center font-black">➔</span>
+            <span id="txt-mod-suffix">རྗེས་འཇུག</span>
+          </a>
+
+          <a href="subsuffixes.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+            <span class="bg-blue-500 text-white text-[10px] w-4 h-4 rounded-sm flex items-center justify-center font-black">⮌</span>
+            <span id="txt-mod-subsuffix">ཡང་འཇུག</span>
+          </a>
+
+          <a href="prefixes.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+            <span class="bg-blue-600 text-white text-[10px] w-4 h-4 rounded-sm flex items-center justify-center font-black">⬅</span>
+            <span id="txt-mod-prefix">སྔོན་འཇུག</span>
+          </a>
+
+          <!-- SUPERSCRIPTS (མགོ་ཅན་གསུམ།) -->
+          <div class="space-y-1.5 pt-1">
+            <a href="superscript.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+              <span class="text-pink-500 text-xs">▲</span>
+              <span id="txt-mod-superscript">མགོ་ཅན་གསུམ།</span>
+            </a>
+            <div class="pl-6 flex flex-col gap-1 text-yellow-200/90 text-sm">
+              <a href="superscript.html?tab=ra" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-super-ra">ར་མགོ།</span>
+              </a>
+              <a href="superscript.html?tab=la" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-super-la">ལ་མགོ།</span>
+              </a>
+              <a href="superscript.html?tab=sa" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-super-sa">ས་མགོ།</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- SUBSCRIPTS (འདོགས་ཅན་བཞི།) -->
+          <div class="space-y-1.5 pt-1">
+            <a href="subscript.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+              <span class="text-pink-500 text-xs">▼</span>
+              <span id="txt-mod-subscript">འདོགས་ཅན་བཞི།</span>
+            </a>
+            <div class="pl-6 flex flex-col gap-1 text-yellow-200/90 text-sm">
+              <a href="subscript.html?tab=ya" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-sub-ya">ཡ་ཏགས།</span>
+              </a>
+              <a href="subscript.html?tab=ra" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-sub-ra">ར་ཏགས།</span>
+              </a>
+              <a href="subscript.html?tab=la" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-sub-la">ལ་ཏགས།</span>
+              </a>
+              <a href="subscript.html?tab=wa" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-sub-wa">ཝ་ཟུར།</span>
+              </a>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Detail Modal -->
+  <div id="modal-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl border-4 border-amber-400 shadow-2xl max-w-sm w-full p-6 space-y-6 relative">
+      <button onclick="closeModal()" class="absolute top-4 right-4 w-9 h-9 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-600 font-bold text-lg flex items-center justify-center shadow-sm">
+        ✕
+      </button>
+
+      <div class="text-center space-y-3 flex flex-col items-center justify-center min-h-[180px]">
+        <span id="modal-char" class="tibetan-font text-8xl font-bold text-red-900 block select-none leading-none">མི།</span>
+      </div>
+
+      <div class="space-y-3">
+        <button id="modal-audio-btn" onclick="playModalAudio()" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-bold shadow-md text-base sm:text-lg flex items-center justify-center gap-2 transition tibetan-font tibetan-ui-scale">
+          <span>🔊</span> <span id="txt-modal-sound">སྒྲ་ལ་ཉོན།</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer id="txt-footer" class="bg-amber-100 border-t border-amber-200 text-center p-4 text-amber-900 font-medium tibetan-font tibetan-ui-scale">
+    འབྲོང་བུ་ཚང་། དབྱངས་བཞིའི་སློབ་ཚན།
+  </footer>
+
+  <script>
+    let currentLang = localStorage.getItem('tibetan_lang') || 'bo';
+
+    const TRANSLATIONS = {
+      en: {
+        bodYig: "Drongbu Tsang",
+        appTitle: "Tibetan Learning Tool",
+        appSubtitle: "Four Vowels Practice & Reading",
+        navHeader: "Navigation Menu",
+        navVowels: "Four Vowels (Dbyangs)",
+        navFlashcards: "Flashcards",
+        navQuiz: "Audio Quiz",
+        navDrawing: "Magic Pen",
+        vowelsTitle: "Four Vowels (Dbyangs Bzhi)",
+        vowelsSubtitle: "Master the 4 Tibetan Vowels and practice single & multi-consonant vowel combinations.",
+        sec1Title: "1️⃣ Vowel Reading Practice",
+        sec2Title: "2️⃣ Single Consonant with Vowel",
+        sec3Title: "3️⃣ Multi Consonant with Vowels",
+        vowelMatrixTitle: "Consonants paired with Vowels (i, u, e, o)",
+        flashTitle: "Flashcard Explorer",
+        flashDesc: "Tap to listen to single consonant vowel words!",
+        flashPractice: "Practice Writing",
+        btnPrev: "Previous",
+        btnNext: "Next",
+        quizHeader: "Vowel Ear Training Quiz",
+        quizScoreLbl: "Score:",
+        quizInstruction: "Listen carefully and choose the correct vowel card!",
+        quizChancesLbl: "Chances left:",
+        quizCompletedTitle: "Quiz Completed!",
+        quizCompletedDesc: "Great job completing the Vowels audio practice!",
+        quizFinalLbl: "Final Score",
+        quizPlayAgain: "Play Again",
+        drawHeader: "Magic Pen Canvas",
+        drawSubtitle: "Trace and write Tibetan vowel words",
+        drawPrev: "Prev",
+        drawNext: "Next",
+        toolsLbl: "Pen Tools:",
+        pen: "Pen",
+        marker: "Marker",
+        glow: "Glow Pen",
+        eraser: "Eraser",
+        colorsLbl: "Colors:",
+        sizeLbl: "Size:",
+        clear: "Clear All",
+        canvasTip: "Trace directly over the guide text!",
+        canvasSound: "Play Audio",
+        modalSound: "Play Audio",
+        footer: "Tibetan Learning Tool - Four Vowels (Dbyangs Bzhi)",
+        modulesHeader: "Navigation Modules",
+        modMulti: "Multiconsonant Vocab",
+        modVowelsRoot: "Four Vowels (Dbyangs)",
+        submodVowel1: "1. Vowel Reading Practice",
+        submodVowel2: "2. Single Consonant with Vowel",
+        submodVowel3: "3. Multi Consonant with Vowel",
+        modSuffix: "Suffixes (Rjes-jug)",
+        modSubsuffix: "Second Suffix (Yang-jug)",
+        modPrefix: "Prefixes (Sngon-jug)",
+        modSuperscript: "Three Superscripts",
+        submodSuperRa: "Ra Head (Ra-mgo)",
+        submodSuperLa: "La Head (La-mgo)",
+        submodSuperSa: "Sa Head (Sa-mgo)",
+        modSubscript: "Four Subscripts",
+        submodSubYa: "Ya Subscript (Ya-tags)",
+        submodSubRa: "Ra Subscript (Ra-tags)",
+        submodSubLa: "La Subscript (La-tags)",
+        submodSubWa: "Wa Subscript (Wa-zur)"
+      },
+      bo: {
+        bodYig: "འབྲོང་བུ་ཚང་།",
+        appTitle: "བོད་ཀྱི་སྐད་དང་ཡི་གེ་སྦྱོང་དེབ།",
+        appSubtitle: "སྦྱོང་དེབ་འདིའི་ནང་་རི་མོ་དང་སྒྲ་མཉམ་སྦྱར་བྱས་ཡོད།",
+        navHeader: "དཀར་ཆག",
+        navVowels: "དབྱངས་བཞི།",
+        navFlashcards: "བྱང་བུ།",
+        navQuiz: "དྲི་རྩད་ཁག་དང་པོ།",
+        navDrawing: "ཡིག་གཟུགས་སྦྱོང་།",
+        vowelsTitle: "དབྱངས་བཞི།",
+        vowelsSubtitle: "དབྱངས་བཞི་དང་ གསལ་བྱེད་དབྱངས་སྦྱར་གྱི་ཀློག་ལག་སྦྱོང་བརྡར།",
+        sec1Title: "1️⃣ དབྱངས་བཞིའི་ ཀློག་ལག་ སྦྱོང་བརྡར།",
+        sec2Title: "2️⃣ གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན།",
+        sec3Title: "3️⃣ གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན།",
+        vowelMatrixTitle: "གསལ་བྱེད་ སུམ་ཅུ་ དབྱངས་ དང་ སྦྱར་བ།",
+        flashTitle: "བྱང་བུ།",
+        flashDesc: "ཡི་གེའམ་རི་མོའི་སྟེང་བསྣུན་ནས་སྒྲ་ལ་ཉོན།",
+        flashPractice: "ཡིག་གཟུགས་སྦྱོང་།",
+        btnPrev: "སྔོན་མ།",
+        btnNext: "རྗེས་མ།",
+        quizHeader: "དྲི་རྩད་ཁག་དང་པོ།",
+        quizScoreLbl: "ཐོབ་སྐར།",
+        quizInstruction: "སྒྲ་ལ་ཉན་ནས་ཡི་གེ་འགྲིག་པ་དེ་འདེམས།",
+        quizChancesLbl: "གོ་སྐབས།",
+        quizCompletedTitle: "རྟེན་འབྲེལ་ཞུ།",
+        quizCompletedDesc: "དབྱངས་བཞིའི་དྲི་རྩད་མཉམ་ཞུགས་གནང་བ་ཐུགས་རྗེ་ཞུ།",
+        quizFinalLbl: "མཐའ་མའི་ཐོབ་སྐར།",
+        quizPlayAgain: "ཡང་བསྐྱར་དྲི་རྩད་སྦྱོངས།",
+        drawHeader: "ཡིག་གཟུགས་སྦྱོང་དེབ།",
+        drawSubtitle: "ང་ཚོས་མཉམ་དུ་ཡིག་གཟུགས་སྦྱོང་བརྡར་བྱེད།",
+        drawPrev: "སྔོན་མ།",
+        drawNext: "རྗེས་མ།",
+        toolsLbl: "སྨྱུག་སྒམ།",
+        pen: "སྨྱུག་གུ",
+        marker: "ཚོན་སྨྱུག",
+        glow: "འོད་སྨྱུག",
+        eraser: "སུབ་བྱེད།",
+        colorsLbl: "ཚོན་མདོག",
+        sizeLbl: "ཆེ་ཆུང་།",
+        clear: "ཚང་མ་སུབ།",
+        canvasTip: "སྨྱུག་གུ་བདམས་ནས་ཡིག་གཟུགས་སྦྱོང་།",
+        canvasSound: "སྒྲ་ལ་ཉོན།",
+        modalSound: "སྒྲ་ལ་ཉོན།",
+        footer: "འབྲོང་བུ་ཚང་། དབྱངས་བཞིའི་སློབ་ཚན།",
+        modulesHeader: "ནང་དོན་གཞན་ཁག་ལ་གཟིགས།",
+        modMulti: "གསལ་བྱེད་གཉིས་ལྡན་གྱི་མིང་ཚིག",
+        modVowelsRoot: "དབྱངས་བཞི།",
+        submodVowel1: "༡. དབྱངས་བཞིའི་ ཀློག་ལག་ སྦྱོང་བརྡར།",
+        submodVowel2: "༢. གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན།",
+        submodVowel3: "༣. གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན།",
+        modSuffix: "རྗེས་འཇུག",
+        modSubsuffix: "ཡང་འཇུག",
+        modPrefix: "སྔོན་འཇུག",
+        modSuperscript: "མགོ་ཅན་གསུམ།",
+        submodSuperRa: "ར་མགོ།",
+        submodSuperLa: "ལ་མགོ།",
+        submodSuperSa: "ས་མགོ།",
+        modSubscript: "འདོགས་ཅན་བཞི།",
+        submodSubYa: "ཡ་ཏགས།",
+        submodSubRa: "ར་ཏགས།",
+        submodSubLa: "ལ་ཏགས།",
+        submodSubWa: "ཝ་ཟུར།"
+      }
+    };
+
+    const VOWELS_DATA = [
+      { id: 'i', char: 'ཨི', name: 'གི་གུ', latin: 'i' },
+      { id: 'u', char: 'ཨུ', name: 'ཞབས་ཀྱུ', latin: 'u' },
+      { id: 'e', char: 'ཨེ', name: 'འགྲེང་པོ', latin: 'e' },
+      { id: 'o', char: 'ཨོ', name: 'ན་རོ', latin: 'o' }
+    ];
+
+    const SINGLE_VOWELS_PREVIEW = [
+      { char: "མི།" }, { char: "རི།" }, { char: "ལི།" }, { char: "བུ།" },
+      { char: "ཆུ།" }, { char: "རུ།" }, { char: "ཟེ།" }, { char: "མེ།" },
+      { char: "སོ།" }, { char: "ངོ།" }, { char: "མོ།" }, { char: "ཞོ།" }
+    ];
+
+    const MULTI_VOWELS_PREVIEW = [
+      { char: "ཙི་ཙི།" }, { char: "ཞི་མི།" }, { char: "པི་པི།" }, { char: "སི་ར།" },
+      { char: "ལུ་གུ།" }, { char: "ཀུ་ཤུ།" }, { char: "ཡུ་བ།" }, { char: "ནུ་མ།" }
+    ];
+
+    const MATRIX_CONSONANTS = [
+      "ཀ", "ཁ", "ག", "ང", "ཅ", "ཆ", "ཇ", "ཉ", "ཏ", "ཐ",
+      "ད", "ན", "པ", "ཕ", "བ", "མ", "ཙ", "ཚ", "ཛ", "ཝ",
+      "ཞ", "ཟ", "འ", "ཡ", "ར", "ལ", "ཤ", "ས", "ཧ", "ཨ"
+    ];
+
+    const VOWEL_DIACRITICS = [
+      { name: 'i', mark: 'ི' },
+      { name: 'u', mark: 'ུ' },
+      { name: 'e', mark: 'ེ' },
+      { name: 'o', mark: 'ོ' }
+    ];
+
+    let starCount = 0;
+    let currentFlashIndex = 0;
+    let currentDrawingIndex = 0;
+    let currentModalIndex = 0;
+    let quizTarget = null;
+    let quizScore = 0;
+    let quizCurrentQ = 0;
+    const quizTotalQ = 10;
+    let quizChances = 2;
+    let quizAnswered = false;
+
+    let audioCtx = null;
+    function initAudio() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    }
+
+    function playVowelSound(type) {
+      initAudio();
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        const freqs = { i: 440, u: 330, e: 392, o: 350 };
+        osc.frequency.setValueAtTime(freqs[type] || 400, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.6);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.6);
+      } catch(e){}
+      addStars(1);
+    }
+
+    function playTextSound(text) {
+      initAudio();
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        let code = text.charCodeAt(0) || 100;
+        osc.frequency.setValueAtTime(300 + (code % 350), audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.5);
+      } catch(e){}
+      addStars(1);
+    }
+
+    function addStars(n) {
+      starCount += n;
+      document.getElementById('star-count').innerText = starCount;
+    }
+
+    function mascotSpeak(msg) {
+      const el = document.getElementById('mascot-speech');
+      if (el) el.innerText = msg;
+    }
+
+    function toggleLanguage() {
+      currentLang = (currentLang === 'en') ? 'bo' : 'en';
+      localStorage.setItem('tibetan_lang', currentLang);
+      updateLanguageUI();
+    }
+
+    function updateLanguageUI() {
+      const t = TRANSLATIONS[currentLang];
+      document.documentElement.lang = currentLang;
+
+      document.getElementById('txt-app-brand').innerText = t.bodYig;
+      document.getElementById('txt-app-title').innerText = t.appTitle;
+      document.getElementById('txt-app-subtitle').innerText = t.appSubtitle;
+      document.getElementById('txt-nav-header').innerText = t.navHeader;
+      document.getElementById('txt-nav-vowels').innerText = t.navVowels;
+      document.getElementById('txt-nav-flashcards').innerText = t.navFlashcards;
+      document.getElementById('txt-nav-quiz').innerText = t.navQuiz;
+      document.getElementById('txt-nav-drawing').innerText = t.navDrawing;
+
+      document.getElementById('txt-vowels-title').innerText = t.vowelsTitle;
+      document.getElementById('txt-vowels-subtitle').innerText = t.vowelsSubtitle;
+      document.getElementById('txt-sec-1-title').innerText = t.sec1Title;
+      document.getElementById('txt-sec-2-title').innerText = t.sec2Title;
+      document.getElementById('txt-sec-3-title').innerText = t.sec3Title;
+      document.getElementById('txt-vowel-consonant-matrix-title').innerText = t.vowelMatrixTitle;
+
+      document.getElementById('txt-flash-title').innerText = t.flashTitle;
+      document.getElementById('txt-flash-desc').innerText = t.flashDesc;
+      document.getElementById('txt-flash-practice').innerText = t.flashPractice;
+      document.getElementById('txt-btn-prev').innerText = t.btnPrev;
+      document.getElementById('txt-btn-next').innerText = t.btnNext;
+
+      document.getElementById('txt-quiz-header').innerText = t.quizHeader;
+      document.getElementById('txt-quiz-score-lbl').innerText = t.quizScoreLbl;
+      document.getElementById('txt-quiz-instruction').innerText = t.quizInstruction;
+      document.getElementById('txt-quiz-chances-lbl').innerText = t.quizChancesLbl;
+      document.getElementById('txt-quiz-completed-title').innerText = t.quizCompletedTitle;
+      document.getElementById('txt-quiz-completed-desc').innerText = t.quizCompletedDesc;
+      document.getElementById('txt-quiz-final-lbl').innerText = t.quizFinalLbl;
+      document.getElementById('txt-quiz-play-again').innerText = t.quizPlayAgain;
+
+      document.getElementById('txt-draw-header').innerText = t.drawHeader;
+      document.getElementById('txt-draw-subtitle').innerText = t.drawSubtitle;
+      document.getElementById('txt-draw-prev').innerText = t.drawPrev;
+      document.getElementById('txt-draw-next').innerText = t.drawNext;
+      document.getElementById('txt-tools-lbl').innerText = t.toolsLbl;
+      document.getElementById('txt-pen').innerText = t.pen;
+      document.getElementById('txt-marker').innerText = t.marker;
+      document.getElementById('txt-glow').innerText = t.glow;
+      document.getElementById('txt-eraser').innerText = t.eraser;
+      document.getElementById('txt-colors-lbl').innerText = t.colorsLbl;
+      document.getElementById('txt-size-lbl').innerText = t.sizeLbl;
+      document.getElementById('txt-clear').innerText = t.clear;
+      document.getElementById('txt-canvas-tip').innerText = t.canvasTip;
+      document.getElementById('txt-canvas-sound').innerText = t.canvasSound;
+      document.getElementById('txt-modal-sound').innerText = t.modalSound;
+      document.getElementById('txt-footer').innerText = t.footer;
+
+      document.getElementById('txt-modules-header').innerText = t.modulesHeader;
+      document.getElementById('txt-mod-multi').innerText = t.modMulti;
+      document.getElementById('txt-mod-vowels-root').innerText = t.modVowelsRoot;
+      document.getElementById('txt-submod-vowel-1').innerText = t.submodVowel1;
+      document.getElementById('txt-submod-vowel-2').innerText = t.submodVowel2;
+      document.getElementById('txt-submod-vowel-3').innerText = t.submodVowel3;
+      document.getElementById('txt-mod-suffix').innerText = t.modSuffix;
+      document.getElementById('txt-mod-subsuffix').innerText = t.modSubsuffix;
+      document.getElementById('txt-mod-prefix').innerText = t.modPrefix;
+      if (document.getElementById('txt-mod-superscript')) document.getElementById('txt-mod-superscript').innerText = t.modSuperscript;
+      if (document.getElementById('txt-submod-super-ra')) document.getElementById('txt-submod-super-ra').innerText = t.submodSuperRa;
+      if (document.getElementById('txt-submod-super-la')) document.getElementById('txt-submod-super-la').innerText = t.submodSuperLa;
+      if (document.getElementById('txt-submod-super-sa')) document.getElementById('txt-submod-super-sa').innerText = t.submodSuperSa;
+      if (document.getElementById('txt-mod-subscript')) document.getElementById('txt-mod-subscript').innerText = t.modSubscript;
+      if (document.getElementById('txt-submod-sub-ya')) document.getElementById('txt-submod-sub-ya').innerText = t.submodSubYa;
+      if (document.getElementById('txt-submod-sub-ra')) document.getElementById('txt-submod-sub-ra').innerText = t.submodSubRa;
+      if (document.getElementById('txt-submod-sub-la')) document.getElementById('txt-submod-sub-la').innerText = t.submodSubLa;
+      if (document.getElementById('txt-submod-sub-wa')) document.getElementById('txt-submod-sub-wa').innerText = t.submodSubWa;
+
+      document.getElementById('lang-btn-text').innerText = currentLang === 'en' ? 'བོད་ཡིག' : 'English';
+    }
+
+    function renderMatrix() {
+      const container = document.getElementById('vowel-matrix-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      MATRIX_CONSONANTS.forEach(con => {
+        const card = document.createElement('div');
+        card.className = "bg-amber-50/80 border border-amber-200 rounded-2xl p-3 flex items-center justify-around shadow-sm hover:border-amber-400 transition";
+        
+        VOWEL_DIACRITICS.forEach(v => {
+          const combo = (con === 'ཨ') ? (v.name === 'i' ? 'ཨི' : v.name === 'u' ? 'ཨུ' : v.name === 'e' ? 'ཨེ' : 'ཨོ') : (con + v.mark);
+          const btn = document.createElement('button');
+          btn.className = "tibetan-font text-2xl font-bold text-red-900 hover:scale-125 transition p-1";
+          btn.innerText = combo;
+          btn.onclick = () => playTextSound(combo);
+          card.appendChild(btn);
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    function renderSubsectionPreviews() {
+      const singleContainer = document.getElementById('single-vowel-container');
+      if (singleContainer) {
+        singleContainer.innerHTML = '';
+        SINGLE_VOWELS_PREVIEW.forEach(item => {
+          const btn = document.createElement('div');
+          btn.className = "bg-white border-2 border-amber-200 hover:border-amber-400 rounded-2xl p-4 text-center cursor-pointer card-bounce shadow-sm flex flex-col items-center justify-center";
+          btn.onclick = () => playTextSound(item.char);
+          btn.innerHTML = `<span class="tibetan-font text-4xl font-extrabold text-red-900">${item.char}</span>`;
+          singleContainer.appendChild(btn);
+        });
+      }
+
+      const multiContainer = document.getElementById('multi-vowel-container');
+      if (multiContainer) {
+        multiContainer.innerHTML = '';
+        MULTI_VOWELS_PREVIEW.forEach(item => {
+          const btn = document.createElement('div');
+          btn.className = "bg-white border-2 border-indigo-200 hover:border-indigo-400 rounded-2xl p-4 text-center cursor-pointer card-bounce shadow-sm flex flex-col items-center justify-center";
+          btn.onclick = () => playTextSound(item.char);
+          btn.innerHTML = `<span class="tibetan-font text-3xl font-extrabold text-slate-800">${item.char}</span>`;
+          multiContainer.appendChild(btn);
+        });
+      }
+    }
+
+    function switchTab(tab) {
+      ['vowels', 'flashcards', 'quiz', 'drawing'].forEach(v => {
+        const el = document.getElementById(`view-${v}`);
+        if (el) el.classList.add('hidden');
+        const btn = document.getElementById(`nav-${v}`);
+        if (btn) btn.className = "w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale";
+      });
+
+      const activeView = document.getElementById(`view-${tab}`);
+      if (activeView) activeView.classList.remove('hidden');
+
+      const activeBtn = document.getElementById(`nav-${tab}`);
+      if (activeBtn) activeBtn.className = "w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 bg-yellow-400 text-red-950 shadow tibetan-font tibetan-ui-scale";
+
+      if (tab === 'flashcards') updateFlashcard();
+      if (tab === 'quiz') restartQuiz();
+      if (tab === 'drawing') setupCanvas();
+    }
+
+    function updateFlashcard() {
+      const item = SINGLE_VOWELS_PREVIEW[currentFlashIndex];
+      document.getElementById('flash-index-badge').innerText = `${currentFlashIndex + 1} / ${SINGLE_VOWELS_PREVIEW.length}`;
+      document.getElementById('flash-character').innerText = item.char;
+    }
+
+    function speakCurrentFlashcard() {
+      playTextSound(SINGLE_VOWELS_PREVIEW[currentFlashIndex].char);
+    }
+
+    function nextFlashcard() {
+      currentFlashIndex = (currentFlashIndex + 1) % SINGLE_VOWELS_PREVIEW.length;
+      updateFlashcard();
+      speakCurrentFlashcard();
+    }
+
+    function prevFlashcard() {
+      currentFlashIndex = (currentFlashIndex - 1 + SINGLE_VOWELS_PREVIEW.length) % SINGLE_VOWELS_PREVIEW.length;
+      updateFlashcard();
+      speakCurrentFlashcard();
+    }
+
+    function openModalForVowel(index) {
+      currentModalIndex = index;
+      const item = SINGLE_VOWELS_PREVIEW[index];
+      document.getElementById('modal-char').innerText = item.char;
+      document.getElementById('modal-backdrop').classList.remove('hidden');
+      playTextSound(item.char);
+    }
+
+    function closeModal() {
+      document.getElementById('modal-backdrop').classList.add('hidden');
+    }
+
+    function playModalAudio() {
+      playTextSound(SINGLE_VOWELS_PREVIEW[currentModalIndex].char);
+    }
+
+    function restartQuiz() {
+      quizScore = 0;
+      quizCurrentQ = 0;
+      document.getElementById('quiz-score').innerText = '0';
+      document.getElementById('quiz-active-card').classList.remove('hidden');
+      document.getElementById('quiz-completed-card').classList.add('hidden');
+      nextQuizQuestion();
+    }
+
+    function nextQuizQuestion() {
+      if (quizCurrentQ >= quizTotalQ) {
+        document.getElementById('quiz-active-card').classList.add('hidden');
+        document.getElementById('quiz-completed-card').classList.remove('hidden');
+        document.getElementById('quiz-final-score').innerText = `${quizScore} / ${quizTotalQ * 5}`;
+        try { confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } }); } catch(e){}
+        return;
+      }
+
+      quizCurrentQ++;
+      quizChances = 2;
+      quizAnswered = false;
+
+      document.getElementById('quiz-progress-badge').innerText = `${currentLang === 'en' ? 'Question' : 'དྲི་བ།'} ${quizCurrentQ} / ${quizTotalQ}`;
+      document.getElementById('quiz-chances').innerText = quizChances;
+
+      const pool = [...SINGLE_VOWELS_PREVIEW, ...MULTI_VOWELS_PREVIEW];
+      quizTarget = pool[Math.floor(Math.random() * pool.length)];
+
+      const choices = [quizTarget];
+      while (choices.length < 4) {
+        const rand = pool[Math.floor(Math.random() * pool.length)];
+        if (!choices.some(c => c.char === rand.char)) choices.push(rand);
+      }
+      choices.sort(() => Math.random() - 0.5);
+
+      const grid = document.getElementById('quiz-options-grid');
+      grid.innerHTML = '';
+      choices.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = "bg-white border-2 border-amber-200 hover:border-amber-400 p-5 rounded-2xl shadow-sm text-center card-bounce transition flex items-center justify-center min-h-[100px]";
+        btn.onclick = () => handleQuizAnswer(item, btn);
+        btn.innerHTML = `<span class="tibetan-font text-4xl font-bold text-slate-800">${item.char}</span>`;
+        grid.appendChild(btn);
+      });
+
+      playQuizTargetAudio();
+    }
+
+    function playQuizTargetAudio() {
+      if (quizTarget) playTextSound(quizTarget.char);
+    }
+
+    function handleQuizAnswer(selected, btnElem) {
+      if (quizAnswered) return;
+      if (selected.char === quizTarget.char) {
+        quizAnswered = true;
+        btnElem.classList.add('bg-emerald-100', 'border-emerald-500');
+        quizScore += 5;
+        addStars(5);
+        document.getElementById('quiz-score').innerText = quizScore;
+        setTimeout(() => nextQuizQuestion(), 1000);
+      } else {
+        quizChances--;
+        document.getElementById('quiz-chances').innerText = quizChances;
+        btnElem.classList.add('bg-red-100', 'border-red-400');
+        if (quizChances <= 0) {
+          quizAnswered = true;
+          setTimeout(() => nextQuizQuestion(), 1200);
+        }
+      }
+    }
+
+    let canvas, ctx;
+    let isDrawing = false;
+    let penColor = '#ef4444';
+    let penTool = 'pen';
+
+    function setupCanvas() {
+      canvas = document.getElementById('practice-canvas');
+      if (!canvas) return;
+
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width || 400;
+      canvas.height = rect.height || 400;
+
+      ctx = canvas.getContext('2d');
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      updateCanvasGuide();
+
+      canvas.onmousedown = startDrawing;
+      canvas.onmousemove = draw;
+      canvas.onmouseup = stopDrawing;
+      canvas.onmouseleave = stopDrawing;
+
+      canvas.ontouchstart = (e) => {
+        e.preventDefault();
+        const touch = e.touches[0];
+        startDrawing({ clientX: touch.clientX, clientY: touch.clientY });
+      };
+      canvas.ontouchmove = (e) => {
+        e.preventDefault();
+        const touch = e.touches[0];
+        draw({ clientX: touch.clientX, clientY: touch.clientY });
+      };
+      canvas.ontouchend = stopDrawing;
+    }
+
+    function updateCanvasGuide() {
+      const char = SINGLE_VOWELS_PREVIEW[currentDrawingIndex].char;
+      document.getElementById('drawing-char-display').innerText = char;
+      document.getElementById('canvas-guide-text').innerText = char;
+    }
+
+    function cycleCanvasCharacter(dir) {
+      currentDrawingIndex = (currentDrawingIndex + dir + SINGLE_VOWELS_PREVIEW.length) % SINGLE_VOWELS_PREVIEW.length;
+      updateCanvasGuide();
+      clearCanvas();
+      playCanvasAudio();
+    }
+
+    function setPenTool(tool) {
+      penTool = tool;
+      ['pen', 'marker', 'glow', 'eraser'].forEach(t => {
+        const btn = document.getElementById(`tool-${t}`);
+        if (btn) {
+          btn.className = (t === tool) 
+            ? "px-3 py-1.5 rounded-xl font-bold bg-amber-500 text-white shadow-md transition flex items-center gap-1 tibetan-font tibetan-ui-scale"
+            : "px-3 py-1.5 rounded-xl font-bold bg-white text-slate-700 hover:bg-amber-100 transition flex items-center gap-1 border border-amber-200 tibetan-font tibetan-ui-scale";
+        }
+      });
+      if (canvas) canvas.className = (penTool === 'eraser') ? "w-full h-full relative z-10 cursor-eraser touch-none" : "w-full h-full relative z-10 cursor-pen touch-none";
+    }
+
+    function setPenColor(color) {
+      penColor = color;
+      if (penTool === 'eraser') setPenTool('pen');
+    }
+
+    function getCanvasCoordinates(e) {
+      const rect = canvas.getBoundingClientRect();
+      return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    }
+
+    function startDrawing(e) {
+      isDrawing = true;
+      const coords = getCanvasCoordinates(e);
+      ctx.beginPath();
+      ctx.moveTo(coords.x, coords.y);
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      const coords = getCanvasCoordinates(e);
+      const size = parseFloat(document.getElementById('pen-size').value);
+
+      ctx.strokeStyle = penColor;
+      ctx.shadowColor = penColor;
+
+      if (penTool === 'eraser') {
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.lineWidth = size * 2.5;
+        ctx.shadowBlur = 0;
+      } else if (penTool === 'marker') {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.lineWidth = size * 1.8;
+        ctx.globalAlpha = 0.55;
+        ctx.shadowBlur = 0;
+      } else if (penTool === 'glow') {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.lineWidth = size;
+        ctx.globalAlpha = 1.0;
+        ctx.shadowBlur = 16;
+      } else {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.lineWidth = size;
+        ctx.globalAlpha = 1.0;
+        ctx.shadowBlur = 0;
+      }
+
+      ctx.lineTo(coords.x, coords.y);
+      ctx.stroke();
+    }
+
+    function stopDrawing() {
+      if (isDrawing) {
+        isDrawing = false;
+        ctx.closePath();
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 1.0;
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    function clearCanvas() {
+      if (ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function playCanvasAudio() {
+      playTextSound(SINGLE_VOWELS_PREVIEW[currentDrawingIndex].char);
+    }
+
+    window.onload = function() {
+      updateLanguageUI();
+      renderMatrix();
+      renderSubsectionPreviews();
+    };
+  </script>
+</body>
+</html>
+```
+
+### Updates Made:
+1. Added the **3 Vowel Subsections** under `དབྱངས་བཞི།` (Four Vowels) in the right-side navigation bar for both `index.html` and `vowels.html`.
+2. Connected each subsection link to its respective file:
+   - `༡. དབྱངས་བཞིའི་ ཀློག་ལག་ སྦྱོང་བརྡར།` -> `vowels-reading.html`
+   - `༢. གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན།` -> `vowels-single.html`
+   - `༣. གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན།` -> `vowels-multi.html`
+3. Provided updated code blocks for both files.

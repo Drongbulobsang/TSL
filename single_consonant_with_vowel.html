@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="bo">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2️⃣ གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན། - འབྲོང་བུ་ཚང་།</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Jomolhari&display=swap" rel="stylesheet">
+  
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Fredoka', 'Jomolhari', 'Noto Sans Tibetan', cursive, sans-serif;
+      font-size: 1.1rem;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .tibetan-font {
+      font-family: 'Jomolhari', 'Noto Sans Tibetan', serif !important;
+    }
+    html[lang="bo"] .tibetan-ui-scale {
+      font-size: 1.35rem !important;
+      line-height: 1.5 !important;
+    }
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fef3c7;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f59e0b;
+      border-radius: 5px;
+    }
+    .card-bounce {
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+    }
+    .card-bounce:hover {
+      transform: translateY(-4px) scale(1.03);
+    }
+    .card-bounce:active {
+      transform: translateY(2px) scale(0.97);
+    }
+    @keyframes gentle-float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
+    }
+    .mascot-float {
+      animation: gentle-float 4s ease-in-out infinite;
+    }
+
+    .cursor-pen {
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="%23d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>') 0 22, crosshair !important;
+    }
+    .cursor-eraser {
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="%23ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 21-4.3-4.3a1 1 0 0 1 0-1.4l12-12a1 1 0 0 1 1.4 0l4.3 4.3a1 1 0 0 1 0 1.4l-12 12a1 1 0 0 1-1.4 0Z"/><path d="M22 21H7"/><path d="m5 11 4.5 4.5"/></svg>') 0 22, pointer !important;
+    }
+  </style>
+</head>
+<body class="bg-amber-50 min-h-screen text-slate-800 flex flex-col justify-between selection:bg-amber-200">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-red-950 via-amber-800 to-indigo-950 text-white shadow-lg sticky top-0 z-30 border-b-4 border-yellow-400">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+      
+      <div class="flex items-center gap-3">
+        <div class="bg-yellow-400 p-1.5 sm:p-2 rounded-2xl shadow-inner border-2 border-amber-200 mascot-float cursor-pointer hover:scale-110 transition flex items-center justify-center overflow-hidden" onclick="mascotSpeak(currentLang === 'en' ? 'Tashi Delek! Let us practice single consonant vowels!' : 'བཀྲ་ཤིས་བདེ་ལེགས། ང་ཚོས་མཉམ་དུ་ གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན་ སྦྱོང་།')">
+          <img src="https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-uHE2qFgGOBjfxqkBOE1fZZinsngoYs.png&w=1000&q=75" alt="Yak Icon" class="h-9 w-9 sm:h-11 sm:w-11 object-contain drop-shadow-sm">
+        </div>
+        <div>
+          <h1 class="font-bold tracking-wide flex items-center gap-2">
+            <a href="index.html" id="txt-app-brand" class="tibetan-font text-yellow-300 text-2xl sm:text-4xl hover:underline">འབྲོང་བུ་ཚང་།</a>
+            <span id="txt-app-title" class="tibetan-font tibetan-ui-scale hidden sm:inline">བོད་ཀྱི་སྐད་དང་ཡི་གེ་སྦྱོང་དེབ།</span>
+          </h1>
+          <p id="txt-app-subtitle" class="text-amber-200 tibetan-font tibetan-ui-scale">2️⃣ གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན།</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button id="lang-toggle-btn" onclick="toggleLanguage()" class="bg-yellow-400 hover:bg-yellow-300 text-red-950 font-extrabold px-3.5 py-1.5 rounded-full border-2 border-amber-200 shadow-sm transition flex items-center gap-1.5 tibetan-font">
+          🌐 <span id="lang-btn-text">English</span>
+        </button>
+
+        <div class="flex items-center gap-2 bg-yellow-400/20 px-3.5 py-1.5 rounded-full border border-yellow-400/40">
+          <span class="text-xl animate-bounce">⭐</span>
+          <span id="star-count" class="font-bold text-yellow-300">0</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Grid -->
+  <div class="max-w-7xl mx-auto w-full px-4 py-6 flex-1 flex flex-col lg:flex-row gap-6">
+
+    <!-- LEFT NAV -->
+    <aside class="w-full lg:w-64 flex-shrink-0 space-y-4">
+      <div class="bg-gradient-to-b from-red-950 to-indigo-950 p-3 sm:p-4 rounded-3xl border-2 border-yellow-400 shadow-lg space-y-2">
+        <h2 id="txt-nav-header" class="font-bold text-yellow-300 uppercase tracking-wider px-2 py-1 tibetan-font tibetan-ui-scale" style="font-size: 0.85rem;">དཀར་ཆག</h2>
+        <nav class="flex flex-col gap-1.5">
+          <button id="nav-grid" onclick="switchTab('grid')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 bg-yellow-400 text-red-950 shadow tibetan-font tibetan-ui-scale">
+            <span class="text-lg">🧩</span> <span id="txt-nav-grid">མིང་ཚིག་རྐྱང་པ།</span>
+          </button>
+          <button id="nav-flashcards" onclick="switchTab('flashcards')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
+            <span class="text-lg">🎴</span> <span id="txt-nav-flashcards">བྱང་བུ།</span>
+          </button>
+          <button id="nav-quiz" onclick="switchTab('quiz')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
+            <span class="text-lg">🎯</span> <span id="txt-nav-quiz">དྲི་རྩད་ཁག་དང་པོ།</span>
+          </button>
+          <button id="nav-builder" onclick="switchTab('builder')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
+            <span class="text-lg">🧱</span> <span id="txt-nav-builder">མིང་ཚིག་ གྲུབ་བྱེད།</span>
+          </button>
+          <button id="nav-speed" onclick="switchTab('speed')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
+            <span class="text-lg">⚡</span> <span id="txt-nav-speed">མགྱོགས་ཀློག</span>
+          </button>
+          <button id="nav-match" onclick="switchTab('match')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
+            <span class="text-lg">🧩</span> <span id="txt-nav-match">མཐུན་སྦྱོར།</span>
+          </button>
+          <button id="nav-drawing" onclick="switchTab('drawing')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
+            <span class="text-lg">🎨</span> <span id="txt-nav-drawing">ཡིག་གཟུགས་སྦྱོང་།</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="bg-gradient-to-r lg:bg-gradient-to-b from-amber-100 via-orange-100 to-amber-50 border-2 border-amber-300 rounded-3xl p-4 shadow-sm flex lg:flex-col items-center text-left lg:text-center gap-3">
+        <div class="bg-amber-400 p-2.5 rounded-2xl shadow-inner border border-amber-300 flex-shrink-0">
+          <img src="https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-uHE2qFgGOBjfxqkBOE1fZZinsngoYs.png&w=1000&q=75" alt="Yak Icon" class="h-12 w-12 object-contain drop-shadow-sm">
+        </div>
+        <div class="flex-1 space-y-1">
+          <p id="mascot-speech" class="text-slate-700 font-medium leading-snug tibetan-font tibetan-ui-scale">
+            2️⃣ གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན་ མིང་ཚིག་ སྦྱོང་བརྡར་ ལ་ ཕེབས་པར་ དགའ་བསུ་ ཞུ།
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="flex-1 w-full">
+
+      <!-- VIEW 1: VOCAB GRID -->
+      <section id="view-grid" class="space-y-6">
+        <div class="bg-white p-4 sm:p-5 rounded-3xl border-2 border-amber-200 shadow-md space-y-2">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <h2 id="txt-page-title" class="text-2xl sm:text-3xl font-extrabold text-amber-900 tibetan-font tibetan-ui-scale flex items-center gap-2">
+              <span>2️⃣</span> གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན།
+            </h2>
+            <span class="bg-amber-100 text-amber-900 font-bold px-3.5 py-1 rounded-full border border-amber-200 tibetan-font tibetan-ui-scale">
+              མིང་ཚིག་ ༡༢
+            </span>
+          </div>
+          <p id="txt-page-subtitle" class="text-slate-600 tibetan-font tibetan-ui-scale">
+            གསལ་བྱེད་ རྐྱང་པར་ དབྱངས་ སྦྱར་བའི་ མིང་ཚིག་ སྒྲ་ བཏོན་ནས་ སྦྱོང་བ།
+          </p>
+        </div>
+
+        <!-- Vocab Grid -->
+        <div id="vocab-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4"></div>
+      </section>
+
+      <!-- VIEW 2: FLASHCARDS -->
+      <section id="view-flashcards" class="hidden flex flex-col items-center justify-center py-2 space-y-6">
+        <div class="text-center space-y-1">
+          <h2 id="txt-flash-title" class="text-3xl font-bold text-amber-900 tibetan-font tibetan-ui-scale">བྱང་བུ།</h2>
+          <p id="txt-flash-desc" class="text-slate-600 tibetan-font tibetan-ui-scale">ཡི་གེའི་ སྟེང་ བསྣུན་ནས་ སྒྲ་ ལ་ ཉོན།</p>
+        </div>
+
+        <div class="w-full max-w-xs sm:max-w-sm aspect-[4/5] bg-white border-4 border-amber-300 rounded-3xl shadow-xl flex flex-col items-center justify-between p-6 relative card-bounce">
+          <div class="w-full flex justify-between items-center text-amber-800 font-bold">
+            <span id="flash-badge" class="bg-amber-100 px-3 py-1 rounded-full">1 / 12</span>
+            <button onclick="speakCurrentFlashcard()" class="p-2 bg-amber-100 rounded-full hover:bg-amber-200 text-amber-900 shadow-sm tibetan-font">
+              🔊 <span>སྒྲ།</span>
+            </button>
+          </div>
+
+          <div onclick="speakCurrentFlashcard()" class="cursor-pointer flex flex-col items-center justify-center my-auto w-full flex-1 transition hover:scale-105">
+            <span id="flash-character" class="tibetan-font text-8xl font-bold text-red-900 drop-shadow-md select-none leading-none">མི།</span>
+            <!-- Image placeholder ready for user image assets -->
+            <img id="flash-img" src="" alt="Vocabulary Image" class="hidden h-32 object-contain mt-3 rounded-lg border border-amber-200 shadow-inner">
+          </div>
+
+          <div class="w-full pt-2">
+            <button onclick="jumpToDrawingFromFlashcard()" class="w-full bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-2xl font-bold shadow flex items-center justify-center gap-1.5 transition tibetan-font tibetan-ui-scale">
+              ✏️ <span id="txt-flash-practice">ཡིག་གཟུགས་སྦྱོང་།</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button onclick="prevFlashcard()" class="px-5 py-2.5 bg-amber-200 hover:bg-amber-300 text-amber-950 font-bold rounded-2xl shadow transition flex items-center gap-1 tibetan-font tibetan-ui-scale">
+            ◀ <span id="txt-btn-prev">སྔོན་མ།</span>
+          </button>
+          <button onclick="nextFlashcard()" class="px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-2xl shadow transition flex items-center gap-1 tibetan-font tibetan-ui-scale">
+            <span id="txt-btn-next">རྗེས་མ།</span> ▶
+          </button>
+        </div>
+      </section>
+
+      <!-- VIEW 3: QUIZ -->
+      <section id="view-quiz" class="hidden flex flex-col items-center justify-center py-2 space-y-6 max-w-2xl mx-auto">
+        <div id="quiz-active-card" class="w-full bg-white border-2 border-amber-200 rounded-3xl p-6 shadow-md text-center space-y-5">
+          <div class="flex justify-between items-center border-b pb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🎯</span>
+              <span id="txt-quiz-header" class="font-bold text-slate-800 text-xl tibetan-font tibetan-ui-scale">དྲི་རྩད་ཁག་དང་པོ།</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span id="quiz-progress-badge" class="bg-amber-100 text-amber-900 font-bold px-3 py-1 rounded-full border border-amber-200 tibetan-font tibetan-ui-scale">
+                Question 1 / 10
+              </span>
+              <div class="bg-yellow-100 text-yellow-900 font-bold px-3 py-1 rounded-full border border-yellow-300">
+                <span id="txt-quiz-score-lbl" class="tibetan-font tibetan-ui-scale">ཐོབ་སྐར།</span> <span id="quiz-score" class="font-extrabold text-red-900">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-between items-center bg-amber-50 px-4 py-2 rounded-2xl border border-amber-200 font-semibold text-amber-900">
+            <span id="txt-quiz-instruction" class="tibetan-font tibetan-ui-scale">སྒྲ་ལ་ཉན་ནས་ཡི་གེ་འགྲིག་པ་དེ་འདེམས།</span>
+            <span><span id="txt-quiz-chances-lbl" class="tibetan-font tibetan-ui-scale">གོ་སྐབས།</span> <span id="quiz-chances" class="font-extrabold text-red-700">2</span> / 2</span>
+          </div>
+
+          <button id="quiz-audio-btn" onclick="playQuizTargetAudio()" class="w-24 h-24 bg-gradient-to-tr from-amber-500 to-yellow-400 hover:from-amber-600 hover:to-yellow-500 text-white rounded-full shadow-lg mx-auto flex items-center justify-center text-4xl card-bounce border-4 border-white ring-4 ring-amber-200">
+            🔊
+          </button>
+
+          <div id="quiz-options-grid" class="grid grid-cols-2 gap-3 sm:gap-4 pt-2"></div>
+        </div>
+
+        <div id="quiz-completed-card" class="hidden w-full bg-white border-4 border-yellow-400 rounded-3xl p-8 shadow-xl text-center space-y-6">
+          <div class="text-6xl animate-bounce">🏆</div>
+          <h2 id="txt-quiz-completed-title" class="text-3xl font-extrabold text-amber-900 tibetan-font tibetan-ui-scale">རྟེན་འབྲེལ་ཞུ།</h2>
+          <p id="txt-quiz-completed-desc" class="text-slate-600 font-medium tibetan-font tibetan-ui-scale">གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན་ དྲི་རྩད་ མཇུག་གྲུབ་སོང་།</p>
+          <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 max-w-xs mx-auto space-y-2">
+            <div id="txt-quiz-final-lbl" class="font-bold text-amber-800 uppercase tracking-wider tibetan-font tibetan-ui-scale" style="font-size: 0.85rem;">མཐའ་མའི་ཐོབ་སྐར།</div>
+            <div id="quiz-final-score" class="text-4xl font-black text-red-900">0 / 50</div>
+          </div>
+          <button onclick="restartQuiz()" class="px-8 py-3.5 bg-gradient-to-r from-amber-500 to-yellow-400 text-white rounded-2xl font-bold shadow-lg text-lg transition card-bounce inline-flex items-center gap-2 tibetan-font tibetan-ui-scale">
+            🔄 <span id="txt-quiz-play-again">ཡང་བསྐྱར་དྲི་རྩད་སྦྱོངས།</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- VIEW 4: TILE BUILDER -->
+      <section id="view-builder" class="hidden space-y-6 max-w-2xl mx-auto">
+        <div class="bg-white border-2 border-amber-200 rounded-3xl p-6 shadow-md text-center space-y-5">
+          <div class="flex justify-between items-center border-b pb-3">
+            <h2 id="txt-builder-title" class="font-bold text-slate-800 text-xl tibetan-font tibetan-ui-scale flex items-center gap-2">
+              🧱 མིང་ཚིག་ གྲུབ་བྱེད།
+            </h2>
+            <span class="bg-amber-100 text-amber-900 font-bold px-3 py-1 rounded-full tibetan-font">
+              <span id="txt-score-lbl">Score:</span> <span id="builder-score">0</span>
+            </span>
+          </div>
+          <p id="txt-builder-desc" class="text-slate-600 tibetan-font tibetan-ui-scale">སྒྲ་ལ་ཉན་ནས་ ཡི་གེ་ འདེམས་ནས་ མིང་ཚིག་ གྲུབ།</p>
+
+          <button onclick="playBuilderTargetAudio()" class="w-20 h-20 bg-gradient-to-tr from-amber-500 to-yellow-400 text-white rounded-full shadow-lg mx-auto flex items-center justify-center text-3xl card-bounce ring-4 ring-amber-100">
+            🔊
+          </button>
+
+          <div id="builder-target-slots" class="flex justify-center gap-2 min-h-[60px] p-3 bg-amber-50 rounded-2xl border-2 border-dashed border-amber-300"></div>
+          <div id="builder-tiles-pool" class="flex flex-wrap justify-center gap-2 pt-2"></div>
+        </div>
+      </section>
+
+      <!-- VIEW 5: SPEED READER -->
+      <section id="view-speed" class="hidden space-y-4 max-w-xl mx-auto">
+        <div class="bg-white border-2 border-amber-200 rounded-3xl p-6 shadow-md text-center space-y-6">
+          <h2 id="txt-speed-title" class="font-bold text-slate-800 text-xl tibetan-font tibetan-ui-scale flex items-center justify-center gap-2">⚡ མགྱོགས་ཀློག་ སྦྱོང་བརྡར།</h2>
+          <div class="bg-amber-50 p-8 rounded-3xl border-2 border-amber-300 min-h-[160px] flex items-center justify-center">
+            <span id="speed-word-display" class="tibetan-font text-6xl sm:text-7xl font-extrabold text-red-900">མི།</span>
+          </div>
+          <div class="flex justify-center gap-3">
+            <button onclick="triggerNextSpeedWord()" class="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-bold shadow transition tibetan-font tibetan-ui-scale">
+              ▶ <span id="txt-btn-next-speed">རྗེས་མ།</span>
+            </button>
+            <button onclick="playSpeedWordAudio()" class="px-6 py-3 bg-yellow-400 text-red-950 rounded-2xl font-bold shadow transition tibetan-font tibetan-ui-scale">
+              🔊 <span id="txt-btn-sound">སྒྲ་ལ་ཉོན།</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 6: MATCHING GAME -->
+      <section id="view-match" class="hidden space-y-4 max-w-3xl mx-auto">
+        <div class="bg-white border-2 border-amber-200 rounded-3xl p-6 shadow-md text-center space-y-5">
+          <div class="flex justify-between items-center border-b pb-3">
+            <h2 id="txt-match-title" class="font-bold text-slate-800 text-xl tibetan-font tibetan-ui-scale flex items-center gap-2">
+              🧩 མཐུན་སྦྱོར་ སྦྱོང་བརྡར།
+            </h2>
+            <span class="bg-amber-100 text-amber-900 font-bold px-3 py-1 rounded-full tibetan-font">
+              Score: <span id="match-score">0</span>
+            </span>
+          </div>
+          <p id="txt-match-desc" class="text-slate-600 tibetan-font tibetan-ui-scale">ཡི་གེ་ དང་ སྒྲ་ མཐུན་སྦྱོར་ བྱོས།</p>
+          <div id="match-cards-container" class="grid grid-cols-3 sm:grid-cols-4 gap-3 pt-2"></div>
+        </div>
+      </section>
+
+      <!-- VIEW 7: CANVAS -->
+      <section id="view-drawing" class="hidden space-y-4 max-w-3xl mx-auto">
+        <div class="bg-white border-2 border-amber-200 rounded-3xl p-4 sm:p-6 shadow-md space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b pb-3">
+            <div>
+              <h2 id="txt-draw-header" class="text-xl font-bold text-slate-800 flex items-center gap-2 tibetan-font tibetan-ui-scale">
+                🎨 ཡིག་གཟུགས་སྦྱོང་དེབ།
+              </h2>
+              <p id="txt-draw-subtitle" class="text-slate-500 tibetan-font tibetan-ui-scale">ང་ཚོས་མཉམ་དུ་ཡིག་གཟུགས་སྦྱོང་བརྡར་བྱེད།</p>
+            </div>
+            <div class="flex items-center gap-2 bg-amber-50 px-3 py-1.5 rounded-2xl border border-amber-200">
+              <button onclick="cycleCanvasChar(-1)" class="px-3 py-1.5 bg-amber-200 text-amber-950 font-bold rounded-xl hover:bg-amber-300 transition tibetan-font tibetan-ui-scale">◀ <span id="txt-draw-prev">སྔོན་མ།</span></button>
+              <span id="drawing-char-display" class="tibetan-font text-5xl font-extrabold text-red-900 px-4">མི།</span>
+              <button onclick="cycleCanvasChar(1)" class="px-3 py-1.5 bg-amber-200 text-amber-950 font-bold rounded-xl hover:bg-amber-300 transition tibetan-font tibetan-ui-scale"><span id="txt-draw-next">རྗེས་མ།</span> ▶</button>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3 bg-amber-50 p-3.5 rounded-2xl border border-amber-200">
+            <div class="flex items-center gap-1.5">
+              <span id="txt-tools-lbl" class="font-bold text-slate-700 mr-1 tibetan-font tibetan-ui-scale">སྨྱུག་སྒམ།</span>
+              <button id="tool-pen" onclick="setPenTool('pen')" class="px-3 py-1.5 rounded-xl font-bold bg-amber-500 text-white shadow-md transition flex items-center gap-1 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">✏️ <span id="txt-pen">སྨྱུག་གུ</span></button>
+              <button id="tool-marker" onclick="setPenTool('marker')" class="px-3 py-1.5 rounded-xl font-bold bg-white text-slate-700 hover:bg-amber-100 transition flex items-center gap-1 border border-amber-200 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">🖍️ <span id="txt-marker">ཚོན་སྨྱུག</span></button>
+              <button id="tool-glow" onclick="setPenTool('glow')" class="px-3 py-1.5 rounded-xl font-bold bg-white text-slate-700 hover:bg-amber-100 transition flex items-center gap-1 border border-amber-200 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">✨ <span id="txt-glow">འོད་སྨྱུག</span></button>
+              <button id="tool-eraser" onclick="setPenTool('eraser')" class="px-3 py-1.5 rounded-xl font-bold bg-white text-slate-700 hover:bg-amber-100 transition flex items-center gap-1 border border-amber-200 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">🧹 <span id="txt-eraser">སུབ་བྱེད།</span></button>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span id="txt-colors-lbl" class="font-bold text-slate-700 tibetan-font tibetan-ui-scale">ཚོན་མདོག</span>
+              <button onclick="setPenColor('#ef4444')" class="w-7 h-7 rounded-full bg-red-500 border-2 border-white shadow ring-2 ring-red-400"></button>
+              <button onclick="setPenColor('#3b82f6')" class="w-7 h-7 rounded-full bg-blue-500 border-2 border-white shadow ring-2 ring-blue-400"></button>
+              <button onclick="setPenColor('#10b981')" class="w-7 h-7 rounded-full bg-emerald-500 border-2 border-white shadow ring-2 ring-emerald-400"></button>
+              <button onclick="setPenColor('#8b5cf6')" class="w-7 h-7 rounded-full bg-purple-500 border-2 border-white shadow ring-2 ring-purple-400"></button>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span id="txt-size-lbl" class="font-bold text-slate-700 tibetan-font tibetan-ui-scale">ཆེ་ཆུང་།</span>
+              <input id="pen-size" type="range" min="4" max="30" value="12" class="w-20 accent-amber-500 cursor-pointer">
+              <button onclick="clearCanvas()" class="ml-2 px-3.5 py-1.5 bg-red-100 text-red-800 hover:bg-red-200 rounded-xl font-bold transition flex items-center gap-1 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">🗑️ <span id="txt-clear">ཚང་མ་སུབ།</span></button>
+            </div>
+          </div>
+
+          <div class="relative w-full aspect-square max-w-lg mx-auto bg-amber-50/50 rounded-3xl border-4 border-dashed border-amber-300 overflow-hidden shadow-inner flex items-center justify-center">
+            <span id="canvas-guide-text" class="tibetan-font text-[180px] font-extrabold text-amber-200/80 select-none pointer-events-none absolute inset-0 flex items-center justify-center leading-none text-center transform -translate-y-4">
+              མི།
+            </span>
+            <canvas id="practice-canvas" class="w-full h-full relative z-10 cursor-pen touch-none"></canvas>
+          </div>
+
+          <div class="flex justify-between items-center text-slate-500 pt-2 tibetan-font tibetan-ui-scale" style="font-size: 0.9rem;">
+            <span id="txt-canvas-tip">སྨྱུག་གུ་བདམས་ནས་ཡིག་གཟུགས་སྦྱོང་།</span>
+            <button onclick="playCanvasAudio()" class="px-4 py-2 bg-yellow-400 text-red-950 rounded-xl font-bold hover:bg-yellow-500 shadow transition flex items-center gap-1 tibetan-font tibetan-ui-scale">
+              🔊 <span id="txt-canvas-sound">སྒྲ་ལ་ཉོན།</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- RIGHT SIDEBAR: EXACT MATCHING SIDEBAR -->
+    <aside class="w-full lg:w-64 flex-shrink-0 space-y-4">
+      <div class="bg-gradient-to-b from-[#1b1435] via-[#20102b] to-[#2c0b0e] p-4 sm:p-5 rounded-[28px] border-[3px] border-amber-400 shadow-xl space-y-3">
+        <h2 id="txt-modules-header" class="font-extrabold text-yellow-400 text-lg sm:text-xl tracking-wide pb-1 tibetan-font">ནང་དོན་གཞན་ཁག་ལ་གཟིགས།</h2>
+        <nav class="flex flex-col gap-2.5 text-yellow-100 font-bold">
+          
+          <a href="multiconsonant.html" class="flex items-start gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+            <span class="text-orange-500 text-xs mt-1">◆</span>
+            <span id="txt-mod-multi" class="leading-tight">གསལ་བྱེད་གཉིས་ལྡན་གྱི་མིང་ཚིག</span>
+          </a>
+
+          <!-- FOUR VOWELS (དབྱངས་བཞི།) WITH SUBSECTIONS -->
+          <div class="space-y-1.5 pt-1">
+            <a href="vowels-reading.html" class="flex items-center gap-2.5 text-yellow-300 font-extrabold hover:text-yellow-200 transition tibetan-font tibetan-ui-scale">
+              <span class="text-blue-500 text-xs">◆</span>
+              <span id="txt-mod-vowels-root">དབྱངས་བཞི།</span>
+            </a>
+            <div class="pl-6 flex flex-col gap-1 text-yellow-200/90 text-sm">
+              <a href="vowels-reading.html" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-vowel-1">༡. དབྱངས་བཞིའི་ ཀློག་ལག་ སྦྱོང་བརྡར།</span>
+              </a>
+              <a href="vowels-single.html" class="flex items-center gap-2 text-yellow-300 font-bold hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-300 rounded-sm"></span>
+                <span id="txt-submod-vowel-2">༢. གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན།</span>
+              </a>
+              <a href="vowels-multi.html" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-vowel-3">༣. གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན།</span>
+              </a>
+            </div>
+          </div>
+
+          <a href="suffixes.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+            <span class="bg-blue-600 text-white text-[10px] w-4 h-4 rounded-sm flex items-center justify-center font-black">➔</span>
+            <span id="txt-mod-suffix">རྗེས་འཇུག</span>
+          </a>
+
+          <a href="subsuffixes.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+            <span class="bg-blue-500 text-white text-[10px] w-4 h-4 rounded-sm flex items-center justify-center font-black">⮌</span>
+            <span id="txt-mod-subsuffix">ཡང་འཇུག</span>
+          </a>
+
+          <a href="prefixes.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+            <span class="bg-blue-600 text-white text-[10px] w-4 h-4 rounded-sm flex items-center justify-center font-black">⬅</span>
+            <span id="txt-mod-prefix">སྔོན་འཇུག</span>
+          </a>
+
+          <!-- SUPERSCRIPTS (མགོ་ཅན་གསུམ།) -->
+          <div class="space-y-1.5 pt-1">
+            <a href="superscript.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+              <span class="text-pink-500 text-xs">▲</span>
+              <span id="txt-mod-superscript">མགོ་ཅན་གསུམ།</span>
+            </a>
+            <div class="pl-6 flex flex-col gap-1 text-yellow-200/90 text-sm">
+              <a href="superscript.html?tab=ra" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-super-ra">ར་མགོ།</span>
+              </a>
+              <a href="superscript.html?tab=la" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-super-la">ལ་མགོ།</span>
+              </a>
+              <a href="superscript.html?tab=sa" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-super-sa">ས་མགོ།</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- SUBSCRIPTS (འདོགས་ཅན་བཞི།) -->
+          <div class="space-y-1.5 pt-1">
+            <a href="subscript.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+              <span class="text-pink-500 text-xs">▼</span>
+              <span id="txt-mod-subscript">འདོགས་ཅན་བཞི།</span>
+            </a>
+            <div class="pl-6 flex flex-col gap-1 text-yellow-200/90 text-sm">
+              <a href="subscript.html?tab=ya" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-sub-ya">ཡ་ཏགས།</span>
+              </a>
+              <a href="subscript.html?tab=ra" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-sub-ra">ར་ཏགས།</span>
+              </a>
+              <a href="subscript.html?tab=la" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-sub-la">ལ་ཏགས།</span>
+              </a>
+              <a href="subscript.html?tab=wa" class="flex items-center gap-2 hover:text-white transition tibetan-font tibetan-ui-scale">
+                <span class="w-1.5 h-1.5 bg-yellow-200/80 rounded-sm"></span>
+                <span id="txt-submod-sub-wa">ཝ་ཟུར།</span>
+              </a>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer id="txt-footer" class="bg-amber-100 border-t border-amber-200 text-center p-4 text-amber-900 font-medium tibetan-font tibetan-ui-scale">
+    འབྲོང་བུ་ཚང་། 2️⃣ གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན།
+  </footer>
+
+  <script>
+    let currentLang = localStorage.getItem('tibetan_lang') || 'bo';
+
+    const TRANSLATIONS = {
+      en: {
+        bodYig: "Drongbu Tsang",
+        appTitle: "Tibetan Learning Tool",
+        appSubtitle: "Single Consonant with Vowel",
+        mascotDefaultSpeech: "2️⃣ Welcome! Let's practice Single Consonant Vowels!",
+        navHeader: "Navigation Menu",
+        navGrid: "Single Words",
+        navFlashcards: "Flashcards",
+        navQuiz: "Ear Quiz",
+        navBuilder: "Word Builder",
+        navSpeed: "Speed Reader",
+        navMatch: "Word Match",
+        navDrawing: "Magic Pen",
+        pageTitle: "2️⃣ Single Consonant with Vowel",
+        pageSubtitle: "Practice reading single consonant words paired with vowels.",
+        flashTitle: "Flashcards Explorer",
+        flashDesc: "Tap the card to listen!",
+        flashPractice: "Practice Writing",
+        btnPrev: "Previous",
+        btnNext: "Next",
+        quizHeader: "Ear Training Quiz",
+        quizScoreLbl: "Score:",
+        quizInstruction: "Listen and choose the matching word!",
+        quizChancesLbl: "Chances left:",
+        quizCompletedTitle: "Quiz Completed!",
+        quizCompletedDesc: "Awesome job with single consonant vowel words!",
+        quizFinalLbl: "Final Score",
+        quizPlayAgain: "Play Again",
+        builderTitle: "Word Construction",
+        builderDesc: "Listen to the audio and assemble the correct word!",
+        speedTitle: "Speed Reader Challenge",
+        matchTitle: "Matching Challenge",
+        matchDesc: "Match the cards with corresponding sound readings!",
+        scoreLbl: "Score:",
+        btnNextSpeed: "Next Word",
+        btnSound: "Listen Audio",
+        drawHeader: "Magic Pen Canvas",
+        drawSubtitle: "Trace single consonant vowel words",
+        drawPrev: "Prev",
+        drawNext: "Next",
+        toolsLbl: "Tools:",
+        pen: "Pen",
+        marker: "Marker",
+        glow: "Glow Pen",
+        eraser: "Eraser",
+        colorsLbl: "Colors:",
+        sizeLbl: "Size:",
+        clear: "Clear All",
+        canvasTip: "Trace directly over guide text!",
+        canvasSound: "Play Sound",
+        footer: "Drongbu Tsang - Single Consonant with Vowel",
+        modulesHeader: "Navigation Modules",
+        modMulti: "Multiconsonant Vocab",
+        modVowelsRoot: "Four Vowels (Dbyangs)",
+        submodVowel1: "1. Vowel Reading Practice",
+        submodVowel2: "2. Single Consonant with Vowel",
+        submodVowel3: "3. Multi Consonant with Vowel",
+        modSuffix: "Suffixes (Rjes-jug)",
+        modSubsuffix: "Second Suffix (Yang-jug)",
+        modPrefix: "Prefixes (Sngon-jug)",
+        modSuperscript: "Three Superscripts",
+        submodSuperRa: "Ra Head (Ra-mgo)",
+        submodSuperLa: "La Head (La-mgo)",
+        submodSuperSa: "Sa Head (Sa-mgo)",
+        modSubscript: "Four Subscripts",
+        submodSubYa: "Ya Subscript (Ya-tags)",
+        submodSubRa: "Ra Subscript (Ra-tags)",
+        submodSubLa: "La Subscript (La-tags)",
+        submodSubWa: "Wa Subscript (Wa-zur)"
+      },
+      bo: {
+        bodYig: "འབྲོང་བུ་ཚང་།",
+        appTitle: "བོད་ཀྱི་སྐད་དང་ཡི་གེ་སྦྱོང་དེབ།",
+        appSubtitle: "སྦྱོང་དེབ་འདིའི་ནང་་རི་མོ་དང་སྒྲ་མཉམ་སྦྱར་བྱས་ཡོད།",
+        mascotDefaultSpeech: "2️⃣ གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན་ མིང་ཚིག་ སྦྱོང་བརྡར་ ལ་ ཕེབས་པར་ དགའ་བསུ་ ཞུ།",
+        navHeader: "དཀར་ཆག",
+        navGrid: "མིང་ཚིག་རྐྱང་པ།",
+        navFlashcards: "བྱང་བུ།",
+        navQuiz: "དྲི་རྩད་ཁག་དང་པོ།",
+        navBuilder: "མིང་ཚིག་ གྲུབ་བྱེད།",
+        navSpeed: "མགྱོགས་ཀློག",
+        navMatch: "མཐུན་སྦྱོར།",
+        navDrawing: "ཡིག་གཟུགས་སྦྱོང་།",
+        pageTitle: "2️⃣ གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན།",
+        pageSubtitle: "གསལ་བྱེད་ རྐྱང་པར་ དབྱངས་ སྦྱར་བའི་ མིང་ཚིག་ སྒྲ་ བཏོན་ནས་ སྦྱོང་བ།",
+        flashTitle: "བྱང་བུ།",
+        flashDesc: "ཡི་གེའི་ སྟེང་ བསྣུན་ནས་ སྒྲ་ ལ་ ཉོན།",
+        flashPractice: "ཡིག་གཟུགས་སྦྱོང་།",
+        btnPrev: "སྔོན་མ།",
+        btnNext: "རྗེས་མ།",
+        quizHeader: "དྲི་རྩད་ཁག་དང་པོ།",
+        quizScoreLbl: "ཐོབ་སྐར།",
+        quizInstruction: "སྒྲ་ལ་ཉན་ནས་ཡི་གེ་འགྲིག་པ་དེ་འདེམས།",
+        quizChancesLbl: "གོ་སྐབས།",
+        quizCompletedTitle: "རྟེན་འབྲེལ་ཞུ།",
+        quizCompletedDesc: "གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན་ དྲི་རྩད་ མཇུག་གྲུབ་སོང་།",
+        quizFinalLbl: "མཐའ་མའི་ཐོབ་སྐར།",
+        quizPlayAgain: "ཡང་བསྐྱར་དྲི་རྩད་སྦྱོངས།",
+        builderTitle: "མིང་ཚིག་ གྲུབ་བྱེད།",
+        builderDesc: "སྒྲ་ལ་ཉན་ནས་ ཡི་གེ་ འདེམས་ནས་ མིང་ཚིག་ གྲུབ།",
+        speedTitle: "མགྱོགས་ཀློག་ སྦྱོང་བརྡར།",
+        matchTitle: "མཐུན་སྦྱོར་ སྦྱོང་བརྡར།",
+        matchDesc: "ཡི་གེ་ དང་ སྒྲ་ མཐུན་སྦྱོར་ བྱོས།",
+        scoreLbl: "ཐོབ་སྐར།",
+        btnNextSpeed: "རྗེས་མ།",
+        btnSound: "སྒྲ་ལ་ཉོན།",
+        drawHeader: "ཡིག་གཟུགས་སྦྱོང་དེབ།",
+        drawSubtitle: "ང་ཚོས་མཉམ་དུ་ཡིག་གཟུགས་སྦྱོང་བརྡར་བྱེད།",
+        drawPrev: "སྔོན་མ།",
+        drawNext: "རྗེས་མ།",
+        toolsLbl: "སྨྱུག་སྒམ།",
+        pen: "སྨྱུག་གུ",
+        marker: "ཚོན་སྨྱུག",
+        glow: "འོད་སྨྱུག",
+        eraser: "སུབ་བྱེད།",
+        colorsLbl: "ཚོན་མདོག",
+        sizeLbl: "ཆེ་ཆུང་།",
+        clear: "ཚང་མ་སུབ།",
+        canvasTip: "སྨྱུག་གུ་བདམས་ནས་ཡིག་གཟུགས་སྦྱོང་།",
+        canvasSound: "སྒྲ་ལ་ཉོན།",
+        footer: "འབྲོང་བུ་ཚང་། གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན།",
+        modulesHeader: "ནང་དོན་གཞན་ཁག་ལ་གཟིགས།",
+        modMulti: "གསལ་བྱེད་གཉིས་ལྡན་གྱི་མིང་ཚིག",
+        modVowelsRoot: "དབྱངས་བཞི།",
+        submodVowel1: "༡. དབྱངས་བཞིའི་ ཀློག་ལག་ སྦྱོང་བརྡར།",
+        submodVowel2: "༢. གསལ་བྱེད་ རྐྱང་པ་ དབྱངས་ ལྡན།",
+        submodVowel3: "༣. གསལ་བྱེད་ མང་ལྡན་ དབྱངས་ ལྡན།",
+        modSuffix: "རྗེས་འཇུག",
+        modSubsuffix: "ཡང་འཇུག",
+        modPrefix: "སྔོན་འཇུག",
+        modSuperscript: "མགོ་ཅན་གསུམ།",
+        submodSuperRa: "ར་མགོ།",
+        submodSuperLa: "ལ་མགོ།",
+        submodSuperSa: "ས་མགོ།",
+        modSubscript: "འདོགས་ཅན་བཞི།",
+        submodSubYa: "ཡ་ཏགས།",
+        submodSubRa: "ར་ཏགས།",
+        submodSubLa: "ལ་ཏགས།",
+        submodSubWa: "ཝ་ཟུར།"
+      }
+    };
+
+    /* Material 2 Items */
+    const SINGLE_ITEMS = [
+      { id: 1, char: "མི།", img: "assets/images/vowels/single/mi.png", audio: "assets/audio/vowels/single/mi.mp3" },
+      { id: 2, char: "རི།", img: "assets/images/vowels/single/ri.png", audio: "assets/audio/vowels/single/ri.mp3" },
+      { id: 3, char: "ལི།", img: "assets/images/vowels/single/li.png", audio: "assets/audio/vowels/single/li.mp3" },
+      { id: 4, char: "བུ།", img: "assets/images/vowels/single/bu.png", audio: "assets/audio/vowels/single/bu.mp3" },
+      { id: 5, char: "ཆུ།", img: "assets/images/vowels/single/chu.png", audio: "assets/audio/vowels/single/chu.mp3" },
+      { id: 6, char: "རུ།", img: "assets/images/vowels/single/ru.png", audio: "assets/audio/vowels/single/ru.mp3" },
+      { id: 7, char: "ཟེ།", img: "assets/images/vowels/single/ze.png", audio: "assets/audio/vowels/single/ze.mp3" },
+      { id: 8, char: "མེ།", img: "assets/images/vowels/single/me.png", audio: "assets/audio/vowels/single/me.mp3" },
+      { id: 9, char: "སོ།", img: "assets/images/vowels/single/so.png", audio: "assets/audio/vowels/single/so.mp3" },
+      { id: 10, char: "ངོ།", img: "assets/images/vowels/single/ngo.png", audio: "assets/audio/vowels/single/ngo.mp3" },
+      { id: 11, char: "མོ།", img: "assets/images/vowels/single/mo.png", audio: "assets/audio/vowels/single/mo.mp3" },
+      { id: 12, char: "ཞོ།", img: "assets/images/vowels/single/zho.png", audio: "assets/audio/vowels/single/zho.mp3" }
+    ];
+
+    let starCount = 0;
+    let currentFlashIndex = 0;
+    let currentDrawingIndex = 0;
+    let quizTarget = null;
+    let quizScore = 0;
+    let quizCurrentQ = 0;
+    const quizTotalQ = 10;
+    let quizChances = 2;
+    let quizAnswered = false;
+    let matchScore = 0;
+    let speedIndex = 0;
+    let builderScore = 0;
+    let builderTarget = null;
+    let builderSelected = [];
+
+    let audioCtx = null;
+    function initAudio() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    }
+    function playItemSound(item) {
+      initAudio();
+      if (item.audio) {
+        const a = new Audio(item.audio);
+        a.play().catch(() => playSynthFallback(item.char));
+      } else {
+        playSynthFallback(item.char);
+      }
+      addStars(1);
+    }
+    function playSynthFallback(text) {
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        let code = text.charCodeAt(0) || 100;
+        osc.frequency.setValueAtTime(300 + (code % 380), audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.5);
+      } catch(e){}
+    }
+
+    function addStars(n) {
+      starCount += n;
+      document.getElementById('star-count').innerText = starCount;
+    }
+
+    function mascotSpeak(msg) {
+      const el = document.getElementById('mascot-speech');
+      if (el) el.innerText = msg;
+    }
+
+    function toggleLanguage() {
+      currentLang = (currentLang === 'en') ? 'bo' : 'en';
+      localStorage.setItem('tibetan_lang', currentLang);
+      updateLanguageUI();
+    }
+
+    function updateLanguageUI() {
+      const t = TRANSLATIONS[currentLang];
+      document.documentElement.lang = currentLang;
+
+      document.getElementById('txt-app-brand').innerText = t.bodYig;
+      document.getElementById('txt-app-title').innerText = t.appTitle;
+      document.getElementById('txt-app-subtitle').innerText = t.appSubtitle;
+      document.getElementById('mascot-speech').innerText = t.mascotDefaultSpeech;
+      document.getElementById('txt-nav-header').innerText = t.navHeader;
+      document.getElementById('txt-nav-grid').innerText = t.navGrid;
+      document.getElementById('txt-nav-flashcards').innerText = t.navFlashcards;
+      document.getElementById('txt-nav-quiz').innerText = t.navQuiz;
+      if (document.getElementById('txt-nav-builder')) document.getElementById('txt-nav-builder').innerText = t.navBuilder;
+      if (document.getElementById('txt-nav-speed')) document.getElementById('txt-nav-speed').innerText = t.navSpeed;
+      if (document.getElementById('txt-nav-match')) document.getElementById('txt-nav-match').innerText = t.navMatch;
+      document.getElementById('txt-nav-drawing').innerText = t.navDrawing;
+
+      document.getElementById('txt-page-title').innerText = t.pageTitle;
+      document.getElementById('txt-page-subtitle').innerText = t.pageSubtitle;
+
+      document.getElementById('txt-flash-title').innerText = t.flashTitle;
+      document.getElementById('txt-flash-desc').innerText = t.flashDesc;
+      document.getElementById('txt-flash-practice').innerText = t.flashPractice;
+      document.getElementById('txt-btn-prev').innerText = t.btnPrev;
+      document.getElementById('txt-btn-next').innerText = t.btnNext;
+
+      document.getElementById('txt-quiz-header').innerText = t.quizHeader;
+      document.getElementById('txt-quiz-score-lbl').innerText = t.quizScoreLbl;
+      document.getElementById('txt-quiz-instruction').innerText = t.quizInstruction;
+      document.getElementById('txt-quiz-chances-lbl').innerText = t.quizChancesLbl;
+      document.getElementById('txt-quiz-completed-title').innerText = t.quizCompletedTitle;
+      document.getElementById('txt-quiz-completed-desc').innerText = t.quizCompletedDesc;
+      document.getElementById('txt-quiz-final-lbl').innerText = t.quizFinalLbl;
+      document.getElementById('txt-quiz-play-again').innerText = t.quizPlayAgain;
+
+      if (document.getElementById('txt-builder-title')) document.getElementById('txt-builder-title').innerText = t.builderTitle;
+      if (document.getElementById('txt-builder-desc')) document.getElementById('txt-builder-desc').innerText = t.builderDesc;
+      if (document.getElementById('txt-speed-title')) document.getElementById('txt-speed-title').innerText = t.speedTitle;
+      if (document.getElementById('txt-match-title')) document.getElementById('txt-match-title').innerText = t.matchTitle;
+      if (document.getElementById('txt-match-desc')) document.getElementById('txt-match-desc').innerText = t.matchDesc;
+      if (document.getElementById('txt-score-lbl')) document.getElementById('txt-score-lbl').innerText = t.scoreLbl;
+      if (document.getElementById('txt-btn-next-speed')) document.getElementById('txt-btn-next-speed').innerText = t.btnNextSpeed;
+      if (document.getElementById('txt-btn-sound')) document.getElementById('txt-btn-sound').innerText = t.btnSound;
+
+      document.getElementById('txt-draw-header').innerText = t.drawHeader;
+      document.getElementById('txt-draw-subtitle').innerText = t.drawSubtitle;
+      document.getElementById('txt-draw-prev').innerText = t.drawPrev;
+      document.getElementById('txt-draw-next').innerText = t.drawNext;
+      document.getElementById('txt-tools-lbl').innerText = t.toolsLbl;
+      document.getElementById('txt-pen').innerText = t.pen;
+      document.getElementById('txt-marker').innerText = t.marker;
+      document.getElementById('txt-glow').innerText = t.glow;
+      document.getElementById('txt-eraser').innerText = t.eraser;
+      document.getElementById('txt-colors-lbl').innerText = t.colorsLbl;
+      document.getElementById('txt-size-lbl').innerText = t.sizeLbl;
+      document.getElementById('txt-clear').innerText = t.clear;
+      document.getElementById('txt-canvas-tip').innerText = t.canvasTip;
+      document.getElementById('txt-canvas-sound').innerText = t.canvasSound;
+
+      document.getElementById('txt-footer').innerText = t.footer;
+      document.getElementById('txt-modules-header').innerText = t.modulesHeader;
+      document.getElementById('txt-mod-multi').innerText = t.modMulti;
+      document.getElementById('txt-mod-vowels-root').innerText = t.modVowelsRoot;
+      document.getElementById('txt-submod-vowel-1').innerText = t.submodVowel1;
+      document.getElementById('txt-submod-vowel-2').innerText = t.submodVowel2;
+      document.getElementById('txt-submod-vowel-3').innerText = t.submodVowel3;
+      document.getElementById('txt-mod-suffix').innerText = t.modSuffix;
+      document.getElementById('txt-mod-subsuffix').innerText = t.modSubsuffix;
+      document.getElementById('txt-mod-prefix').innerText = t.modPrefix;
+      document.getElementById('txt-mod-superscript').innerText = t.modSuperscript;
+      document.getElementById('txt-submod-super-ra').innerText = t.submodSuperRa;
+      document.getElementById('txt-submod-super-la').innerText = t.submodSuperLa;
+      document.getElementById('txt-submod-super-sa').innerText = t.submodSuperSa;
+      document.getElementById('txt-mod-subscript').innerText = t.modSubscript;
+      document.getElementById('txt-submod-sub-ya').innerText = t.submodSubYa;
+      document.getElementById('txt-submod-sub-ra').innerText = t.submodSubRa;
+      document.getElementById('txt-submod-sub-la').innerText = t.submodSubLa;
+      document.getElementById('txt-submod-sub-wa').innerText = t.submodSubWa;
+
+      document.getElementById('lang-btn-text').innerText = currentLang === 'en' ? 'བོད་ཡིག' : 'English';
+    }
+
+    function renderGrid() {
+      const grid = document.getElementById('vocab-grid');
+      grid.innerHTML = '';
+      SINGLE_ITEMS.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "bg-white border-2 border-amber-200 hover:border-yellow-400 rounded-2xl p-4 shadow-sm card-bounce text-center cursor-pointer flex flex-col items-center justify-between min-h-[180px]";
+        card.onclick = () => playItemSound(item);
+        
+        card.innerHTML = `
+          <div class="flex flex-col items-center justify-center my-auto">
+            <span class="tibetan-font text-5xl font-extrabold text-red-900">${item.char}</span>
+            <img src="${item.img}" alt="${item.char}" onerror="this.style.display='none'" class="h-20 object-contain mt-2 rounded-lg border border-amber-100 shadow-inner">
+          </div>
+          <button class="w-full py-1.5 bg-amber-100 hover:bg-amber-200 text-amber-900 rounded-xl font-bold text-xs tibetan-font mt-2">🔊 སྒྲ་ལ་ཉོན།</button>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function switchTab(tab) {
+      ['grid', 'flashcards', 'quiz', 'builder', 'speed', 'match', 'drawing'].forEach(v => {
+        const el = document.getElementById(`view-${v}`);
+        if (el) el.classList.add('hidden');
+        const btn = document.getElementById(`nav-${v}`);
+        if (btn) btn.className = "w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale";
+      });
+
+      const activeView = document.getElementById(`view-${tab}`);
+      if (activeView) activeView.classList.remove('hidden');
+
+      const activeBtn = document.getElementById(`nav-${tab}`);
+      if (activeBtn) activeBtn.className = "w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 bg-yellow-400 text-red-950 shadow tibetan-font tibetan-ui-scale";
+
+      if (tab === 'flashcards') updateFlashcard();
+      if (tab === 'quiz') restartQuiz();
+      if (tab === 'builder') startBuilderRound();
+      if (tab === 'speed') triggerNextSpeedWord();
+      if (tab === 'match') renderMatchingGame();
+      if (tab === 'drawing') setupCanvas();
+    }
+
+    function renderMatchingGame() {
+      const container = document.getElementById('match-cards-container');
+      if (!container) return;
+      container.innerHTML = '';
+      const sample = [...SINGLE_ITEMS].sort(() => Math.random() - 0.5).slice(0, 8);
+
+      sample.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = "bg-white border-2 border-amber-300 p-4 rounded-2xl font-bold tibetan-font text-3xl card-bounce shadow-sm flex flex-col items-center justify-center gap-1";
+        btn.innerHTML = `<span class="text-4xl font-extrabold text-red-900">${item.char}</span>`;
+        btn.onclick = () => {
+          playItemSound(item);
+          matchScore += 5;
+          if (document.getElementById('match-score')) document.getElementById('match-score').innerText = matchScore;
+          btn.classList.add('bg-emerald-100', 'border-emerald-500');
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    function startBuilderRound() {
+      builderTarget = SINGLE_ITEMS[Math.floor(Math.random() * SINGLE_ITEMS.length)];
+      builderSelected = [];
+      renderBuilderSlots();
+
+      const tiles = [builderTarget];
+      while (tiles.length < 4) {
+        const rand = SINGLE_ITEMS[Math.floor(Math.random() * SINGLE_ITEMS.length)];
+        if (!tiles.some(t => t.id === rand.id)) tiles.push(rand);
+      }
+      tiles.sort(() => Math.random() - 0.5);
+
+      const pool = document.getElementById('builder-tiles-pool');
+      if (!pool) return;
+      pool.innerHTML = '';
+      tiles.forEach(t => {
+        const btn = document.createElement('button');
+        btn.className = "px-5 py-3 bg-white border-2 border-amber-300 hover:border-amber-500 rounded-2xl font-extrabold tibetan-font text-4xl shadow-sm card-bounce";
+        btn.innerText = t.char;
+        btn.onclick = () => handleBuilderTileClick(t, btn);
+        pool.appendChild(btn);
+      });
+
+      playBuilderTargetAudio();
+    }
+
+    function playBuilderTargetAudio() {
+      if (builderTarget) playItemSound(builderTarget);
+    }
+
+    function renderBuilderSlots() {
+      const slots = document.getElementById('builder-target-slots');
+      if (!slots) return;
+      slots.innerHTML = builderSelected.map(ch => `
+        <span class="w-16 h-16 bg-white border-2 border-amber-400 rounded-2xl flex items-center justify-center font-extrabold text-4xl text-red-900 shadow-sm tibetan-font">${ch}</span>
+      `).join('');
+    }
+
+    function handleBuilderTileClick(item, btnElem) {
+      playItemSound(item);
+      builderSelected.push(item.char);
+      renderBuilderSlots();
+
+      if (builderSelected.join('') === builderTarget.char) {
+        builderScore += 10;
+        addStars(10);
+        if (document.getElementById('builder-score')) document.getElementById('builder-score').innerText = builderScore;
+        btnElem.classList.add('bg-emerald-100', 'border-emerald-500');
+        setTimeout(() => startBuilderRound(), 1000);
+      } else {
+        setTimeout(() => {
+          builderSelected = [];
+          renderBuilderSlots();
+        }, 800);
+      }
+    }
+
+    function triggerNextSpeedWord() {
+      speedIndex = Math.floor(Math.random() * SINGLE_ITEMS.length);
+      const item = SINGLE_ITEMS[speedIndex];
+      const display = document.getElementById('speed-word-display');
+      if (display) display.innerText = item.char;
+      playItemSound(item);
+    }
+
+    function playSpeedWordAudio() {
+      playItemSound(SINGLE_ITEMS[speedIndex]);
+    }
+
+    function updateFlashcard() {
+      const item = SINGLE_ITEMS[currentFlashIndex];
+      document.getElementById('flash-badge').innerText = `${currentFlashIndex + 1} / ${SINGLE_ITEMS.length}`;
+      document.getElementById('flash-character').innerText = item.char;
+      
+      const img = document.getElementById('flash-img');
+      if (item.img) {
+        img.src = item.img;
+        img.classList.remove('hidden');
+      } else {
+        img.classList.add('hidden');
+      }
+    }
+
+    function speakCurrentFlashcard() {
+      playItemSound(SINGLE_ITEMS[currentFlashIndex]);
+    }
+
+    function nextFlashcard() {
+      currentFlashIndex = (currentFlashIndex + 1) % SINGLE_ITEMS.length;
+      updateFlashcard();
+      speakCurrentFlashcard();
+    }
+
+    function prevFlashcard() {
+      currentFlashIndex = (currentFlashIndex - 1 + SINGLE_ITEMS.length) % SINGLE_ITEMS.length;
+      updateFlashcard();
+      speakCurrentFlashcard();
+    }
+
+    function jumpToDrawingFromFlashcard() {
+      currentDrawingIndex = currentFlashIndex;
+      switchTab('drawing');
+    }
+
+    function restartQuiz() {
+      quizScore = 0;
+      quizCurrentQ = 0;
+      document.getElementById('quiz-score').innerText = '0';
+      document.getElementById('quiz-active-card').classList.remove('hidden');
+      document.getElementById('quiz-completed-card').classList.add('hidden');
+      nextQuizQuestion();
+    }
+
+    function nextQuizQuestion() {
+      if (quizCurrentQ >= quizTotalQ) {
+        document.getElementById('quiz-active-card').classList.add('hidden');
+        document.getElementById('quiz-completed-card').classList.remove('hidden');
+        document.getElementById('quiz-final-score').innerText = `${quizScore} / ${quizTotalQ * 5}`;
+        try { confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } }); } catch(e){}
+        return;
+      }
+
+      quizCurrentQ++;
+      quizChances = 2;
+      quizAnswered = false;
+
+      document.getElementById('quiz-progress-badge').innerText = `${currentLang === 'en' ? 'Question' : 'དྲི་བ།'} ${quizCurrentQ} / ${quizTotalQ}`;
+      document.getElementById('quiz-chances').innerText = quizChances;
+
+      quizTarget = SINGLE_ITEMS[Math.floor(Math.random() * SINGLE_ITEMS.length)];
+
+      const choices = [quizTarget];
+      while (choices.length < 4) {
+        const rand = SINGLE_ITEMS[Math.floor(Math.random() * SINGLE_ITEMS.length)];
+        if (!choices.some(c => c.id === rand.id)) choices.push(rand);
+      }
+      choices.sort(() => Math.random() - 0.5);
+
+      const grid = document.getElementById('quiz-options-grid');
+      grid.innerHTML = '';
+      choices.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = "bg-white border-2 border-amber-200 hover:border-amber-400 p-5 rounded-2xl shadow-sm text-center card-bounce transition flex items-center justify-center min-h-[100px]";
+        btn.onclick = () => handleQuizAnswer(item, btn);
+        btn.innerHTML = `<span class="tibetan-font text-5xl font-bold text-slate-800">${item.char}</span>`;
+        grid.appendChild(btn);
+      });
+
+      playQuizTargetAudio();
+    }
+
+    function playQuizTargetAudio() {
+      if (quizTarget) playItemSound(quizTarget);
+    }
+
+    function handleQuizAnswer(selected, btnElem) {
+      if (quizAnswered) return;
+      if (selected.id === quizTarget.id) {
+        quizAnswered = true;
+        btnElem.classList.add('bg-emerald-100', 'border-emerald-500');
+        quizScore += 5;
+        addStars(5);
+        document.getElementById('quiz-score').innerText = quizScore;
+        setTimeout(() => nextQuizQuestion(), 1000);
+      } else {
+        quizChances--;
+        document.getElementById('quiz-chances').innerText = quizChances;
+        btnElem.classList.add('bg-red-100', 'border-red-400');
+        if (quizChances <= 0) {
+          quizAnswered = true;
+          setTimeout(() => nextQuizQuestion(), 1200);
+        }
+      }
+    }
+
+    let canvas, ctx;
+    let isDrawing = false;
+    let penColor = '#ef4444';
+    let penTool = 'pen';
+
+    function setupCanvas() {
+      canvas = document.getElementById('practice-canvas');
+      if (!canvas) return;
+
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width || 400;
+      canvas.height = rect.height || 400;
+
+      ctx = canvas.getContext('2d');
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      updateCanvasGuide();
+
+      canvas.onmousedown = startDrawing;
+      canvas.onmousemove = draw;
+      canvas.onmouseup = stopDrawing;
+      canvas.onmouseleave = stopDrawing;
+
+      canvas.ontouchstart = (e) => {
+        e.preventDefault();
+        const touch = e.touches[0];
+        startDrawing({ clientX: touch.clientX, clientY: touch.clientY });
+      };
+      canvas.ontouchmove = (e) => {
+        e.preventDefault();
+        const touch = e.touches[0];
+        draw({ clientX: touch.clientX, clientY: touch.clientY });
+      };
+      canvas.ontouchend = stopDrawing;
+    }
+
+    function updateCanvasGuide() {
+      const char = SINGLE_ITEMS[currentDrawingIndex].char;
+      document.getElementById('drawing-char-display').innerText = char;
+      document.getElementById('canvas-guide-text').innerText = char;
+    }
+
+    function cycleCanvasChar(dir) {
+      currentDrawingIndex = (currentDrawingIndex + dir + SINGLE_ITEMS.length) % SINGLE_ITEMS.length;
+      updateCanvasGuide();
+      clearCanvas();
+      playCanvasAudio();
+    }
+
+    function setPenTool(tool) {
+      penTool = tool;
+      ['pen', 'marker', 'glow', 'eraser'].forEach(t => {
+        const btn = document.getElementById(`tool-${t}`);
+        if (btn) {
+          btn.className = (t === tool) 
+            ? "px-3 py-1.5 rounded-xl font-bold bg-amber-500 text-white shadow-md transition flex items-center gap-1 tibetan-font tibetan-ui-scale"
+            : "px-3 py-1.5 rounded-xl font-bold bg-white text-slate-700 hover:bg-amber-100 transition flex items-center gap-1 border border-amber-200 tibetan-font tibetan-ui-scale";
+        }
+      });
+      if (canvas) canvas.className = (penTool === 'eraser') ? "w-full h-full relative z-10 cursor-eraser touch-none" : "w-full h-full relative z-10 cursor-pen touch-none";
+    }
+
+    function setPenColor(color) {
+      penColor = color;
+      if (penTool === 'eraser') setPenTool('pen');
+    }
+
+    function getCanvasCoordinates(e) {
+      const rect = canvas.getBoundingClientRect();
+      return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    }
+
+    function startDrawing(e) {
+      isDrawing = true;
+      const coords = getCanvasCoordinates(e);
+      ctx.beginPath();
+      ctx.moveTo(coords.x, coords.y);
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      const coords = getCanvasCoordinates(e);
+      const size = parseFloat(document.getElementById('pen-size').value);
+
+      ctx.strokeStyle = penColor;
+      ctx.shadowColor = penColor;
+
+      if (penTool === 'eraser') {
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.lineWidth = size * 2.5;
+        ctx.shadowBlur = 0;
+      } else if (penTool === 'marker') {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.lineWidth = size * 1.8;
+        ctx.globalAlpha = 0.55;
+        ctx.shadowBlur = 0;
+      } else if (penTool === 'glow') {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.lineWidth = size;
+        ctx.globalAlpha = 1.0;
+        ctx.shadowBlur = 16;
+      } else {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.lineWidth = size;
+        ctx.globalAlpha = 1.0;
+        ctx.shadowBlur = 0;
+      }
+
+      ctx.lineTo(coords.x, coords.y);
+      ctx.stroke();
+    }
+
+    function stopDrawing() {
+      if (isDrawing) {
+        isDrawing = false;
+        ctx.closePath();
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 1.0;
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    function clearCanvas() {
+      if (ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function playCanvasAudio() {
+      playItemSound(SINGLE_ITEMS[currentDrawingIndex]);
+    }
+
+    window.onload = function() {
+      updateLanguageUI();
+      renderGrid();
+    };
+  </script>
+</body>
+</html>
