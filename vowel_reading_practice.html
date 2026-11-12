@@ -165,19 +165,19 @@
         <div class="bg-white p-4 sm:p-6 rounded-3xl border-2 border-amber-200 shadow-sm space-y-3">
           <h3 class="font-bold text-slate-800 tibetan-font tibetan-ui-scale">དབྱངས་བཞི།</h3>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-            <div onclick="playTextSound('ཨི')" class="bg-amber-50 border-2 border-amber-300 hover:border-amber-500 rounded-2xl p-4 text-center cursor-pointer card-bounce flex flex-col items-center justify-center">
+            <div onclick="playTextSound('ཨི་')" class="bg-amber-50 border-2 border-amber-300 hover:border-amber-500 rounded-2xl p-4 text-center cursor-pointer card-bounce flex flex-col items-center justify-center">
               <span class="tibetan-font text-5xl font-extrabold text-red-900">ཨི་</span>
               <span class="text-amber-900 font-bold text-xs mt-1">གི་གུ།</span>
             </div>
-            <div onclick="playTextSound('ཨུ')" class="bg-amber-50 border-2 border-amber-300 hover:border-amber-500 rounded-2xl p-4 text-center cursor-pointer card-bounce flex flex-col items-center justify-center">
+            <div onclick="playTextSound('ཨུ་')" class="bg-amber-50 border-2 border-amber-300 hover:border-amber-500 rounded-2xl p-4 text-center cursor-pointer card-bounce flex flex-col items-center justify-center">
               <span class="tibetan-font text-5xl font-extrabold text-red-900">ཨུ་</span>
               <span class="text-amber-900 font-bold text-xs mt-1">ཞབས་ཀྱུ།</span>
             </div>
-            <div onclick="playTextSound('ཨེ')" class="bg-amber-50 border-2 border-amber-300 hover:border-amber-500 rounded-2xl p-4 text-center cursor-pointer card-bounce flex flex-col items-center justify-center">
+            <div onclick="playTextSound('ཨེ་')" class="bg-amber-50 border-2 border-amber-300 hover:border-amber-500 rounded-2xl p-4 text-center cursor-pointer card-bounce flex flex-col items-center justify-center">
               <span class="tibetan-font text-5xl font-extrabold text-red-900">ཨེ་</span>
               <span class="text-amber-900 font-bold text-xs mt-1">འགྲེང་བུ།</span>
             </div>
-            <div onclick="playTextSound('ཨོ')" class="bg-amber-50 border-2 border-amber-300 hover:border-amber-500 rounded-2xl p-4 text-center cursor-pointer card-bounce flex flex-col items-center justify-center">
+            <div onclick="playTextSound('ཨོ་')" class="bg-amber-50 border-2 border-amber-300 hover:border-amber-500 rounded-2xl p-4 text-center cursor-pointer card-bounce flex flex-col items-center justify-center">
               <span class="tibetan-font text-5xl font-extrabold text-red-900">ཨོ་</span>
               <span class="text-amber-900 font-bold text-xs mt-1">ན་རོ། </span>
             </div>
@@ -505,6 +505,189 @@
   <script>
     let currentLang = localStorage.getItem('tibetan_lang') || 'bo';
 
+    // Complete audio map for all 30 consonants paired with four vowels
+    const AUDIO_MAP = {
+      // 1. ཀ (Ka group)
+      "ཀི་": "audio/3_vowels/ki.mp3",
+      "ཀུ་": "audio/3_vowels/ku.mp3",
+      "ཀེ་": "audio/3_vowels/ke.mp3",
+      "ཀོ་": "audio/3_vowels/ko.mp3",
+
+      // 2. ཁ (Kha group)
+      "ཁི་": "audio/3_vowels/khi.mp3",
+      "ཁུ་": "audio/3_vowels/khu.mp3",
+      "ཁེ་": "audio/3_vowels/khe.mp3",
+      "ཁོ་": "audio/3_vowels/kho.mp3",
+
+      // 3. ག (Ga group)
+      "གི་": "audio/3_vowels/gi.mp3",
+      "གུ་": "audio/3_vowels/gu.mp3",
+      "གེ་": "audio/3_vowels/ge.mp3",
+      "གོ་": "audio/3_vowels/go.mp3",
+
+      // 4. ང (Nga group)
+      "ངི་": "audio/3_vowels/ngi.mp3",
+      "ངུ་": "audio/3_vowels/ngu.mp3",
+      "ངེ་": "audio/3_vowels/nge.mp3",
+      "ངོ་": "audio/3_vowels/ngo.mp3",
+
+      // 5. ཅ (Ca group)
+      "ཅི་": "audio/3_vowels/ci.mp3",
+      "ཅུ་": "audio/3_vowels/cu.mp3",
+      "ཅེ་": "audio/3_vowels/ce.mp3",
+      "ཅོ་": "audio/3_vowels/co.mp3",
+
+      // 6. ཆ (Cha group)
+      "ཆི་": "audio/3_vowels/chi.mp3",
+      "ཆུ་": "audio/3_vowels/chu.mp3",
+      "ཆེ་": "audio/3_vowels/che.mp3",
+      "ཆོ་": "audio/3_vowels/cho.mp3",
+
+      // 7. ཇ (Ja group)
+      "ཇི་": "audio/3_vowels/ji.mp3",
+      "ཇུ་": "audio/3_vowels/ju.mp3",
+      "ཇེ་": "audio/3_vowels/je.mp3",
+      "ཇོ་": "audio/3_vowels/jo.mp3",
+
+      // 8. ཉ (Nya group)
+      "ཉི་": "audio/3_vowels/nyi.mp3",
+      "ཉུ་": "audio/3_vowels/nyu.mp3",
+      "ཉེ་": "audio/3_vowels/nye.mp3",
+      "ཉོ་": "audio/3_vowels/nyo.mp3",
+
+      // 9. ཏ (Ta group)
+      "ཏི་": "audio/3_vowels/ti.mp3",
+      "ཏུ་": "audio/3_vowels/tu.mp3",
+      "ཏེ་": "audio/3_vowels/te.mp3",
+      "ཏོ་": "audio/3_vowels/to.mp3",
+
+      // 10. ཐ (Tha group)
+      "ཐི་": "audio/3_vowels/thi.mp3",
+      "ཐུ་": "audio/3_vowels/thu.mp3",
+      "ཐེ་": "audio/3_vowels/the.mp3",
+      "ཐོ་": "audio/3_vowels/tho.mp3",
+
+      // 11. ད (Da group)
+      "དི་": "audio/3_vowels/di.mp3",
+      "དུ་": "audio/3_vowels/du.mp3",
+      "དེ་": "audio/3_vowels/de.mp3",
+      "དོ་": "audio/3_vowels/do.mp3",
+
+      // 12. ན (Na group)
+      "ནི་": "audio/3_vowels/ni.mp3",
+      "ནུ་": "audio/3_vowels/nu.mp3",
+      "ནེ་": "audio/3_vowels/ne.mp3",
+      "ནོ་": "audio/3_vowels/no.mp3",
+
+      // 13. པ (Pa group)
+      "པི་": "audio/3_vowels/pi.mp3",
+      "པུ་": "audio/3_vowels/pu.mp3",
+      "པེ་": "audio/3_vowels/pe.mp3",
+      "པོ་": "audio/3_vowels/po.mp3",
+
+      // 14. ཕ (Pha group)
+      "ཕི་": "audio/3_vowels/phi.mp3",
+      "ཕུ་": "audio/3_vowels/phu.mp3",
+      "ཕེ་": "audio/3_vowels/phe.mp3",
+      "ཕོ་": "audio/3_vowels/pho.mp3",
+
+      // 15. བ (Ba group)
+      "བི་": "audio/3_vowels/bi.mp3",
+      "བུ་": "audio/3_vowels/bu.mp3",
+      "བེ་": "audio/3_vowels/be.mp3",
+      "བོ་": "audio/3_vowels/bo.mp3",
+
+      // 16. མ (Ma group)
+      "མི་": "audio/3_vowels/mi.mp3",
+      "མུ་": "audio/3_vowels/mu.mp3",
+      "མེ་": "audio/3_vowels/me.mp3",
+      "མོ་": "audio/3_vowels/mo.mp3",
+
+      // 17. ཙ (Tsa group)
+      "ཙི་": "audio/3_vowels/tsi.mp3",
+      "ཙུ་": "audio/3_vowels/tsu.mp3",
+      "ཙེ་": "audio/3_vowels/tse.mp3",
+      "ཙོ་": "audio/3_vowels/tso.mp3",
+
+      // 18. ཚ (Tsha group)
+      "ཚི་": "audio/3_vowels/tshi.mp3",
+      "ཚུ་": "audio/3_vowels/tshu.mp3",
+      "ཚེ་": "audio/3_vowels/tshe.mp3",
+      "ཚོ་": "audio/3_vowels/tsho.mp3",
+
+      // 19. ཛ (Dza group)
+      "ཛི་": "audio/3_vowels/dzi.mp3",
+      "ཛུ་": "audio/3_vowels/dzu.mp3",
+      "ཛེ་": "audio/3_vowels/dze.mp3",
+      "ཛོ་": "audio/3_vowels/dzo.mp3",
+
+      // 20. ཝ (Wa group)
+      "ཝི་": "audio/3_vowels/wi.mp3",
+      "ཝུ་": "audio/3_vowels/wu.mp3",
+      "ཝེ་": "audio/3_vowels/we.mp3",
+      "ཝོ་": "audio/3_vowels/wo.mp3",
+
+      // 21. ཞ (Zha group)
+      "ཞི་": "audio/3_vowels/zhi.mp3",
+      "ཞུ་": "audio/3_vowels/zhu.mp3",
+      "ཞེ་": "audio/3_vowels/zhe.mp3",
+      "ཞོ་": "audio/3_vowels/zho.mp3",
+
+      // 22. ཟ (Za group)
+      "ཟི་": "audio/3_vowels/zi.mp3",
+      "ཟུ་": "audio/3_vowels/zu.mp3",
+      "ཟེ་": "audio/3_vowels/ze.mp3",
+      "ཟོ་": "audio/3_vowels/zo.mp3",
+
+      // 23. འ (A group)
+      "འི་": "audio/3_vowels/a_i.mp3",
+      "འུ་": "audio/3_vowels/a_u.mp3",
+      "འེ་": "audio/3_vowels/a_e.mp3",
+      "འོ་": "audio/3_vowels/a_o.mp3",
+
+      // 24. ཡ (Ya group)
+      "ཡི་": "audio/3_vowels/yi.mp3",
+      "ཡུ་": "audio/3_vowels/yu.mp3",
+      "ཡེ་": "audio/3_vowels/ye.mp3",
+      "ཡོ་": "audio/3_vowels/yo.mp3",
+
+      // 25. ར (Ra group)
+      "རི་": "audio/3_vowels/ri.mp3",
+      "རུ་": "audio/3_vowels/ru.mp3",
+      "རེ་": "audio/3_vowels/re.mp3",
+      "རོ་": "audio/3_vowels/ro.mp3",
+
+      // 26. ལ (La group)
+      "ལི་": "audio/3_vowels/li.mp3",
+      "ལུ་": "audio/3_vowels/lu.mp3",
+      "ལེ་": "audio/3_vowels/le.mp3",
+      "ལོ་": "audio/3_vowels/lo.mp3",
+
+      // 27. ཤ (Sha group)
+      "ཤི་": "audio/3_vowels/shi.mp3",
+      "ཤུ་": "audio/3_vowels/shu.mp3",
+      "ཤེ་": "audio/3_vowels/she.mp3",
+      "ཤོ་": "audio/3_vowels/sho.mp3",
+
+      // 28. ས (Sa group)
+      "སི་": "audio/3_vowels/si.mp3",
+      "སུ་": "audio/3_vowels/su.mp3",
+      "སེ་": "audio/3_vowels/se.mp3",
+      "སོ་": "audio/3_vowels/so.mp3",
+
+      // 29. ཧ (Ha group)
+      "ཧི་": "audio/3_vowels/hi.mp3",
+      "ཧུ་": "audio/3_vowels/hu.mp3",
+      "ཧེ་": "audio/3_vowels/he.mp3",
+      "ཧོ་": "audio/3_vowels/ho.mp3",
+
+      // 30. ཨ (Root A group)
+      "ཨི་": "audio/3_vowels/root_i.mp3",
+      "ཨུ་": "audio/3_vowels/root_u.mp3",
+      "ཨེ་": "audio/3_vowels/root_e.mp3",
+      "ཨོ་": "audio/3_vowels/root_o.mp3"
+    };
+
     const TRANSLATIONS = {
       en: {
         bodYig: "Drongbu Tsang",
@@ -685,7 +868,21 @@
       if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       if (audioCtx.state === 'suspended') audioCtx.resume();
     }
+
+    // Main Audio Player Function using AUDIO_MAP with synthetic tone fallback
     function playTextSound(text) {
+      if (AUDIO_MAP[text]) {
+        const audio = new Audio(AUDIO_MAP[text]);
+        audio.play().catch(err => {
+          playFallbackTone(text);
+        });
+      } else {
+        playFallbackTone(text);
+      }
+      addStars(1);
+    }
+
+    function playFallbackTone(text) {
       initAudio();
       try {
         const osc = audioCtx.createOscillator();
@@ -700,7 +897,6 @@
         osc.start();
         osc.stop(audioCtx.currentTime + 0.5);
       } catch(e){}
-      addStars(1);
     }
 
     function addStars(n) {
