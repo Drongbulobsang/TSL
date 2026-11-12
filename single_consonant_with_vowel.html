@@ -362,12 +362,17 @@
 
     </main>
 
-    <!-- RIGHT SIDEBAR: EXACT MATCHING SIDEBAR -->
+    <!-- RIGHT SIDEBAR (Complete with 30 Consonants & all modules) -->
     <aside class="w-full lg:w-64 flex-shrink-0 space-y-4">
       <div class="bg-gradient-to-b from-[#1b1435] via-[#20102b] to-[#2c0b0e] p-4 sm:p-5 rounded-[28px] border-[3px] border-amber-400 shadow-xl space-y-3">
         <h2 id="txt-modules-header" class="font-extrabold text-yellow-400 text-lg sm:text-xl tracking-wide pb-1 tibetan-font">ནང་དོན་གཞན་ཁག་ལ་གཟིགས།</h2>
         <nav class="flex flex-col gap-2.5 text-yellow-100 font-bold">
           
+          <a href="index.html" class="flex items-center gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
+            <span class="text-yellow-400 text-xs">◆</span>
+            <span id="txt-mod-main" class="leading-tight">གསལ་བྱེད་སུམ་ཅུ།</span>
+          </a>
+
           <a href="multiconsonant.html" class="flex items-start gap-2.5 hover:text-yellow-300 transition tibetan-font tibetan-ui-scale">
             <span class="text-orange-500 text-xs mt-1">◆</span>
             <span id="txt-mod-multi" class="leading-tight">གསལ་བྱེད་གཉིས་ལྡན་གྱི་མིང་ཚིག</span>
@@ -524,6 +529,7 @@
         canvasSound: "Play Sound",
         footer: "Drongbu Tsang - Single Consonant with Vowel",
         modulesHeader: "Navigation Modules",
+        modMain: "30 Consonants",
         modMulti: "Multiconsonant Vocab",
         modVowelsRoot: "Four Vowels",
         submodVowel1: "Vowel Reading Practice",
@@ -594,6 +600,7 @@
         canvasSound: "སྒྲ་ལ་ཉོན།",
         footer: "འབྲོང་བུ་ཚང་། གསལ་བྱེད་རྐྱང་པ་དབྱངས་ལྡན།",
         modulesHeader: "ནང་དོན་གཞན་ཁག་ལ་གཟིགས།",
+        modMain: "གསལ་བྱེད་སུམ་ཅུ།",
         modMulti: "གསལ་བྱེད་གཉིས་ལྡན་གྱི་མིང་ཚིག",
         modVowelsRoot: "དབྱངས་བཞི།",
         submodVowel1: "དབྱངས་བཞིའི་ཀློག་སྟངས།",
@@ -753,6 +760,7 @@
 
       document.getElementById('txt-footer').innerText = t.footer;
       document.getElementById('txt-modules-header').innerText = t.modulesHeader;
+      document.getElementById('txt-mod-main').innerText = t.modMain;
       document.getElementById('txt-mod-multi').innerText = t.modMulti;
       document.getElementById('txt-mod-vowels-root').innerText = t.modVowelsRoot;
       document.getElementById('txt-submod-vowel-1').innerText = t.submodVowel1;
