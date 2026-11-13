@@ -115,14 +115,14 @@
           <button id="nav-quiz" onclick="switchTab('quiz')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
             <span class="text-lg">🎯</span> <span id="txt-nav-quiz">དྲི་རྩད་ཁག་དང་པོ།</span>
           </button>
+          <button id="nav-dragdrop" onclick="switchTab('dragdrop')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
+            <span class="text-lg">🖼️</span> <span id="txt-nav-dragdrop">དྲི་རྩད་ཁག་གཉིས་པ།</span>
+          </button>
           <button id="nav-builder" onclick="switchTab('builder')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
             <span class="text-lg">🧱</span> <span id="txt-nav-builder">འགྲིག་པ་དེ་འདེམས།</span>
           </button>
-          <button id="nav-speed" onclick="switchTab('speed')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
-            <span class="text-lg">⚡</span> <span id="txt-nav-speed">མགྱོགས་ཀློག</span>
-          </button>
-          <button id="nav-match" onclick="switchTab('match')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
-            <span class="text-lg">🧩</span> <span id="txt-nav-match">མཐུན་སྦྱོར།</span>
+          <button id="nav-memory" onclick="switchTab('memory')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
+            <span class="text-lg">🃏</span> <span id="txt-nav-memory">དྲན་ཤེས་སྦྱོང་བརྡར།</span>
           </button>
           <button id="nav-drawing" onclick="switchTab('drawing')" class="w-full px-4 py-3 rounded-2xl font-bold transition flex items-center gap-3 text-amber-100 hover:bg-white/10 tibetan-font tibetan-ui-scale">
             <span class="text-lg">🎨</span> <span id="txt-nav-drawing">ཡིག་གཟུགས་སྦྱོང་།</span>
@@ -182,7 +182,6 @@
 
           <div onclick="speakCurrentFlashcard()" class="cursor-pointer flex flex-col items-center justify-center my-auto w-full flex-1 transition hover:scale-105">
             <span id="flash-character" class="tibetan-font text-8xl font-bold text-red-900 drop-shadow-md select-none leading-none">མི།</span>
-            <!-- Image placeholder ready for user image assets -->
             <img id="flash-img" src="" alt="Vocabulary Image" class="hidden h-32 object-contain mt-3 rounded-lg border border-amber-200 shadow-inner">
           </div>
 
@@ -203,7 +202,7 @@
         </div>
       </section>
 
-      <!-- VIEW 3: QUIZ -->
+      <!-- VIEW 3: EAR QUIZ (With Images Added) -->
       <section id="view-quiz" class="hidden flex flex-col items-center justify-center py-2 space-y-6 max-w-2xl mx-auto">
         <div id="quiz-active-card" class="w-full bg-white border-2 border-amber-200 rounded-3xl p-6 shadow-md text-center space-y-5">
           <div class="flex justify-between items-center border-b pb-3">
@@ -247,7 +246,58 @@
         </div>
       </section>
 
-      <!-- VIEW 4: TILE BUILDER -->
+      <!-- VIEW 4: DRAG & DROP QUIZ (Added) -->
+      <section id="view-dragdrop" class="hidden flex flex-col items-center justify-center py-2 space-y-6 max-w-3xl mx-auto">
+        <div id="dd-active-card" class="w-full bg-white border-2 border-amber-200 rounded-3xl p-6 shadow-md text-center space-y-6">
+          <div class="flex justify-between items-center border-b pb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🖼️</span>
+              <span id="txt-dd-header" class="font-bold text-slate-800 text-xl tibetan-font tibetan-ui-scale">དྲི་རྩད་ཁག་གཉིས་པ།</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span id="dd-progress-badge" class="bg-amber-100 text-amber-900 font-bold px-3 py-1 rounded-full border border-amber-200 tibetan-font tibetan-ui-scale">
+                Question 1 / 10
+              </span>
+              <div class="bg-yellow-100 text-yellow-900 font-bold px-3 py-1 rounded-full border border-yellow-300">
+                <span id="txt-dd-score-lbl" class="tibetan-font tibetan-ui-scale">ཐོབ་སྐར།</span> <span id="dd-score" class="font-extrabold text-red-900">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-between items-center bg-amber-50 px-4 py-2 rounded-2xl border border-amber-200 font-semibold text-amber-900">
+            <span id="txt-dd-instruction" class="tibetan-font tibetan-ui-scale">རི་མོ་དང་མིང་ཚིག་མཐུན་སྦྱོར་བྱོས།</span>
+            <span><span id="txt-dd-chances-lbl" class="tibetan-font tibetan-ui-scale">གོ་སྐབས།</span> <span id="dd-chances" class="font-extrabold text-red-700">2</span> / 2</span>
+          </div>
+
+          <div class="flex flex-col items-center justify-center py-2 min-h-[140px]">
+            <div id="dd-image-container" 
+                 draggable="true" 
+                 ondragstart="handleDragStart(event)" 
+                 onclick="handleImageClick(event)"
+                 class="bg-amber-100/80 border-2 border-dashed border-amber-400 p-3 rounded-2xl cursor-grab active:cursor-grabbing hover:scale-105 transition shadow-sm max-w-[180px] flex flex-col items-center justify-center">
+              <img id="dd-target-img" src="" alt="Target Illustration" class="h-28 sm:h-32 object-contain pointer-events-none rounded-lg">
+              <span id="txt-dd-drag-hint" class="text-amber-800 font-bold mt-1 tibetan-font tibetan-ui-scale" style="font-size: 0.8rem;">↕</span>
+            </div>
+          </div>
+
+          <div id="dd-targets-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2"></div>
+        </div>
+
+        <div id="dd-completed-card" class="hidden w-full bg-white border-4 border-yellow-400 rounded-3xl p-8 shadow-xl text-center space-y-6">
+          <div class="text-6xl animate-bounce">🏆</div>
+          <h2 id="txt-dd-completed-title" class="text-3xl font-extrabold text-amber-900 tibetan-font tibetan-ui-scale">རྟེན་འབྲེལ་ཞུ།</h2>
+          <p id="txt-dd-completed-desc" class="text-slate-600 font-medium tibetan-font tibetan-ui-scale">དྲི་རྩད་ལ་མཉམ་ཞུགས་གནང་བ་ཐུགས་རྗེ་ཞུ།</p>
+          <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 max-w-xs mx-auto space-y-2">
+            <div id="txt-dd-final-lbl" class="font-bold text-amber-800 uppercase tracking-wider tibetan-font tibetan-ui-scale" style="font-size: 0.85rem;">མཐའ་མའི་ཐོབ་སྐར།</div>
+            <div id="dd-final-score" class="text-4xl font-black text-red-900">0 / 100</div>
+          </div>
+          <button onclick="restartDragDropQuiz()" class="px-8 py-3.5 bg-gradient-to-r from-amber-500 to-yellow-400 text-white rounded-2xl font-bold shadow-lg text-lg transition card-bounce inline-flex items-center gap-2 tibetan-font tibetan-ui-scale">
+            🔄 <span id="txt-dd-play-again">ཡང་བསྐྱར་དྲི་རྩད་སྦྱོངས།</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- VIEW 5: TILE BUILDER -->
       <section id="view-builder" class="hidden space-y-6 max-w-2xl mx-auto">
         <div class="bg-white border-2 border-amber-200 rounded-3xl p-6 shadow-md text-center space-y-5">
           <div class="flex justify-between items-center border-b pb-3">
@@ -269,37 +319,30 @@
         </div>
       </section>
 
-      <!-- VIEW 5: SPEED READER -->
-      <section id="view-speed" class="hidden space-y-4 max-w-xl mx-auto">
-        <div class="bg-white border-2 border-amber-200 rounded-3xl p-6 shadow-md text-center space-y-6">
-          <h2 id="txt-speed-title" class="font-bold text-slate-800 text-xl tibetan-font tibetan-ui-scale flex items-center justify-center gap-2">⚡ མགྱོགས་ཀློག་སྦྱོང་བརྡར།</h2>
-          <div class="bg-amber-50 p-8 rounded-3xl border-2 border-amber-300 min-h-[160px] flex items-center justify-center">
-            <span id="speed-word-display" class="tibetan-font text-6xl sm:text-7xl font-extrabold text-red-900">མི།</span>
-          </div>
-          <div class="flex justify-center gap-3">
-            <button onclick="triggerNextSpeedWord()" class="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-bold shadow transition tibetan-font tibetan-ui-scale">
-              ▶ <span id="txt-btn-next-speed">རྗེས་མ།</span>
-            </button>
-            <button onclick="playSpeedWordAudio()" class="px-6 py-3 bg-yellow-400 text-red-950 rounded-2xl font-bold shadow transition tibetan-font tibetan-ui-scale">
-              🔊 <span id="txt-btn-sound">སྒྲ་ལ་ཉོན།</span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- VIEW 6: MATCHING GAME -->
-      <section id="view-match" class="hidden space-y-4 max-w-3xl mx-auto">
-        <div class="bg-white border-2 border-amber-200 rounded-3xl p-6 shadow-md text-center space-y-5">
+      <!-- VIEW 6: MEMORY MATCH (Added) -->
+      <section id="view-memory" class="hidden flex flex-col items-center justify-center py-2 space-y-6 max-w-3xl mx-auto">
+        <div id="mem-active-card" class="w-full bg-white border-2 border-amber-200 rounded-3xl p-6 shadow-md text-center space-y-5">
           <div class="flex justify-between items-center border-b pb-3">
-            <h2 id="txt-match-title" class="font-bold text-slate-800 text-xl tibetan-font tibetan-ui-scale flex items-center gap-2">
-              🧩 མཐུན་སྦྱོར།
-            </h2>
-            <span class="bg-amber-100 text-amber-900 font-bold px-3 py-1 rounded-full tibetan-font">
-              Score: <span id="match-score">0</span>
-            </span>
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🃏</span>
+              <span id="txt-mem-header" class="font-bold text-slate-800 text-xl tibetan-font tibetan-ui-scale">དྲན་ཤེས་སྦྱོང་བརྡར།</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="bg-amber-100 text-amber-900 font-bold px-3 py-1 rounded-full border border-amber-200 tibetan-font tibetan-ui-scale">
+                <span id="txt-mem-pairs-lbl">ལྷག་མ།:</span> <span id="mem-pairs-left">6</span>
+              </span>
+            </div>
           </div>
-          <p id="txt-match-desc" class="text-slate-600 tibetan-font tibetan-ui-scale">ཡི་གེ་དང་སྒྲ་མཐུན་སྦྱོར་བྱོས།</p>
-          <div id="match-cards-container" class="grid grid-cols-3 sm:grid-cols-4 gap-3 pt-2"></div>
+          <p id="txt-mem-desc" class="text-slate-600 tibetan-font tibetan-ui-scale">ཡི་གེ་དང་རི་མོ་མཐུན་སྒྲིག་བྱོས།</p>
+          <div id="memory-grid" class="grid grid-cols-3 sm:grid-cols-4 gap-3 pt-2"></div>
+        </div>
+
+        <div id="mem-completed-card" class="hidden w-full bg-white border-4 border-yellow-400 rounded-3xl p-8 shadow-xl text-center space-y-6">
+          <div class="text-6xl animate-bounce">🎉</div>
+          <h2 id="txt-mem-completed-title" class="text-3xl font-extrabold text-amber-900 tibetan-font tibetan-ui-scale">རྟེན་འབྲེལ་ཞུ།</h2>
+          <button onclick="restartMemoryGame()" class="px-8 py-3.5 bg-gradient-to-r from-amber-500 to-yellow-400 text-white rounded-2xl font-bold shadow-lg text-lg transition card-bounce inline-flex items-center gap-2 tibetan-font tibetan-ui-scale">
+            🔄 <span id="txt-mem-play-again">ཡང་བསྐྱར་སྦྱོངས།</span>
+          </button>
         </div>
       </section>
 
@@ -362,7 +405,7 @@
 
     </main>
 
-    <!-- RIGHT SIDEBAR (Complete with 30 Consonants & all modules) -->
+    <!-- RIGHT SIDEBAR -->
     <aside class="w-full lg:w-64 flex-shrink-0 space-y-4">
       <div class="bg-gradient-to-b from-[#1b1435] via-[#20102b] to-[#2c0b0e] p-4 sm:p-5 rounded-[28px] border-[3px] border-amber-400 shadow-xl space-y-3">
         <h2 id="txt-modules-header" class="font-extrabold text-yellow-400 text-lg sm:text-xl tracking-wide pb-1 tibetan-font">ནང་དོན་གཞན་ཁག་ལ་གཟིགས།</h2>
@@ -486,9 +529,9 @@
         navGrid: "Single Words",
         navFlashcards: "Flashcards",
         navQuiz: "Ear Quiz",
+        navDragdrop: "Drag & Drop Quiz",
         navBuilder: "Word Builder",
-        navSpeed: "Speed Reader",
-        navMatch: "Word Match",
+        navMemory: "Memory Match",
         navDrawing: "Magic Pen",
         pageTitle: "2️⃣ Single Consonant with Vowel",
         pageSubtitle: "Practice reading single consonant words paired with vowels.",
@@ -505,14 +548,25 @@
         quizCompletedDesc: "Awesome job with single consonant vowel words!",
         quizFinalLbl: "Final Score",
         quizPlayAgain: "Play Again",
+        ddHeader: "Matching Quiz (Drag & Drop)",
+        ddScoreLbl: "Score:",
+        ddInstruction: "Drag the illustration onto the matching vocabulary item!",
+        ddChancesLbl: "Chances left:",
+        ddDragHint: "↕️ Drag or Tap to select",
+        ddDropHere: "Drop here",
+        ddCompletedTitle: "Matching Quiz Completed!",
+        ddCompletedDesc: "Awesome job matching illustrations to vocabulary!",
+        ddFinalLbl: "Final Score",
+        ddPlayAgain: "Play Again",
         builderTitle: "Word Construction",
         builderDesc: "Listen to the audio and assemble the correct word!",
-        speedTitle: "Speed Reader Challenge",
-        matchTitle: "Matching Challenge",
-        matchDesc: "Match the cards with corresponding sound readings!",
+        memHeader: "Memory Match Game",
+        memPairsLbl: "Pairs Left:",
+        memDesc: "Flip cards to match Tibetan words with their illustrations!",
+        memCompletedTitle: "Fantastic Job Matching!",
+        memPlayAgain: "Play Again",
         scoreLbl: "Score:",
-        btnNextSpeed: "Next Word",
-        btnSound: "Listen Audio",
+        quizQuestionLbl: "Question",
         drawHeader: "Magic Pen Canvas",
         drawSubtitle: "Trace single consonant vowel words",
         drawPrev: "Prev",
@@ -557,9 +611,9 @@
         navGrid: "མིང་ཚིག་རྐྱང་པ།",
         navFlashcards: "བྱང་བུ།",
         navQuiz: "དྲི་རྩད་ཁག་དང་པོ།",
+        navDragdrop: "མཐུན་སྦྱོར་བྱོས།",
         navBuilder: "འགྲིག་པ་དེ་འདེམས།",
-        navSpeed: "མགྱོགས་ཀློག",
-        navMatch: "མཐུན་སྦྱོར།",
+        navMemory: "དྲན་ཤེས་སྦྱོང་བརྡར།",
         navDrawing: "ཡིག་གཟུགས་སྦྱོང་།",
         pageTitle: "2️⃣ གསལ་བྱེད་རྐྱང་པ་དབྱངས་ལྡན།",
         pageSubtitle: "གསལ་བྱེད་རྐྱང་པར་དབྱངས་སྦྱར་བའི་མིང་ཚིག་སྦྱོངས།",
@@ -576,14 +630,25 @@
         quizCompletedDesc: "སྦྱོང་ཚན་མཇུག་གྲུབ་སོང་།",
         quizFinalLbl: "མཐའ་མའི་ཐོབ་སྐར།",
         quizPlayAgain: "ཡང་བསྐྱར་དྲི་རྩད་སྦྱོངས།",
+        ddHeader: "མཐུན་སྦྱོར་བྱོས།",
+        ddScoreLbl: "ཐོབ་སྐར།",
+        ddInstruction: "རི་མོ་དང་མིང་ཚིག་མཐུན་སྦྱོར་བྱོས།",
+        ddChancesLbl: "གོ་སྐབས།",
+        ddDragHint: "↕",
+        ddDropHere: "འདིར་འཇོག་པ།",
+        ddCompletedTitle: "རྟེན་འབྲེལ་ཞུ།",
+        ddCompletedDesc: "དྲི་རྩད་ལ་མཉམ་ཞུགས་གནང་བ་ཐུགས་རྗེ་ཞུ།",
+        ddFinalLbl: "མཐའ་མའི་ཐོབ་སྐར།",
+        ddPlayAgain: "ཡང་བསྐྱར་དྲི་རྩད་སྦྱོངས།",
         builderTitle: "འགྲིག་པ་དེ་འདེམས།",
         builderDesc: "སྒྲ་ལ་ཉན་ནས་ཡི་གེ་འདེམས་།",
-        speedTitle: "མགྱོགས་ཀློག",
-        matchTitle: "མཐུན་སྦྱོར།",
-        matchDesc: "ཡི་གེ་དང་སྒྲ་མཐུན་སྦྱོར་བྱོས།",
+        memHeader: "དྲན་ཤེས་སྦྱོང་བརྡར།",
+        memPairsLbl: "ལྷག་མ།",
+        memDesc: "ཡི་གེ་དང་རི་མོ་མཐུན་སྒྲིག་བྱོས།",
+        memCompletedTitle: "རྟེན་འབྲེལ་ཞུ།",
+        memPlayAgain: "ཡང་བསྐྱར་སྦྱོངས།",
         scoreLbl: "ཐོབ་སྐར།",
-        btnNextSpeed: "རྗེས་མ།",
-        btnSound: "སྒྲ་ལ་ཉོན།",
+        quizQuestionLbl: "དྲི་བ།",
         drawHeader: "ཡིག་གཟུགས་སྦྱོང་དེབ།",
         drawSubtitle: "ང་ཚོས་མཉམ་དུ་ཡིག་གཟུགས་སྦྱོང་བརྡར་བྱེད།",
         drawPrev: "སྔོན་མ།",
@@ -640,17 +705,35 @@
     let starCount = 0;
     let currentFlashIndex = 0;
     let currentDrawingIndex = 0;
+    
+    // Quiz state
     let quizTarget = null;
     let quizScore = 0;
     let quizCurrentQ = 0;
     const quizTotalQ = 10;
     let quizChances = 2;
     let quizAnswered = false;
-    let matchScore = 0;
-    let speedIndex = 0;
+    let quizRemainingPool = [];
+
+    // Drag & Drop Quiz state
+    let ddTarget = null;
+    let ddScore = 0;
+    let ddCurrentQuestion = 0;
+    const ddTotalQuestions = 10;
+    let ddChancesLeft = 2;
+    let ddAnswered = false;
+    let ddSelectedMobile = false;
+    let ddRemainingPool = [];
+
+    // Builder state
     let builderScore = 0;
     let builderTarget = null;
     let builderSelected = [];
+
+    // Memory Match state
+    let memoryCards = [];
+    let flippedCards = [];
+    let matchedPairsCount = 0;
 
     let audioCtx = null;
     function initAudio() {
@@ -711,9 +794,9 @@
       document.getElementById('txt-nav-grid').innerText = t.navGrid;
       document.getElementById('txt-nav-flashcards').innerText = t.navFlashcards;
       document.getElementById('txt-nav-quiz').innerText = t.navQuiz;
+      if (document.getElementById('txt-nav-dragdrop')) document.getElementById('txt-nav-dragdrop').innerText = t.navDragdrop;
       if (document.getElementById('txt-nav-builder')) document.getElementById('txt-nav-builder').innerText = t.navBuilder;
-      if (document.getElementById('txt-nav-speed')) document.getElementById('txt-nav-speed').innerText = t.navSpeed;
-      if (document.getElementById('txt-nav-match')) document.getElementById('txt-nav-match').innerText = t.navMatch;
+      if (document.getElementById('txt-nav-memory')) document.getElementById('txt-nav-memory').innerText = t.navMemory;
       document.getElementById('txt-nav-drawing').innerText = t.navDrawing;
 
       document.getElementById('txt-page-title').innerText = t.pageTitle;
@@ -734,14 +817,25 @@
       document.getElementById('txt-quiz-final-lbl').innerText = t.quizFinalLbl;
       document.getElementById('txt-quiz-play-again').innerText = t.quizPlayAgain;
 
+      if (document.getElementById('txt-dd-header')) document.getElementById('txt-dd-header').innerText = t.ddHeader;
+      if (document.getElementById('txt-dd-score-lbl')) document.getElementById('txt-dd-score-lbl').innerText = t.ddScoreLbl;
+      if (document.getElementById('txt-dd-instruction')) document.getElementById('txt-dd-instruction').innerText = t.ddInstruction;
+      if (document.getElementById('txt-dd-chances-lbl')) document.getElementById('txt-dd-chances-lbl').innerText = t.ddChancesLbl;
+      if (document.getElementById('txt-dd-drag-hint')) document.getElementById('txt-dd-drag-hint').innerText = t.ddDragHint;
+      if (document.getElementById('txt-dd-completed-title')) document.getElementById('txt-dd-completed-title').innerText = t.ddCompletedTitle;
+      if (document.getElementById('txt-dd-completed-desc')) document.getElementById('txt-dd-completed-desc').innerText = t.ddCompletedDesc;
+      if (document.getElementById('txt-dd-final-lbl')) document.getElementById('txt-dd-final-lbl').innerText = t.ddFinalLbl;
+      if (document.getElementById('txt-dd-play-again')) document.getElementById('txt-dd-play-again').innerText = t.ddPlayAgain;
+
       if (document.getElementById('txt-builder-title')) document.getElementById('txt-builder-title').innerText = t.builderTitle;
       if (document.getElementById('txt-builder-desc')) document.getElementById('txt-builder-desc').innerText = t.builderDesc;
-      if (document.getElementById('txt-speed-title')) document.getElementById('txt-speed-title').innerText = t.speedTitle;
-      if (document.getElementById('txt-match-title')) document.getElementById('txt-match-title').innerText = t.matchTitle;
-      if (document.getElementById('txt-match-desc')) document.getElementById('txt-match-desc').innerText = t.matchDesc;
       if (document.getElementById('txt-score-lbl')) document.getElementById('txt-score-lbl').innerText = t.scoreLbl;
-      if (document.getElementById('txt-btn-next-speed')) document.getElementById('txt-btn-next-speed').innerText = t.btnNextSpeed;
-      if (document.getElementById('txt-btn-sound')) document.getElementById('txt-btn-sound').innerText = t.btnSound;
+
+      if (document.getElementById('txt-mem-header')) document.getElementById('txt-mem-header').innerText = t.memHeader;
+      if (document.getElementById('txt-mem-pairs-lbl')) document.getElementById('txt-mem-pairs-lbl').innerText = t.memPairsLbl;
+      if (document.getElementById('txt-mem-desc')) document.getElementById('txt-mem-desc').innerText = t.memDesc;
+      if (document.getElementById('txt-mem-completed-title')) document.getElementById('txt-mem-completed-title').innerText = t.memCompletedTitle;
+      if (document.getElementById('txt-mem-play-again')) document.getElementById('txt-mem-play-again').innerText = t.memPlayAgain;
 
       document.getElementById('txt-draw-header').innerText = t.drawHeader;
       document.getElementById('txt-draw-subtitle').innerText = t.drawSubtitle;
@@ -802,7 +896,7 @@
     }
 
     function switchTab(tab) {
-      ['grid', 'flashcards', 'quiz', 'builder', 'speed', 'match', 'drawing'].forEach(v => {
+      ['grid', 'flashcards', 'quiz', 'dragdrop', 'builder', 'memory', 'drawing'].forEach(v => {
         const el = document.getElementById(`view-${v}`);
         if (el) el.classList.add('hidden');
         const btn = document.getElementById(`nav-${v}`);
@@ -817,30 +911,10 @@
 
       if (tab === 'flashcards') updateFlashcard();
       if (tab === 'quiz') restartQuiz();
+      if (tab === 'dragdrop') restartDragDropQuiz();
       if (tab === 'builder') startBuilderRound();
-      if (tab === 'speed') triggerNextSpeedWord();
-      if (tab === 'match') renderMatchingGame();
+      if (tab === 'memory') restartMemoryGame();
       if (tab === 'drawing') setupCanvas();
-    }
-
-    function renderMatchingGame() {
-      const container = document.getElementById('match-cards-container');
-      if (!container) return;
-      container.innerHTML = '';
-      const sample = [...SINGLE_ITEMS].sort(() => Math.random() - 0.5).slice(0, 8);
-
-      sample.forEach(item => {
-        const btn = document.createElement('button');
-        btn.className = "bg-white border-2 border-amber-300 p-4 rounded-2xl font-bold tibetan-font text-3xl card-bounce shadow-sm flex flex-col items-center justify-center gap-1";
-        btn.innerHTML = `<span class="text-4xl font-extrabold text-red-900">${item.char}</span>`;
-        btn.onclick = () => {
-          playItemSound(item);
-          matchScore += 5;
-          if (document.getElementById('match-score')) document.getElementById('match-score').innerText = matchScore;
-          btn.classList.add('bg-emerald-100', 'border-emerald-500');
-        };
-        container.appendChild(btn);
-      });
     }
 
     function startBuilderRound() {
@@ -900,18 +974,6 @@
       }
     }
 
-    function triggerNextSpeedWord() {
-      speedIndex = Math.floor(Math.random() * SINGLE_ITEMS.length);
-      const item = SINGLE_ITEMS[speedIndex];
-      const display = document.getElementById('speed-word-display');
-      if (display) display.innerText = item.char;
-      playItemSound(item);
-    }
-
-    function playSpeedWordAudio() {
-      playItemSound(SINGLE_ITEMS[speedIndex]);
-    }
-
     function updateFlashcard() {
       const item = SINGLE_ITEMS[currentFlashIndex];
       document.getElementById('flash-badge').innerText = `${currentFlashIndex + 1} / ${SINGLE_ITEMS.length}`;
@@ -947,9 +1009,11 @@
       switchTab('drawing');
     }
 
+    // Ear Quiz
     function restartQuiz() {
       quizScore = 0;
       quizCurrentQ = 0;
+      quizRemainingPool = [...SINGLE_ITEMS].sort(() => Math.random() - 0.5);
       document.getElementById('quiz-score').innerText = '0';
       document.getElementById('quiz-active-card').classList.remove('hidden');
       document.getElementById('quiz-completed-card').classList.add('hidden');
@@ -957,7 +1021,7 @@
     }
 
     function nextQuizQuestion() {
-      if (quizCurrentQ >= quizTotalQ) {
+      if (quizCurrentQ >= quizTotalQ || quizRemainingPool.length === 0) {
         document.getElementById('quiz-active-card').classList.add('hidden');
         document.getElementById('quiz-completed-card').classList.remove('hidden');
         document.getElementById('quiz-final-score').innerText = `${quizScore} / ${quizTotalQ * 5}`;
@@ -969,13 +1033,14 @@
       quizChances = 2;
       quizAnswered = false;
 
-      document.getElementById('quiz-progress-badge').innerText = `${currentLang === 'en' ? 'Question' : 'དྲི་བ།'} ${quizCurrentQ} / ${quizTotalQ}`;
+      const t = TRANSLATIONS[currentLang];
+      document.getElementById('quiz-progress-badge').innerText = `${t.quizQuestionLbl || 'Question'} ${quizCurrentQ} / ${quizTotalQ}`;
       document.getElementById('quiz-chances').innerText = quizChances;
 
-      quizTarget = SINGLE_ITEMS[Math.floor(Math.random() * SINGLE_ITEMS.length)];
+      quizTarget = quizRemainingPool.pop();
 
       const choices = [quizTarget];
-      while (choices.length < 4) {
+      while (choices.length < 4 && choices.length < SINGLE_ITEMS.length) {
         const rand = SINGLE_ITEMS[Math.floor(Math.random() * SINGLE_ITEMS.length)];
         if (!choices.some(c => c.id === rand.id)) choices.push(rand);
       }
@@ -985,9 +1050,17 @@
       grid.innerHTML = '';
       choices.forEach(item => {
         const btn = document.createElement('button');
-        btn.className = "bg-white border-2 border-amber-200 hover:border-amber-400 p-5 rounded-2xl shadow-sm text-center card-bounce transition flex items-center justify-center min-h-[100px]";
+        btn.className = "bg-white border-2 border-amber-200 hover:border-amber-400 p-4 sm:p-6 rounded-2xl shadow-sm text-center card-bounce transition flex flex-col items-center justify-center gap-2 min-h-[140px]";
         btn.onclick = () => handleQuizAnswer(item, btn);
-        btn.innerHTML = `<span class="tibetan-font text-5xl font-bold text-slate-800">${item.char}</span>`;
+
+        const imgHtml = item.img ? `<img src="${item.img}" class="h-16 sm:h-20 object-contain" onerror="this.style.display='none'">` : '';
+
+        btn.innerHTML = `
+          <div class="flex-1 flex flex-col items-center justify-center my-auto">
+            <span class="tibetan-font text-4xl sm:text-5xl font-bold text-slate-800 select-none leading-none">${item.char}</span>
+            ${imgHtml}
+          </div>
+        `;
         grid.appendChild(btn);
       });
 
@@ -1006,6 +1079,7 @@
         quizScore += 5;
         addStars(5);
         document.getElementById('quiz-score').innerText = quizScore;
+        try { confetti({ particleCount: 40, spread: 50, origin: { y: 0.7 } }); } catch(e) {}
         setTimeout(() => nextQuizQuestion(), 1000);
       } else {
         quizChances--;
@@ -1018,6 +1092,227 @@
       }
     }
 
+    // Drag & Drop Quiz
+    function restartDragDropQuiz() {
+      ddScore = 0;
+      ddCurrentQuestion = 0;
+      ddRemainingPool = [...SINGLE_ITEMS].sort(() => Math.random() - 0.5);
+      document.getElementById('dd-score').innerText = '0';
+      document.getElementById('dd-active-card').classList.remove('hidden');
+      document.getElementById('dd-completed-card').classList.add('hidden');
+      nextDragDropQuestion();
+    }
+
+    function nextDragDropQuestion() {
+      if (ddCurrentQuestion >= ddTotalQuestions || ddRemainingPool.length === 0) {
+        document.getElementById('dd-active-card').classList.add('hidden');
+        document.getElementById('dd-completed-card').classList.remove('hidden');
+        document.getElementById('dd-final-score').innerText = `${ddScore} / ${ddTotalQuestions * 10}`;
+        try { confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } }); } catch(e) {}
+        return;
+      }
+
+      ddCurrentQuestion++;
+      ddChancesLeft = 2;
+      ddAnswered = false;
+      ddSelectedMobile = false;
+
+      const t = TRANSLATIONS[currentLang];
+      document.getElementById('dd-progress-badge').innerText = `${t.quizQuestionLbl || 'Question'} ${ddCurrentQuestion} / ${ddTotalQuestions}`;
+      document.getElementById('dd-chances').innerText = ddChancesLeft;
+
+      ddTarget = ddRemainingPool.pop();
+      document.getElementById('dd-target-img').src = ddTarget.img;
+
+      const choices = [ddTarget];
+      while (choices.length < 4 && choices.length < SINGLE_ITEMS.length) {
+        const rand = SINGLE_ITEMS[Math.floor(Math.random() * SINGLE_ITEMS.length)];
+        if (!choices.some(item => item.id === rand.id)) {
+          choices.push(rand);
+        }
+      }
+
+      choices.sort(() => Math.random() - 0.5);
+
+      const grid = document.getElementById('dd-targets-grid');
+      grid.innerHTML = '';
+
+      choices.forEach(item => {
+        const dropBox = document.createElement('div');
+        dropBox.className = "bg-white border-4 border-dashed border-amber-200 hover:border-amber-400 p-4 sm:p-6 rounded-3xl shadow-sm text-center flex flex-col items-center justify-center min-h-[140px] transition cursor-pointer";
+        dropBox.dataset.id = item.id;
+
+        dropBox.ondragover = (e) => handleDragOver(e, dropBox);
+        dropBox.ondragleave = () => handleDragLeave(dropBox);
+        dropBox.ondrop = (e) => handleDrop(e, item, dropBox);
+        dropBox.onclick = () => handleTargetTap(item, dropBox);
+
+        dropBox.innerHTML = `
+          <span class="tibetan-font text-5xl sm:text-6xl font-bold text-red-900 select-none leading-none pointer-events-none">${item.char}</span>
+          <span class="text-amber-800/60 font-bold mt-2 pointer-events-none tibetan-font tibetan-ui-scale drop-here-text" style="font-size: 0.85rem;">${t.ddDropHere || 'Drop here'}</span>
+        `;
+        grid.appendChild(dropBox);
+      });
+
+      const container = document.getElementById('dd-image-container');
+      container.classList.remove('ring-4', 'ring-amber-400', 'bg-yellow-200');
+    }
+
+    function handleImageClick(e) {
+      if (ddAnswered) return;
+      ddSelectedMobile = !ddSelectedMobile;
+      const container = document.getElementById('dd-image-container');
+      if (ddSelectedMobile) {
+        container.classList.add('ring-4', 'ring-amber-400', 'bg-yellow-200');
+      } else {
+        container.classList.remove('ring-4', 'ring-amber-400', 'bg-yellow-200');
+      }
+    }
+
+    function handleTargetTap(item, dropBox) {
+      if (ddSelectedMobile && !ddAnswered) {
+        evaluateDDAnswer(item, dropBox);
+      }
+    }
+
+    function handleDragStart(e) {
+      if (ddAnswered) return;
+      e.dataTransfer.setData("text/plain", ddTarget.id);
+    }
+
+    function handleDragOver(e, element) {
+      e.preventDefault();
+      if (!ddAnswered) {
+        element.classList.add('border-amber-500', 'bg-amber-50');
+      }
+    }
+
+    function handleDragLeave(element) {
+      element.classList.remove('border-amber-500', 'bg-amber-50');
+    }
+
+    function handleDrop(e, item, dropBox) {
+      e.preventDefault();
+      handleDragLeave(dropBox);
+      if (ddAnswered) return;
+      evaluateDDAnswer(item, dropBox);
+    }
+
+    function evaluateDDAnswer(selectedItem, dropBox) {
+      if (selectedItem.id === ddTarget.id) {
+        ddAnswered = true;
+        dropBox.classList.remove('border-dashed', 'border-amber-200', 'border-amber-400');
+        dropBox.classList.add('bg-emerald-100', 'border-emerald-500', 'border-solid');
+        
+        let earnedPoints = (ddChancesLeft === 2) ? 10 : 5;
+        let earnedStars = (ddChancesLeft === 2) ? 5 : 2;
+        
+        ddScore += earnedPoints;
+        addStars(earnedStars);
+        document.getElementById('dd-score').innerText = ddScore;
+
+        try { confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } }); } catch(e) {}
+
+        setTimeout(() => {
+          nextDragDropQuestion();
+        }, 1100);
+
+      } else {
+        ddChancesLeft--;
+        document.getElementById('dd-chances').innerText = ddChancesLeft;
+        dropBox.classList.add('bg-red-100', 'border-red-400');
+
+        if (ddChancesLeft <= 0) {
+          ddAnswered = true;
+          setTimeout(() => {
+            nextDragDropQuestion();
+          }, 1400);
+        }
+      }
+
+      ddSelectedMobile = false;
+      const container = document.getElementById('dd-image-container');
+      if (container) container.classList.remove('ring-4', 'ring-amber-400', 'bg-yellow-200');
+    }
+
+    // Memory Match Game
+    function restartMemoryGame() {
+      matchedPairsCount = 0;
+      flippedCards = [];
+      document.getElementById('mem-active-card').classList.remove('hidden');
+      document.getElementById('mem-completed-card').classList.add('hidden');
+
+      const selectedVocab = [...SINGLE_ITEMS].sort(() => Math.random() - 0.5).slice(0, 6);
+      memoryCards = [];
+
+      selectedVocab.forEach(item => {
+        memoryCards.push({ id: item.id, type: 'char', content: item.char, matchId: item.id });
+        memoryCards.push({ id: item.id, type: 'img', content: item.img, matchId: item.id });
+      });
+
+      memoryCards.sort(() => Math.random() - 0.5);
+      renderMemoryGrid();
+      document.getElementById('mem-pairs-left').innerText = selectedVocab.length;
+    }
+
+    function renderMemoryGrid() {
+      const grid = document.getElementById('memory-grid');
+      grid.innerHTML = '';
+
+      memoryCards.forEach((card, index) => {
+        const btn = document.createElement('button');
+        btn.className = "aspect-square bg-amber-100 hover:bg-amber-200 border-2 border-amber-300 rounded-2xl shadow-sm flex items-center justify-center text-xl font-bold transition card-bounce";
+        btn.dataset.index = index;
+        btn.onclick = () => flipMemoryCard(index, btn);
+        btn.innerText = "❓";
+        grid.appendChild(btn);
+      });
+    }
+
+    function flipMemoryCard(index, btnElem) {
+      const card = memoryCards[index];
+      if (flippedCards.length >= 2 || btnElem.classList.contains('matched') || btnElem.classList.contains('flipped')) return;
+
+      btnElem.classList.add('flipped', 'bg-white');
+      if (card.type === 'char') {
+        btnElem.innerHTML = `<span class="tibetan-font text-3xl font-bold text-red-900">${card.content}</span>`;
+      } else {
+        btnElem.innerHTML = `<img src="${card.content}" class="h-16 object-contain" onerror="this.style.display='none'">`;
+      }
+
+      flippedCards.push({ index, card, elem: btnElem });
+
+      if (flippedCards.length === 2) {
+        const [first, second] = flippedCards;
+        if (first.card.matchId === second.card.matchId && first.index !== second.index) {
+          first.elem.classList.add('matched', 'bg-emerald-100', 'border-emerald-500');
+          second.elem.classList.add('matched', 'bg-emerald-100', 'border-emerald-500');
+          flippedCards = [];
+          matchedPairsCount++;
+          const remaining = 6 - matchedPairsCount;
+          document.getElementById('mem-pairs-left').innerText = remaining;
+
+          if (remaining === 0) {
+            addStars(5);
+            try { confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } }); } catch(e){}
+            setTimeout(() => {
+              document.getElementById('mem-active-card').classList.add('hidden');
+              document.getElementById('mem-completed-card').classList.remove('hidden');
+            }, 800);
+          }
+        } else {
+          setTimeout(() => {
+            first.elem.classList.remove('flipped', 'bg-white');
+            first.elem.innerHTML = "❓";
+            second.elem.classList.remove('flipped', 'bg-white');
+            second.elem.innerHTML = "❓";
+            flippedCards = [];
+          }, 900);
+        }
+      }
+    }
+
+    // Canvas Drawing
     let canvas, ctx;
     let isDrawing = false;
     let penColor = '#ef4444';
