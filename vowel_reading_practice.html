@@ -813,7 +813,7 @@
         canvasTip: "སྨྱུག་གུ་བདམས་ནས་ཡིག་གཟུགས་སྦྱོང་།",
         canvasSound: "",
         footer: "འབྲོང་བུ་ཚང་། དབྱངས་གསལ་སྦྱོར་ཚུལ།",
-        modulesHeader: "ནང་དོན་གཞན་ཁག་ལ་གཟིགས།",
+        modulesHeader: "ནང་དོན་གཞན་ཁག་ལ་གཟིགགས།",
         modMain: "གསལ་བྱེད་སུམ་ཅུ།",
         modMulti: "གསལ་བྱེད་གཉིས་ལྡན་གྱི་མིང་ཚིག",
         modVowelsRoot: "དབྱངས་བཞི།",
@@ -1139,9 +1139,46 @@
       });
     }
 
-    function speakCurrentFlashcard() {
+    // Updated sequential playback for flashcards
+    async function speakCurrentFlashcard() {
       const group = READING_GROUPS[currentFlashIndex];
-      group.forEach((item, i) => setTimeout(() => playTextSound(item), i * 300));
+      for (let i = 0; i < group.length; i++) {
+        await playTextSoundSequential(group[i]);
+      }
+    }
+
+    function playTextSoundSequential(text) {
+      return new Promise((resolve) => {
+        addStars(1);
+        if (AUDIO_MAP[text]) {
+          const audio = new Audio(AUDIO_MAP[text]);
+          audio.onended = () => resolve();
+          audio.onerror = () => playFallbackToneAsync(text, resolve);
+          audio.play().catch(err => playFallbackToneAsync(text, resolve));
+        } else {
+          playFallbackToneAsync(text, resolve);
+        }
+      });
+    }
+
+    function playFallbackToneAsync(text, callback) {
+      initAudio();
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        let code = text.charCodeAt(0) || 100;
+        osc.frequency.setValueAtTime(320 + (code % 350), audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.5);
+        setTimeout(() => { if (callback) callback(); }, 500);
+      } catch(e) {
+        if (callback) callback();
+      }
     }
 
     function nextFlashcard() {
